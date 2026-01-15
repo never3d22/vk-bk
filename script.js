@@ -19,7 +19,7 @@ const menuCategories = [
         price: 250,
         badge: "Хит",
         image:
-          "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1604908554027-1c7e7f0f4cc5?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Курица", "Лаваш", "Овощи", "Соус чесночный"],
       },
       {
@@ -155,7 +155,7 @@ const menuCategories = [
         price: 120,
         badge: "Освежающее",
         image:
-          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Газированная вода", "Сироп", "Сахар"],
       },
       {
@@ -173,7 +173,7 @@ const menuCategories = [
         price: 100,
         badge: "Популярное",
         image:
-          "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Газированный напиток", "Сахар", "Аромат"],
       },
       {
@@ -234,7 +234,7 @@ const menuCategories = [
         price: 160,
         badge: "Премиум",
         image:
-          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Солод", "Хмель", "Вода"],
       },
       {
@@ -243,7 +243,7 @@ const menuCategories = [
         price: 110,
         badge: "0%",
         image:
-          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Безалкогольное", "Солод", "Хмель"],
       },
     ],
@@ -302,7 +302,7 @@ const menuCategories = [
   },
 ];
 
-const useGeneratedMenuImages = true;
+const useGeneratedMenuImages = false;
 
 const escapeXml = (value) =>
   String(value)
