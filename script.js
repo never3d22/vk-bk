@@ -1,200 +1,80 @@
-const products = [
+const menuCategories = [
   {
-    id: "bg-classic",
-    name: "Black Classic",
-    description: "Курица су-вид, трюфельный айоли и свежий салат.",
-    weight: "420 г",
-    heat: "Сливочная",
-    price: 390,
-    badge: "Хит",
-    image:
-      "https://images.unsplash.com/photo-1604908554027-1c7e7f0f4cc5?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-truffle", "sauce-garlic", "drink-cola"],
-    ingredients: ["Курица су-вид", "Трюфельный айоли", "Маринованный лук", "Лаваш на закваске"],
+    title: "ГОРЯЧЕЕ",
+    items: [
+      { id: "hot-grill-chicken", name: "Курица гриль", price: 600 },
+      { id: "hot-shawarma-chicken", name: "Шаурма с курицей", price: 250 },
+      { id: "hot-cheese-lavash", name: "Сырный лаваш", price: 20 },
+      { id: "hot-extra-ingredients", name: "Доп. ингредиенты", price: 50 },
+    ],
   },
   {
-    id: "golden-beef",
-    name: "Golden Beef",
-    description: "Томленая говядина, сыр чеддер и соус из печеного чеснока.",
-    weight: "450 г",
-    heat: "Средняя",
-    price: 520,
-    badge: "Новинка",
-    image:
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-harissa", "sauce-garlic", "drink-lemonade"],
-    ingredients: ["Говядина томленая", "Чеддер", "Печеный чеснок", "Маринованные овощи"],
+    title: "ДЕСЕРТЫ",
+    items: [
+      { id: "dessert-tiramisu", name: "Тирамису", price: 320 },
+      { id: "dessert-honey-cake", name: "Медовик", price: 320 },
+    ],
   },
   {
-    id: "smoky-luxe",
-    name: "Smoky Luxe",
-    description: "Копченая индейка, соус BBQ и хрустящий айсберг.",
-    weight: "400 г",
-    heat: "Умеренная",
-    price: 410,
-    badge: "Шеф-выбор",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-truffle", "drink-ginger", "drink-cola"],
-    ingredients: ["Индейка BBQ", "Айсберг", "Томат конкассе", "Крем-соус"],
+    title: "ВЫПЕЧКА",
+    items: [
+      { id: "bakery-khachapuri-adjar", name: "Хачапури по-аджарски", price: 200 },
+      { id: "bakery-khachapuri-megre", name: "Хачапури по-мегрельски", price: 400 },
+      { id: "bakery-lamajo", name: "Ламаджо", price: 180 },
+    ],
   },
   {
-    id: "saffron-cheese",
-    name: "Saffron Cheese",
-    description: "Сырный микс, шафрановый соус и пряная курица.",
-    weight: "430 г",
-    heat: "Нежная",
-    price: 450,
-    badge: "Премиум",
-    image:
-      "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-truffle", "sauce-garlic", "drink-ginger"],
-    ingredients: ["Курица пряная", "Сырный микс", "Шафрановый соус", "Свежая зелень"],
+    title: "ХОТ-ДОГИ",
+    items: [
+      { id: "hotdog-danish-chicken", name: "Датский (курица)", price: 250 },
+      { id: "hotdog-danish-beef", name: "Датский (говядина)", price: 250 },
+      { id: "hotdog-french-chicken", name: "Французский (курица)", price: 250 },
+      { id: "hotdog-french-beef", name: "Французский (говядина)", price: 250 },
+    ],
   },
   {
-    id: "spicy-night",
-    name: "Spicy Night",
-    description: "Острые специи, соус харисса и говяжья вырезка.",
-    weight: "440 г",
-    heat: "Острая",
-    price: 540,
-    badge: "Острая",
-    image:
-      "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-harissa", "drink-cola", "drink-lemonade"],
-    ingredients: ["Говядина", "Харисса", "Огурец", "Красный лук"],
+    title: "НАПИТКИ",
+    items: [
+      { id: "drink-natakhtari", name: "Натакати в асс...", price: 120 },
+      { id: "drink-bon-aqua", name: "Бон Аква в асс...", price: 100 },
+      { id: "drink-dobry", name: "Добрый в асс...", price: 100 },
+      { id: "drink-tan", name: "Тан", price: 80 },
+      { id: "drink-rich-juice", name: "Сок Rich", price: 150 },
+      { id: "drink-rich-tea", name: "Чай Rich", price: 150 },
+    ],
   },
   {
-    id: "veggie-gold",
-    name: "Veggie Gold",
-    description: "Запеченные овощи, хумус и соус из граната.",
-    weight: "390 г",
-    heat: "Легкая",
-    price: 360,
-    badge: "Vegan",
-    image:
-      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
-    type: "product",
-    addons: ["sauce-garlic", "sauce-truffle", "drink-ginger"],
-    ingredients: ["Запеченные овощи", "Хумус", "Соус гранат", "Салатный микс"],
+    title: "ПИВО",
+    items: [
+      { id: "beer-hoegaarden", name: "Хугарден", price: 160 },
+      { id: "beer-zhiguli", name: "Жигули", price: 110 },
+      { id: "beer-stella", name: "Стелла Артуа", price: 160 },
+      { id: "beer-hoegaarden-na", name: "Хугарден Б/А", price: 110 },
+    ],
+  },
+  {
+    title: "КОФЕ И ЧАЙ",
+    items: [
+      { id: "coffee-americano", name: "Американо", price: 120 },
+      { id: "coffee-cappuccino", name: "Капучино", price: 160 },
+      { id: "coffee-latte", name: "Латте", price: 160 },
+      { id: "coffee-espresso", name: "Эспрессо", price: 90 },
+      { id: "coffee-tea", name: "Чай", price: 50 },
+    ],
   },
 ];
 
-const sets = [
-  {
-    id: "gold-duo",
-    name: "Gold Duo",
-    description: "Две шаурмы, картофель фри и два соуса.",
-    price: 980,
-    serves: "2 перс.",
-    badge: "Сет",
-    type: "set",
-    typeLabel: "Сет",
-    image:
-      "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=900&q=80",
-    includes: ["2 шаурмы Black Classic", "Картофель фри", "2 фирменных соуса"],
-  },
-  {
-    id: "night-trio",
-    name: "Night Trio",
-    description: "Три шаурмы, набор соусов и напитки.",
-    price: 1490,
-    serves: "3 перс.",
-    badge: "Комбо",
-    type: "set",
-    typeLabel: "Сет",
-    image:
-      "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=900&q=80",
-    includes: ["3 шаурмы на выбор", "3 соуса", "2 напитка"],
-  },
-  {
-    id: "family-box",
-    name: "Family Box",
-    description: "Четыре шаурмы, фри, салаты и напитки.",
-    price: 2190,
-    serves: "4-5 перс.",
-    badge: "Большой сет",
-    type: "set",
-    typeLabel: "Сет",
-    image:
-      "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80",
-    includes: ["4 шаурмы", "2 фри", "салатный микс", "4 напитка"],
-  },
-];
-
-const upsells = [
-  {
-    id: "sauce-truffle",
-    name: "Трюфельный соус",
-    price: 60,
-    size: "50 мл",
-    type: "add-on",
-    typeLabel: "Дополнение",
-    image:
-      "https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "sauce-harissa",
-    name: "Соус харисса",
-    price: 60,
-    size: "50 мл",
-    type: "add-on",
-    typeLabel: "Дополнение",
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "sauce-garlic",
-    name: "Сливочный чеснок",
-    price: 60,
-    size: "50 мл",
-    type: "add-on",
-    typeLabel: "Дополнение",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "drink-cola",
-    name: "Cola Black 0.33",
-    price: 120,
-    size: "0.33 л",
-    type: "add-on",
-    typeLabel: "Напиток",
-    image:
-      "https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "drink-lemonade",
-    name: "Gold Lemonade",
-    price: 140,
-    size: "0.45 л",
-    type: "add-on",
-    typeLabel: "Напиток",
-    image:
-      "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "drink-ginger",
-    name: "Ginger Tea",
-    price: 160,
-    size: "0.4 л",
-    type: "add-on",
-    typeLabel: "Напиток",
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
-  },
-];
+const menuItems = menuCategories.flatMap((category) =>
+  category.items.map((item) => ({
+    ...item,
+    category: category.title,
+    type: "menu",
+  }))
+);
 
 const cart = new Map();
 
-const productsGrid = document.getElementById("products-grid");
-const setsGrid = document.getElementById("sets-grid");
-const extrasGrid = document.getElementById("extras-grid");
+const menuCategoriesContainer = document.getElementById("menu-categories");
 const cartModal = document.getElementById("cart-modal");
 const cartItemsContainer = document.getElementById("cart-items");
 const cartCount = document.getElementById("cart-count");
@@ -214,122 +94,42 @@ let lastCartCount = 0;
 let toastTimer;
 
 const formatPrice = (value) => `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
-const upsellMap = new Map(upsells.map((item) => [item.id, item]));
-const allItems = [...products, ...sets, ...upsells];
+const allItems = [...menuItems];
 
 const getItemMeta = (item) => {
-  if (item.type === "product") {
-    return `${item.weight} · ${item.heat}`;
-  }
-  if (item.type === "set") {
-    return item.serves;
-  }
-  if (item.type === "add-on") {
-    return item.size;
-  }
-  return "";
+  return item.category ?? "";
 };
 
-const renderProducts = () => {
-  if (!productsGrid) {
+const renderMenu = () => {
+  if (!menuCategoriesContainer) {
     return;
   }
-  productsGrid.innerHTML = products
-    .map((product) => {
-      const ingredients = product.ingredients.map((item) => `<li>${item}</li>`).join("");
-      const addons = (product.addons ?? [])
-        .map((addonId) => {
-          const addon = upsellMap.get(addonId);
-          if (!addon) {
-            return "";
-          }
+  menuCategoriesContainer.innerHTML = menuCategories
+    .map((category) => {
+      const cards = category.items
+        .map((item) => {
           return `
-            <button class="addon-chip" type="button" data-add="${addon.id}">
-              + ${addon.name} · ${formatPrice(addon.price)}
-            </button>
+            <article class="menu-card reveal">
+              <div class="menu-card-header">
+                <h4>${item.name}</h4>
+                <span class="menu-price">${formatPrice(item.price)}</span>
+              </div>
+              <div class="menu-card-footer">
+                <button class="btn btn-ghost" type="button" data-add="${item.id}">
+                  В корзину
+                </button>
+              </div>
+            </article>
           `;
         })
         .join("");
       return `
-        <article class="product-card reveal">
-          ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ""}
-          <div class="product-image">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <div class="menu-category reveal">
+          <h3>${category.title}</h3>
+          <div class="menu-grid">
+            ${cards}
           </div>
-          <div>
-            <h3 class="product-title">${product.name}</h3>
-            <div class="product-meta">${product.weight} · ${product.heat}</div>
-          </div>
-          <p class="product-description">${product.description}</p>
-          <ul class="ingredients">${ingredients}</ul>
-          <div class="product-footer">
-            <span class="price">${formatPrice(product.price)}</span>
-            <button class="btn btn-primary" type="button" data-add="${product.id}">
-              В корзину
-            </button>
-          </div>
-          ${addons ? `<div class="addon-section"><span>Добавить:</span><div class="addon-list">${addons}</div></div>` : ""}
-        </article>
-      `;
-    })
-    .join("");
-};
-
-const renderSets = () => {
-  if (!setsGrid) {
-    return;
-  }
-  setsGrid.innerHTML = sets
-    .map((set) => {
-      const includes = set.includes.map((item) => `<li>${item}</li>`).join("");
-      return `
-        <article class="set-card reveal">
-          <div class="set-image">
-            <img src="${set.image}" alt="${set.name}" loading="lazy" />
-            <span class="set-badge">${set.badge}</span>
-          </div>
-          <div class="set-body">
-            <div>
-              <h3>${set.name}</h3>
-              <p class="set-meta">${set.serves}</p>
-            </div>
-            <p class="set-description">${set.description}</p>
-            <ul class="set-list">${includes}</ul>
-          </div>
-          <div class="set-footer">
-            <span class="price">${formatPrice(set.price)}</span>
-            <button class="btn btn-primary" type="button" data-add="${set.id}">
-              В корзину
-            </button>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-};
-
-const renderExtras = () => {
-  if (!extrasGrid) {
-    return;
-  }
-  extrasGrid.innerHTML = upsells
-    .map((extra) => {
-      return `
-        <article class="extra-card reveal">
-          <div class="extra-image">
-            <img src="${extra.image}" alt="${extra.name}" loading="lazy" />
-          </div>
-          <div>
-            <h3>${extra.name}</h3>
-            <p class="extra-meta">${extra.size} · ${extra.typeLabel}</p>
-          </div>
-          <div class="extra-footer">
-            <span class="price">${formatPrice(extra.price)}</span>
-            <button class="btn btn-ghost" type="button" data-add="${extra.id}">
-              Добавить
-            </button>
-          </div>
-        </article>
+        </div>
       `;
     })
     .join("");
@@ -633,9 +433,7 @@ prefersReducedMotion.addEventListener("change", () => {
 document.querySelector(".hero-slider")?.addEventListener("mouseenter", stopSlider);
 document.querySelector(".hero-slider")?.addEventListener("mouseleave", startSlider);
 
-renderProducts();
-renderSets();
-renderExtras();
+renderMenu();
 renderCart();
 initReveal();
 setSlide(0);

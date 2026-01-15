@@ -221,15 +221,10 @@ img {
 .slide-banner {
   position: relative;
   z-index: 1;
-  max-width: 540px;
+  max-width: 600px;
   display: grid;
-  gap: 20px;
-  padding: 32px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(213, 163, 59, 0.25);
-  background: rgba(10, 10, 12, 0.55);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
+  gap: 16px;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
 .slide-banner > * {
@@ -399,6 +394,64 @@ h2 {
 .section-note {
   max-width: 420px;
   color: var(--muted);
+}
+
+.menu-categories {
+  display: grid;
+  gap: 32px;
+}
+
+.menu-category {
+  display: grid;
+  gap: 16px;
+}
+
+.menu-category h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.menu-card {
+  background: var(--black-card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid rgba(213, 163, 59, 0.18);
+  display: grid;
+  gap: 12px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), border var(--transition), box-shadow var(--transition);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(213, 163, 59, 0.4);
+}
+
+.menu-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.menu-card h4 {
+  font-size: 1.05rem;
+}
+
+.menu-price {
+  font-weight: 700;
+  color: var(--gold-soft);
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .products-grid {
@@ -813,8 +866,8 @@ h2 {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-auto-rows: 180px;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-auto-rows: 200px;
   gap: 16px;
 }
 
@@ -833,14 +886,6 @@ h2 {
 
 .gallery-item:hover img {
   transform: scale(1.06);
-}
-
-.gallery-item.tall {
-  grid-row: span 2;
-}
-
-.gallery-item.wide {
-  grid-column: span 2;
 }
 
 .cta {
@@ -1246,8 +1291,12 @@ h2 {
     padding-top: 110px;
   }
 
-  .gallery-item.wide {
-    grid-column: span 1;
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
 }
 
@@ -1271,5 +1320,13 @@ h2 {
     left: 16px;
     border-radius: 20px;
     justify-content: space-between;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
