@@ -401,9 +401,20 @@ h2 {
   gap: 32px;
 }
 
+.menu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
 .menu-category {
   display: grid;
   gap: 16px;
+}
+
+.menu-category.is-hidden {
+  display: none;
 }
 
 .menu-category h3 {

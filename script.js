@@ -1,6 +1,7 @@
 const menuCategories = [
   {
     title: "ГОРЯЧЕЕ",
+    key: "hot",
     description: "Горячие позиции для сытного перекуса.",
     items: [
       {
@@ -43,6 +44,7 @@ const menuCategories = [
   },
   {
     title: "ДЕСЕРТЫ",
+    key: "desserts",
     description: "Сладкое завершение вашего заказа.",
     items: [
       {
@@ -67,6 +69,7 @@ const menuCategories = [
   },
   {
     title: "ВЫПЕЧКА",
+    key: "bakery",
     description: "Классическая выпечка на любой вкус.",
     items: [
       {
@@ -100,6 +103,7 @@ const menuCategories = [
   },
   {
     title: "ХОТ-ДОГИ",
+    key: "hotdogs",
     description: "Сытные хот-доги в удобном формате.",
     items: [
       {
@@ -142,6 +146,7 @@ const menuCategories = [
   },
   {
     title: "НАПИТКИ",
+    key: "drinks",
     description: "Освежающие напитки на каждый день.",
     items: [
       {
@@ -202,6 +207,7 @@ const menuCategories = [
   },
   {
     title: "ПИВО",
+    key: "beer",
     description: "Популярные сорта из ассортимента.",
     items: [
       {
@@ -244,6 +250,7 @@ const menuCategories = [
   },
   {
     title: "КОФЕ И ЧАЙ",
+    key: "coffee",
     description: "Кофейная классика и горячий чай.",
     items: [
       {
@@ -305,6 +312,7 @@ const menuItems = menuCategories.flatMap((category) =>
 
 const cart = new Map();
 
+const menuFiltersContainer = document.getElementById("menu-filters");
 const menuCategoriesContainer = document.getElementById("menu-categories");
 const cartModal = document.getElementById("cart-modal");
 const cartItemsContainer = document.getElementById("cart-items");
@@ -374,7 +382,7 @@ const renderMenu = () => {
         })
         .join("");
       return `
-        <div class="menu-category reveal">
+        <div class="menu-category reveal" data-menu-category="${category.key}">
           <h3>${category.title}</h3>
           <div class="menu-grid">
             ${cards}
@@ -383,6 +391,62 @@ const renderMenu = () => {
       `;
     })
     .join("");
+};
+
+const renderMenuFilters = () => {
+  if (!menuFiltersContainer) {
+    return;
+  }
+  const buttons = [
+    { key: "all", label: "Все" },
+    ...menuCategories.map((category) => ({
+      key: category.key,
+      label: category.title,
+    })),
+  ];
+  menuFiltersContainer.innerHTML = buttons
+    .map(
+      (button, index) => `
+        <button
+          class="filter-btn ${index === 0 ? "is-active" : ""}"
+          type="button"
+          data-menu-filter="${button.key}"
+          aria-pressed="${index === 0 ? "true" : "false"}"
+        >
+          ${button.label}
+        </button>
+      `
+    )
+    .join("");
+};
+
+const applyMenuFilter = (filter) => {
+  const sections = Array.from(document.querySelectorAll(".menu-category"));
+  sections.forEach((section) => {
+    const matches = filter === "all" || section.dataset.menuCategory === filter;
+    section.classList.toggle("is-hidden", !matches);
+  });
+};
+
+const setupMenuFilters = () => {
+  if (!menuFiltersContainer) {
+    return;
+  }
+  renderMenuFilters();
+  const buttons = Array.from(menuFiltersContainer.querySelectorAll("[data-menu-filter]"));
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.menuFilter ?? "all";
+      buttons.forEach((item) => {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-pressed", "false");
+      });
+      button.classList.add("is-active");
+      button.setAttribute("aria-pressed", "true");
+      applyMenuFilter(filter);
+    });
+  });
+  applyMenuFilter("all");
 };
 
 const openCart = () => {
@@ -754,6 +818,7 @@ document.querySelector(".hero-slider")?.addEventListener("mouseenter", stopSlide
 document.querySelector(".hero-slider")?.addEventListener("mouseleave", startSlider);
 
 renderMenu();
+setupMenuFilters();
 renderCart();
 initReveal();
 setSlide(0);
