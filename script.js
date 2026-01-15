@@ -1,343 +1,553 @@
+// ============================================
+// Golden Shawarma - JavaScript
+// ============================================
+
+// Products Data
 const products = [
-  {
-    id: "bg-classic",
-    name: "Black Classic",
-    description: "Курица су-вид, трюфельный айоли и свежий салат.",
-    weight: "420 г",
-    heat: "Сливочная",
-    price: 390,
-    badge: "Хит",
-    ingredients: ["Курица су-вид", "Трюфельный айоли", "Маринованный лук", "Лаваш на закваске"],
-  },
-  {
-    id: "golden-beef",
-    name: "Golden Beef",
-    description: "Томленая говядина, сыр чеддер и соус из печеного чеснока.",
-    weight: "450 г",
-    heat: "Средняя",
-    price: 520,
-    badge: "Новинка",
-    ingredients: ["Говядина томленая", "Чеддер", "Печеный чеснок", "Маринованные овощи"],
-  },
-  {
-    id: "smoky-luxe",
-    name: "Smoky Luxe",
-    description: "Копченая индейка, соус BBQ и хрустящий айсберг.",
-    weight: "400 г",
-    heat: "Умеренная",
-    price: 410,
-    badge: "Шеф-выбор",
-    ingredients: ["Индейка BBQ", "Айсберг", "Томат конкассе", "Крем-соус"],
-  },
-  {
-    id: "saffron-cheese",
-    name: "Saffron Cheese",
-    description: "Сырный микс, шафрановый соус и пряная курица.",
-    weight: "430 г",
-    heat: "Нежная",
-    price: 450,
-    badge: "Премиум",
-    ingredients: ["Курица пряная", "Сырный микс", "Шафрановый соус", "Свежая зелень"],
-  },
-  {
-    id: "spicy-night",
-    name: "Spicy Night",
-    description: "Острые специи, соус харисса и говяжья вырезка.",
-    weight: "440 г",
-    heat: "Острая",
-    price: 540,
-    badge: "Острая",
-    ingredients: ["Говядина", "Харисса", "Огурец", "Красный лук"],
-  },
-  {
-    id: "veggie-gold",
-    name: "Veggie Gold",
-    description: "Запеченные овощи, хумус и соус из граната.",
-    weight: "390 г",
-    heat: "Легкая",
-    price: 360,
-    badge: "Vegan",
-    ingredients: ["Запеченные овощи", "Хумус", "Соус гранат", "Салатный микс"],
-  },
+    {
+        id: 1,
+        name: "Классическая Шаурма",
+        category: "classic",
+        price: 299,
+        weight: "350 г",
+        badge: "Хит продаж",
+        badgeType: "hit",
+        icon: "fas fa-utensils",
+        ingredients: [
+            { name: "Куриное филе", icon: "fas fa-drumstick-bite" },
+            { name: "Лаваш", icon: "fas fa-bread-slice" },
+            { name: "Томаты", icon: "fas fa-apple-alt" },
+            { name: "Огурцы", icon: "fas fa-seedling" },
+            { name: "Капуста", icon: "fas fa-leaf" },
+            { name: "Соус чесночный", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 2,
+        name: "Шаурма Премиум",
+        category: "premium",
+        price: 449,
+        weight: "450 г",
+        badge: "Premium",
+        badgeType: "premium",
+        icon: "fas fa-crown",
+        ingredients: [
+            { name: "Телятина", icon: "fas fa-drumstick-bite" },
+            { name: "Сыр Фета", icon: "fas fa-cheese" },
+            { name: "Руккола", icon: "fas fa-leaf" },
+            { name: "Вяленые томаты", icon: "fas fa-apple-alt" },
+            { name: "Авокадо", icon: "fas fa-seedling" },
+            { name: "Соус Цезарь", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 3,
+        name: "Острая Шаурма",
+        category: "spicy",
+        price: 329,
+        weight: "380 г",
+        badge: "Острая",
+        badgeType: "spicy",
+        icon: "fas fa-pepper-hot",
+        ingredients: [
+            { name: "Куриное филе", icon: "fas fa-drumstick-bite" },
+            { name: "Халапеньо", icon: "fas fa-pepper-hot" },
+            { name: "Томаты", icon: "fas fa-apple-alt" },
+            { name: "Лук красный", icon: "fas fa-circle" },
+            { name: "Капуста", icon: "fas fa-leaf" },
+            { name: "Острый соус", icon: "fas fa-fire" }
+        ]
+    },
+    {
+        id: 4,
+        name: "Шаурма с Бараниной",
+        category: "premium",
+        price: 489,
+        weight: "420 г",
+        badge: "Premium",
+        badgeType: "premium",
+        icon: "fas fa-drumstick-bite",
+        ingredients: [
+            { name: "Баранина", icon: "fas fa-drumstick-bite" },
+            { name: "Мята", icon: "fas fa-leaf" },
+            { name: "Красный лук", icon: "fas fa-circle" },
+            { name: "Томаты черри", icon: "fas fa-apple-alt" },
+            { name: "Сумах", icon: "fas fa-mortar-pestle" },
+            { name: "Соус тахини", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 5,
+        name: "Вегетарианская",
+        category: "classic",
+        price: 249,
+        weight: "320 г",
+        badge: "Vegan",
+        badgeType: "new",
+        icon: "fas fa-carrot",
+        ingredients: [
+            { name: "Фалафель", icon: "fas fa-circle" },
+            { name: "Хумус", icon: "fas fa-mortar-pestle" },
+            { name: "Томаты", icon: "fas fa-apple-alt" },
+            { name: "Огурцы", icon: "fas fa-seedling" },
+            { name: "Капуста", icon: "fas fa-leaf" },
+            { name: "Соус тахини", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 6,
+        name: "Огненный Дракон",
+        category: "spicy",
+        price: 379,
+        weight: "400 г",
+        badge: "Очень острая",
+        badgeType: "spicy",
+        icon: "fas fa-fire-flame-curved",
+        ingredients: [
+            { name: "Говядина", icon: "fas fa-drumstick-bite" },
+            { name: "Перец чили", icon: "fas fa-pepper-hot" },
+            { name: "Шрирача", icon: "fas fa-fire" },
+            { name: "Кимчи", icon: "fas fa-leaf" },
+            { name: "Зелёный лук", icon: "fas fa-seedling" },
+            { name: "Острый майонез", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 7,
+        name: "Комбо Набор №1",
+        category: "combo",
+        price: 699,
+        weight: "800 г",
+        badge: "-20%",
+        badgeType: "hit",
+        icon: "fas fa-box-open",
+        ingredients: [
+            { name: "2 Классические", icon: "fas fa-utensils" },
+            { name: "Картофель фри", icon: "fas fa-french-fries" },
+            { name: "Coca-Cola 0.5л", icon: "fas fa-glass-water" },
+            { name: "Соусы 3 вида", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 8,
+        name: "Комбо для Компании",
+        category: "combo",
+        price: 1499,
+        weight: "2 кг",
+        badge: "-30%",
+        badgeType: "hit",
+        icon: "fas fa-users",
+        ingredients: [
+            { name: "4 Шаурмы на выбор", icon: "fas fa-utensils" },
+            { name: "Большая картошка", icon: "fas fa-french-fries" },
+            { name: "4 напитка", icon: "fas fa-glass-water" },
+            { name: "Соусы все виды", icon: "fas fa-droplet" }
+        ]
+    },
+    {
+        id: 9,
+        name: "Цыплёнок BBQ",
+        category: "classic",
+        price: 339,
+        weight: "370 г",
+        badge: "Новинка",
+        badgeType: "new",
+        icon: "fas fa-fire",
+        ingredients: [
+            { name: "Цыплёнок гриль", icon: "fas fa-drumstick-bite" },
+            { name: "Соус BBQ", icon: "fas fa-droplet" },
+            { name: "Кукуруза", icon: "fas fa-seedling" },
+            { name: "Красный лук", icon: "fas fa-circle" },
+            { name: "Салат Айсберг", icon: "fas fa-leaf" },
+            { name: "Халапеньо", icon: "fas fa-pepper-hot" }
+        ]
+    }
 ];
 
-const cart = new Map();
+// Cart State
+let cart = [];
 
-const productsGrid = document.getElementById("products-grid");
-const cartModal = document.getElementById("cart-modal");
-const cartItemsContainer = document.getElementById("cart-items");
-const cartCount = document.getElementById("cart-count");
-const cartTotal = document.getElementById("cart-total");
-const cartItemsCount = document.getElementById("cart-items-count");
+// DOM Elements
+const productsGrid = document.getElementById('productsGrid');
+const cartBtn = document.getElementById('cartBtn');
+const cartModal = document.getElementById('cartModal');
+const closeCart = document.getElementById('closeCart');
+const cartItems = document.getElementById('cartItems');
+const cartCount = document.getElementById('cartCount');
+const totalPrice = document.getElementById('totalPrice');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const successModal = document.getElementById('successModal');
+const closeSuccess = document.getElementById('closeSuccess');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const burgerMenu = document.getElementById('burgerMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 
-const openCartButtons = [
-  document.getElementById("open-cart"),
-  document.getElementById("open-cart-hero"),
-  document.getElementById("open-cart-footer"),
-].filter(Boolean);
+// Slider Elements
+const slides = document.querySelectorAll('.slide');
+const prevSlideBtn = document.getElementById('prevSlide');
+const nextSlideBtn = document.getElementById('nextSlide');
+const sliderDots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+let slideInterval;
 
-const formatPrice = (value) => `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
-
-const renderProducts = () => {
-  if (!productsGrid) {
-    return;
-  }
-  productsGrid.innerHTML = products
-    .map((product) => {
-      const ingredients = product.ingredients.map((item) => `<li>${item}</li>`).join("");
-      return `
-        <article class="product-card">
-          ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ""}
-          <div>
-            <h3 class="product-title">${product.name}</h3>
-            <div class="product-meta">${product.weight} · ${product.heat}</div>
-          </div>
-          <p class="product-description">${product.description}</p>
-          <ul class="ingredients">${ingredients}</ul>
-          <div class="product-footer">
-            <span class="price">${formatPrice(product.price)}</span>
-            <button class="btn btn-primary" type="button" data-add="${product.id}">
-              В корзину
-            </button>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-};
-
-const openCart = () => {
-  if (!cartModal) {
-    return;
-  }
-  cartModal.classList.add("is-open");
-  cartModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-};
-
-const closeCart = () => {
-  if (!cartModal) {
-    return;
-  }
-  cartModal.classList.remove("is-open");
-  cartModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-};
-
-const updateCartSummary = () => {
-  const totals = Array.from(cart.values()).reduce(
-    (acc, item) => {
-      acc.count += item.quantity;
-      acc.total += item.price * item.quantity;
-      return acc;
-    },
-    { count: 0, total: 0 }
-  );
-
-  if (cartCount) {
-    cartCount.textContent = totals.count;
-  }
-  if (cartItemsCount) {
-    cartItemsCount.textContent = totals.count;
-  }
-  if (cartTotal) {
-    cartTotal.textContent = formatPrice(totals.total);
-  }
-};
-
-const renderCart = () => {
-  if (!cartItemsContainer) {
-    return;
-  }
-
-  if (cart.size === 0) {
-    cartItemsContainer.innerHTML =
-      '<div class="cart-empty">Корзина пуста. Добавьте позиции из меню.</div>';
-    updateCartSummary();
-    return;
-  }
-
-  const itemsMarkup = Array.from(cart.values())
-    .map(
-      (item) => `
-        <div class="cart-item">
-          <div class="cart-item-header">
-            <div>
-              <div class="cart-item-title">${item.name}</div>
-              <div class="cart-item-meta">${item.weight} · ${item.heat}</div>
-            </div>
-            <div class="price">${formatPrice(item.price * item.quantity)}</div>
-          </div>
-          <div class="cart-item-actions">
-            <div class="qty-control">
-              <button type="button" data-action="decrease" data-id="${item.id}" aria-label="Уменьшить">
-                −
-              </button>
-              <span>${item.quantity}</span>
-              <button type="button" data-action="increase" data-id="${item.id}" aria-label="Увеличить">
-                +
-              </button>
-            </div>
-            <button class="remove-btn" type="button" data-action="remove" data-id="${item.id}">
-              Удалить
-            </button>
-          </div>
-        </div>
-      `
-    )
-    .join("");
-
-  cartItemsContainer.innerHTML = itemsMarkup;
-  updateCartSummary();
-};
-
-const addToCart = (id) => {
-  const product = products.find((item) => item.id === id);
-  if (!product) {
-    return;
-  }
-  if (cart.has(id)) {
-    cart.get(id).quantity += 1;
-  } else {
-    cart.set(id, { ...product, quantity: 1 });
-  }
-  renderCart();
-};
-
-const updateQuantity = (id, delta) => {
-  if (!cart.has(id)) {
-    return;
-  }
-  const item = cart.get(id);
-  item.quantity += delta;
-  if (item.quantity <= 0) {
-    cart.delete(id);
-  } else {
-    cart.set(id, item);
-  }
-  renderCart();
-};
-
-const removeItem = (id) => {
-  if (!cart.has(id)) {
-    return;
-  }
-  cart.delete(id);
-  renderCart();
-};
-
-document.addEventListener("click", (event) => {
-  const addButton = event.target.closest("[data-add]");
-  if (addButton) {
-    addToCart(addButton.dataset.add);
-    return;
-  }
-
-  const closeTarget = event.target.closest("[data-close]");
-  if (closeTarget) {
-    closeCart();
-  }
-});
-
-if (cartItemsContainer) {
-  cartItemsContainer.addEventListener("click", (event) => {
-    const actionButton = event.target.closest("[data-action]");
-    if (!actionButton) {
-      return;
-    }
-    const id = actionButton.dataset.id;
-    const action = actionButton.dataset.action;
-    if (action === "increase") {
-      updateQuantity(id, 1);
-    } else if (action === "decrease") {
-      updateQuantity(id, -1);
-    } else if (action === "remove") {
-      removeItem(id);
-    }
-  });
+// ============================================
+// Slider Functions
+// ============================================
+function showSlide(index) {
+    // Handle index bounds
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+    
+    currentSlide = index;
+    
+    // Update slides
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === currentSlide) {
+            slide.classList.add('active');
+        }
+    });
+    
+    // Update dots
+    sliderDots.forEach((dot, i) => {
+        dot.classList.remove('active');
+        if (i === currentSlide) {
+            dot.classList.add('active');
+        }
+    });
 }
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && cartModal?.classList.contains("is-open")) {
-    closeCart();
-  }
-});
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
 
-openCartButtons.forEach((button) => {
-  button.addEventListener("click", openCart);
-});
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
 
-const sliderTrack = document.getElementById("slider-track");
-const slides = sliderTrack ? Array.from(sliderTrack.children) : [];
-const dots = Array.from(document.querySelectorAll(".dot"));
-const prevButton = document.querySelector('[data-direction="prev"]');
-const nextButton = document.querySelector('[data-direction="next"]');
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let sliderIndex = 0;
-let sliderTimer;
+function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 5000);
+}
 
-const setSlide = (index) => {
-  if (!sliderTrack) {
-    return;
-  }
-  sliderIndex = (index + slides.length) % slides.length;
-  sliderTrack.style.transform = `translateX(-${sliderIndex * 100}%)`;
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("is-active", i === sliderIndex);
-  });
-};
+function stopSlideShow() {
+    clearInterval(slideInterval);
+}
 
-const nextSlide = () => setSlide(sliderIndex + 1);
-const prevSlide = () => setSlide(sliderIndex - 1);
-
-const startSlider = () => {
-  if (!sliderTrack || slides.length <= 1 || prefersReducedMotion.matches) {
-    return;
-  }
-  stopSlider();
-  sliderTimer = window.setInterval(nextSlide, 6000);
-};
-
-const stopSlider = () => {
-  if (sliderTimer) {
-    window.clearInterval(sliderTimer);
-  }
-};
-
-if (prevButton) {
-  prevButton.addEventListener("click", () => {
+// Slider Event Listeners
+prevSlideBtn.addEventListener('click', () => {
+    stopSlideShow();
     prevSlide();
-    startSlider();
-  });
-}
+    startSlideShow();
+});
 
-if (nextButton) {
-  nextButton.addEventListener("click", () => {
+nextSlideBtn.addEventListener('click', () => {
+    stopSlideShow();
     nextSlide();
-    startSlider();
-  });
+    startSlideShow();
+});
+
+sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        stopSlideShow();
+        showSlide(index);
+        startSlideShow();
+    });
+});
+
+// Start automatic slideshow
+startSlideShow();
+
+// ============================================
+// Product Functions
+// ============================================
+function createProductCard(product) {
+    const badgeClass = product.badgeType === 'spicy' ? 'spicy' : 
+                       product.badgeType === 'new' ? 'new' : '';
+    
+    const ingredientsList = product.ingredients.map(ing => 
+        `<span class="ingredient"><i class="${ing.icon}"></i>${ing.name}</span>`
+    ).join('');
+    
+    return `
+        <div class="product-card" data-category="${product.category}">
+            <div class="product-image">
+                <i class="${product.icon}"></i>
+                ${product.badge ? `<span class="product-badge ${badgeClass}">${product.badge}</span>` : ''}
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-weight">${product.weight}</p>
+                <div class="product-ingredients">
+                    <h4>Состав:</h4>
+                    <div class="ingredients-list">
+                        ${ingredientsList}
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">${product.price} <span>₽</span></span>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
-dots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    const targetIndex = Number.parseInt(dot.dataset.slide ?? "0", 10);
-    setSlide(targetIndex);
-    startSlider();
-  });
+function renderProducts(category = 'all') {
+    const filteredProducts = category === 'all' 
+        ? products 
+        : products.filter(p => p.category === category);
+    
+    productsGrid.innerHTML = filteredProducts.map(createProductCard).join('');
+}
+
+// Category Filter
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProducts(btn.dataset.category);
+    });
 });
 
-prefersReducedMotion.addEventListener("change", () => {
-  if (prefersReducedMotion.matches) {
-    stopSlider();
-  } else {
-    startSlider();
-  }
+// ============================================
+// Cart Functions
+// ============================================
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            icon: product.icon,
+            quantity: 1
+        });
+    }
+    
+    updateCart();
+    showAddedAnimation();
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    updateCart();
+}
+
+function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+    
+    item.quantity += change;
+    
+    if (item.quantity <= 0) {
+        removeFromCart(productId);
+    } else {
+        updateCart();
+    }
+}
+
+function updateCart() {
+    // Update cart count
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    
+    // Update cart items display
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Ваша корзина пуста</p>
+            </div>
+        `;
+    } else {
+        cartItems.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <i class="${item.icon}"></i>
+                </div>
+                <div class="cart-item-info">
+                    <h4 class="cart-item-title">${item.name}</h4>
+                    <span class="cart-item-price">${item.price * item.quantity} ₽</span>
+                </div>
+                <div class="cart-item-controls">
+                    <button class="remove-item" onclick="removeFromCart(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Update total price
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    totalPrice.textContent = `${total} ₽`;
+    
+    // Save to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function showAddedAnimation() {
+    cartBtn.classList.add('pulse');
+    setTimeout(() => cartBtn.classList.remove('pulse'), 300);
+}
+
+// Load cart from localStorage
+function loadCart() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCart();
+    }
+}
+
+// ============================================
+// Modal Functions
+// ============================================
+function openCartModal() {
+    cartModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCartModal() {
+    cartModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openSuccessModal() {
+    successModal.classList.add('active');
+}
+
+function closeSuccessModal() {
+    successModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Cart Modal Events
+cartBtn.addEventListener('click', openCartModal);
+closeCart.addEventListener('click', closeCartModal);
+cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        closeCartModal();
+    }
 });
 
-document.querySelector(".hero-slider")?.addEventListener("mouseenter", stopSlider);
-document.querySelector(".hero-slider")?.addEventListener("mouseleave", startSlider);
+// Success Modal Events
+closeSuccess.addEventListener('click', closeSuccessModal);
+successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) {
+        closeSuccessModal();
+    }
+});
 
-renderProducts();
-renderCart();
-setSlide(0);
-startSlider();
+// Checkout
+checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) return;
+    
+    closeCartModal();
+    setTimeout(() => {
+        openSuccessModal();
+        cart = [];
+        updateCart();
+    }, 300);
+});
+
+// ============================================
+// Mobile Menu
+// ============================================
+burgerMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    burgerMenu.classList.toggle('active');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        burgerMenu.classList.remove('active');
+    });
+});
+
+// ============================================
+// Contact Form
+// ============================================
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    openSuccessModal();
+    contactForm.reset();
+});
+
+// ============================================
+// Smooth Scroll for Navigation
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ============================================
+// Header Scroll Effect
+// ============================================
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        header.style.background = 'rgba(10, 10, 10, 0.98)';
+    } else {
+        header.style.background = 'rgba(10, 10, 10, 0.95)';
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// ============================================
+// Initialize
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    loadCart();
+});
+
+// Add CSS for pulse animation
+const style = document.createElement('style');
+style.textContent = `
+    .cart-btn.pulse {
+        animation: pulse 0.3s ease;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(style);
