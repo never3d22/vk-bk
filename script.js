@@ -302,9 +302,83 @@ const menuCategories = [
   },
 ];
 
+const useGeneratedMenuImages = true;
+
+const escapeXml = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+const hashString = (value) => {
+  let hash = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+};
+
+const palette = [
+  { bg: "#0b0b0d", accent: "#d5a33b", glow: "#f4d28f" },
+  { bg: "#111216", accent: "#c89a3b", glow: "#f0c77f" },
+  { bg: "#15151a", accent: "#b9862a", glow: "#f3d48a" },
+  { bg: "#0e0f13", accent: "#d0a04f", glow: "#f6dca2" },
+];
+
+const createMenuImage = ({ name, category, badge }) => {
+  const safeName = escapeXml(name);
+  const safeCategory = escapeXml(category);
+  const safeBadge = badge ? escapeXml(badge) : "";
+  const colors = palette[hashString(name) % palette.length];
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${colors.bg}" />
+          <stop offset="100%" stop-color="#050506" />
+        </linearGradient>
+        <radialGradient id="glow" cx="70%" cy="20%" r="60%">
+          <stop offset="0%" stop-color="${colors.glow}" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="transparent" />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="400" rx="32" fill="url(#bg)" />
+      <rect width="600" height="400" rx="32" fill="url(#glow)" />
+      <circle cx="90" cy="80" r="46" fill="${colors.accent}" opacity="0.9" />
+      <circle cx="520" cy="320" r="80" fill="${colors.accent}" opacity="0.2" />
+      <text x="40" y="230" fill="#f8f3e8" font-family="Inter, sans-serif" font-size="34" font-weight="700">
+        ${safeName}
+      </text>
+      <text x="40" y="265" fill="#c5bdaa" font-family="Inter, sans-serif" font-size="18">
+        ${safeCategory}
+      </text>
+      ${
+        safeBadge
+          ? `<text x="40" y="90" fill="#0b0b0d" font-family="Inter, sans-serif" font-size="16" font-weight="700">${safeBadge}</text>`
+          : ""
+      }
+    </svg>
+  `;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+
+const getMenuImage = (item, category) => {
+  if (!useGeneratedMenuImages && item.image) {
+    return item.image;
+  }
+  return createMenuImage({
+    name: item.name,
+    category: category.title,
+    badge: item.badge,
+  });
+};
+
 const menuItems = menuCategories.flatMap((category) =>
   category.items.map((item) => ({
     ...item,
+    image: getMenuImage(item, category),
     category: category.title,
     type: "menu",
   }))
@@ -350,10 +424,11 @@ const renderMenu = () => {
           const ingredients = (item.ingredients ?? [])
             .map((ingredient) => `<li>${ingredient}</li>`)
             .join("");
+          const imageSrc = getMenuImage(item, category);
           return `
             <article class="menu-card reveal">
               <div class="menu-card-media">
-                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                <img src="${imageSrc}" alt="${item.name}" loading="lazy" />
                 ${item.badge ? `<span class="menu-badge">${item.badge}</span>` : ""}
               </div>
               <div class="menu-card-top">
