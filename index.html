@@ -8,6 +8,20 @@
       name="description"
       content="Премиальный сайт для продажи шаурмы в черно-золотом стиле: слайдер, карточки товаров, корзина и модальный заказ."
     />
+    <meta name="theme-color" content="#0b0b0d" />
+    <meta property="og:title" content="Black Gold Shawarma — премиум шаурма" />
+    <meta
+      property="og:description"
+      content="Премиальная шаурма, авторские сеты и доставка 24/7. Закажите за минуту."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://blackgoldshawarma.example.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +29,27 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Black Gold Shawarma",
+        "image": [
+          "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+        ],
+        "telephone": "+7-999-000-00-00",
+        "priceRange": "₽₽",
+        "servesCuisine": ["Shawarma", "Street Food"],
+        "url": "https://blackgoldshawarma.example.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ул. Золотая, 12",
+          "addressLocality": "Москва",
+          "addressCountry": "RU"
+        },
+        "openingHours": "Mo-Su 00:00-23:59"
+      }
+    </script>
   </head>
   <body>
     <div class="page">
@@ -27,8 +62,10 @@
           <nav class="nav">
             <a href="#home">Главная</a>
             <a href="#menu">Меню</a>
+            <a href="#sets">Сеты</a>
             <a href="#about">О нас</a>
             <a href="#delivery">Доставка</a>
+            <a href="#reviews">Отзывы</a>
             <a href="#contacts">Контакты</a>
           </nav>
           <div class="header-actions">
@@ -44,83 +81,29 @@
       <section class="hero-slider" id="home">
         <div class="slider-track" id="slider-track">
           <article class="slide slide-one">
-            <div class="container slide-content">
-              <p class="eyebrow">Премиум шаурма</p>
-              <h1>Черное золото вкуса</h1>
-              <p class="lead">
-                Фирменные соусы, мраморная курица и дымные специи. Подача и
-                сервис уровня ресторана, скорость — как в стритфуде.
-              </p>
-              <div class="slide-actions">
-                <a class="btn btn-primary" href="#menu">Выбрать шаурму</a>
-                <button class="btn btn-ghost" id="open-cart-hero">
-                  Открыть корзину
-                </button>
-              </div>
-              <div class="slide-meta">
-                <div>
-                  <span class="meta-title">40 минут</span>
-                  <span class="meta-text">доставка по городу</span>
-                </div>
-                <div>
-                  <span class="meta-title">4,9/5</span>
-                  <span class="meta-text">рейтинг гостей</span>
-                </div>
-                <div>
-                  <span class="meta-title">100%</span>
-                  <span class="meta-text">свежий продукт</span>
-                </div>
-              </div>
+            <div class="container slide-banner">
+              <p class="eyebrow">Black Gold Shawarma</p>
+              <h1>Коллекция премиальных баннеров</h1>
+              <p class="lead">Подача уровня ресторана и скорость стритфуда.</p>
+              <a class="btn btn-primary" href="#menu">Смотреть меню</a>
             </div>
           </article>
 
           <article class="slide slide-two">
-            <div class="container slide-content">
+            <div class="container slide-banner">
               <p class="eyebrow">Signature line</p>
-              <h2>Новые текстуры и мягкая острота</h2>
-              <p class="lead">
-                Томленая говядина, сливочный сыр и золото шафрана. Сбалансированный
-                вкус и идеальная сочность в каждом укусе.
-              </p>
-              <div class="slide-actions">
-                <a class="btn btn-primary" href="#menu">Попробовать новинку</a>
-                <a class="btn btn-ghost" href="#delivery">Узнать о доставке</a>
-              </div>
-              <div class="slide-meta">
-                <div>
-                  <span class="meta-title">Собрано</span>
-                  <span class="meta-text">вручную на заказ</span>
-                </div>
-                <div>
-                  <span class="meta-title">Авторские</span>
-                  <span class="meta-text">соусы и специи</span>
-                </div>
-              </div>
+              <h2>Сеты и комбо с авторскими вкусами</h2>
+              <p class="lead">Готовые комбинации для идеального ужина.</p>
+              <a class="btn btn-primary" href="#sets">Посмотреть сеты</a>
             </div>
           </article>
 
           <article class="slide slide-three">
-            <div class="container slide-content">
+            <div class="container slide-banner">
               <p class="eyebrow">Премиальный сервис</p>
-              <h2>Ночь шаурмы — 24/7</h2>
-              <p class="lead">
-                Мы готовим круглосуточно: заказ через сайт, подтверждение за
-                2 минуты и горячая подача к двери.
-              </p>
-              <div class="slide-actions">
-                <a class="btn btn-primary" href="#menu">Собрать сет</a>
-                <a class="btn btn-ghost" href="#contacts">Связаться</a>
-              </div>
-              <div class="slide-meta">
-                <div>
-                  <span class="meta-title">Режим</span>
-                  <span class="meta-text">24/7 без выходных</span>
-                </div>
-                <div>
-                  <span class="meta-title">Оплата</span>
-                  <span class="meta-text">карта, наличные, QR</span>
-                </div>
-              </div>
+              <h2>Доставка 24/7 за 40 минут</h2>
+              <p class="lead">Подтверждение за 2 минуты и горячая подача.</p>
+              <a class="btn btn-primary" href="#delivery">Условия доставки</a>
             </div>
           </article>
         </div>
@@ -198,9 +181,39 @@
         </div>
       </section>
 
+      <section class="sets" id="sets">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <p class="eyebrow">Сеты</p>
+              <h2>Комбо для идеального вечера</h2>
+            </div>
+            <p class="section-note">
+              Готовые комбинации для компании. Добавьте сет и ускорьте заказ.
+            </p>
+          </div>
+          <div class="sets-grid" id="sets-grid"></div>
+        </div>
+      </section>
+
+      <section class="extras" id="extras">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <p class="eyebrow">Дополнительно</p>
+              <h2>Соусы и напитки</h2>
+            </div>
+            <p class="section-note">
+              Усильте вкус: выберите фирменный соус или напиток к заказу.
+            </p>
+          </div>
+          <div class="extras-grid" id="extras-grid"></div>
+        </div>
+      </section>
+
       <section class="delivery" id="delivery">
         <div class="container delivery-grid">
-          <div>
+          <div class="reveal">
             <p class="eyebrow">Доставка</p>
             <h2>Сервис премиум уровня</h2>
             <p>
@@ -229,6 +242,131 @@
                 <h3>Доставка</h3>
                 <p>Среднее время доставки — 40 минут.</p>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="container delivery-map-grid">
+          <div class="map-card reveal">
+            <div class="map-overlay">
+              <p class="eyebrow">Карта доставки</p>
+              <h3>Зоны Black & Gold</h3>
+            </div>
+          </div>
+          <div class="zone-card reveal">
+            <h3>Зоны и условия</h3>
+            <ul class="zone-list">
+              <li>Центр — 40 минут · мин. заказ 900 ₽</li>
+              <li>Север/Юг — 55 минут · мин. заказ 1200 ₽</li>
+              <li>Запад/Восток — 65 минут · мин. заказ 1400 ₽</li>
+            </ul>
+            <p class="zone-note">
+              Точное время зависит от загруженности и погодных условий.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews" id="reviews">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <p class="eyebrow">Отзывы</p>
+              <h2>Гости о Black Gold</h2>
+            </div>
+            <p class="section-note">
+              4,9/5 по версии гостей. Сотни заказов каждый день.
+            </p>
+          </div>
+          <div class="reviews-grid">
+            <article class="review-card reveal">
+              <span class="review-stars" aria-label="5 из 5">★★★★★</span>
+              <p>
+                Это самая сочная шаурма в городе. Соусы просто вау, а доставка
+                реально быстрая.
+              </p>
+              <div class="review-author">
+                <strong>Мария</strong>
+                <span>Постоянный гость</span>
+              </div>
+            </article>
+            <article class="review-card reveal">
+              <span class="review-stars" aria-label="5 из 5">★★★★★</span>
+              <p>
+                Сеты очень удобные: взяли на компанию, все пришло горячим и
+                красиво упаковано.
+              </p>
+              <div class="review-author">
+                <strong>Илья</strong>
+                <span>Корпоративный заказ</span>
+              </div>
+            </article>
+            <article class="review-card reveal">
+              <span class="review-stars" aria-label="5 из 5">★★★★★</span>
+              <p>
+                Нежная курица и отличный баланс специй. Уровень выше любого стритфуда.
+              </p>
+              <div class="review-author">
+                <strong>Алина</strong>
+                <span>Фуд-блогер</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <p class="eyebrow">Галерея</p>
+              <h2>Кухня, ингредиенты и подача</h2>
+            </div>
+            <p class="section-note">
+              Премиальные ингредиенты и чистая кухня — основа нашего вкуса.
+            </p>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-item tall reveal">
+              <img
+                src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?auto=format&fit=crop&w=900&q=80"
+                alt="Ингредиенты"
+                loading="lazy"
+              />
+            </div>
+            <div class="gallery-item reveal">
+              <img
+                src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=900&q=80"
+                alt="Кухня"
+                loading="lazy"
+              />
+            </div>
+            <div class="gallery-item wide reveal">
+              <img
+                src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80"
+                alt="Подача"
+                loading="lazy"
+              />
+            </div>
+            <div class="gallery-item reveal">
+              <img
+                src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80"
+                alt="Специи"
+                loading="lazy"
+              />
+            </div>
+            <div class="gallery-item reveal">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
+                alt="Сет"
+                loading="lazy"
+              />
+            </div>
+            <div class="gallery-item tall reveal">
+              <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+                alt="Овощи"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -268,7 +406,10 @@
           <p>© 2026 Black Gold Shawarma. Премиум шаурма и сервис.</p>
           <div class="footer-links">
             <a href="#menu">Меню</a>
+            <a href="#sets">Сеты</a>
             <a href="#delivery">Доставка</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#gallery">Галерея</a>
             <a href="#contacts">Контакты</a>
           </div>
         </div>
@@ -298,11 +439,63 @@
           <p class="summary-note">
             Минимальный заказ для доставки — 900 ₽. Оплата при получении или онлайн.
           </p>
-          <button class="btn btn-primary btn-full" type="button">
+        </div>
+        <form class="checkout-form" id="checkout-form">
+          <div class="form-grid">
+            <label class="form-field">
+              Имя
+              <input type="text" name="customerName" placeholder="Ваше имя" required />
+            </label>
+            <label class="form-field">
+              Телефон
+              <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" required />
+            </label>
+            <label class="form-field form-field-full">
+              Адрес доставки
+              <input type="text" name="address" placeholder="Город, улица, дом, квартира" required />
+            </label>
+            <label class="form-field">
+              Время доставки
+              <select name="deliveryTime">
+                <option value="asap">Как можно быстрее</option>
+                <option value="30-45">30-45 минут</option>
+                <option value="60">Через 60 минут</option>
+                <option value="schedule">Указать время</option>
+              </select>
+            </label>
+            <label class="form-field">
+              Комментарий
+              <textarea name="comment" rows="3" placeholder="Пожелания к заказу"></textarea>
+            </label>
+          </div>
+          <div class="payment-options">
+            <span>Способ оплаты</span>
+            <label>
+              <input type="radio" name="payment" value="card" checked />
+              Картой курьеру
+            </label>
+            <label>
+              <input type="radio" name="payment" value="cash" />
+              Наличными
+            </label>
+            <label>
+              <input type="radio" name="payment" value="online" />
+              Онлайн
+            </label>
+          </div>
+          <button class="btn btn-primary btn-full" type="submit">
             Оформить заказ
           </button>
-        </div>
+          <p class="form-note">
+            Нажимая кнопку, вы соглашаетесь с условиями обработки данных.
+          </p>
+        </form>
       </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span id="toast-message">Добавлено в корзину</span>
+      <button class="toast-action" id="toast-action" type="button">Корзина</button>
     </div>
 
     <script src="script.js"></script>
