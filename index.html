@@ -16,7 +16,7 @@
     />
     <meta
       property="og:image"
-      content="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+      content="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1400&q=80"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vkusno-bystro.example.com" />
@@ -35,7 +35,7 @@
         "@type": "Restaurant",
         "name": "Вкусно и Быстро",
         "image": [
-          "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+          "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1400&q=80"
         ],
         "telephone": "+7-999-000-00-00",
         "priceRange": "₽₽",
@@ -291,49 +291,105 @@
               Премиальные ингредиенты и чистая кухня — основа нашего вкуса.
             </p>
           </div>
+          <div class="gallery-filters" role="group" aria-label="Фильтры галереи">
+            <button class="filter-btn is-active" type="button" data-gallery-filter="all" aria-pressed="true">
+              Все
+            </button>
+            <button class="filter-btn" type="button" data-gallery-filter="kitchen" aria-pressed="false">
+              Кухня
+            </button>
+            <button class="filter-btn" type="button" data-gallery-filter="ingredients" aria-pressed="false">
+              Ингредиенты
+            </button>
+            <button class="filter-btn" type="button" data-gallery-filter="serving" aria-pressed="false">
+              Подача
+            </button>
+          </div>
           <div class="gallery-grid">
-            <div class="gallery-item reveal">
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="ingredients"
+              data-full="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Ингредиенты"
+            >
               <img
-                src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=900&q=80"
                 alt="Ингредиенты"
                 loading="lazy"
               />
-            </div>
-            <div class="gallery-item reveal">
+              <span class="gallery-tag">Ингредиенты</span>
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="kitchen"
+              data-full="https://images.unsplash.com/photo-1506368083636-6defb67639ac?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Кухня"
+            >
               <img
-                src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1506368083636-6defb67639ac?auto=format&fit=crop&w=900&q=80"
                 alt="Кухня"
                 loading="lazy"
               />
-            </div>
-            <div class="gallery-item reveal">
+              <span class="gallery-tag">Кухня</span>
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="serving"
+              data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Подача"
+            >
               <img
-                src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80"
                 alt="Подача"
                 loading="lazy"
               />
-            </div>
-            <div class="gallery-item reveal">
+              <span class="gallery-tag">Подача</span>
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="ingredients"
+              data-full="https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Свежие овощи"
+            >
               <img
-                src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80"
-                alt="Специи"
+                src="https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=900&q=80"
+                alt="Свежие овощи"
                 loading="lazy"
               />
-            </div>
-            <div class="gallery-item reveal">
+              <span class="gallery-tag">Ингредиенты</span>
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="kitchen"
+              data-full="https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Команда кухни"
+            >
               <img
-                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
-                alt="Сет"
+                src="https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=900&q=80"
+                alt="Команда кухни"
                 loading="lazy"
               />
-            </div>
-            <div class="gallery-item reveal">
+              <span class="gallery-tag">Кухня</span>
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-category="serving"
+              data-full="https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=1600&q=80"
+              aria-label="Десертная подача"
+            >
               <img
-                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
-                alt="Овощи"
+                src="https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=900&q=80"
+                alt="Десертная подача"
                 loading="lazy"
               />
-            </div>
+              <span class="gallery-tag">Подача</span>
+            </button>
           </div>
         </div>
       </section>
@@ -456,6 +512,15 @@
           </p>
         </form>
       </div>
+    </div>
+
+    <div class="lightbox" id="gallery-lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" data-lightbox-close="true"></div>
+      <figure class="lightbox-panel" role="dialog" aria-modal="true">
+        <button class="lightbox-close" type="button" data-lightbox-close="true">✕</button>
+        <img id="lightbox-image" alt="" />
+        <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+      </figure>
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite">

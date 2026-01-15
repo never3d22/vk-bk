@@ -3,70 +3,294 @@ const menuCategories = [
     title: "ГОРЯЧЕЕ",
     description: "Горячие позиции для сытного перекуса.",
     items: [
-      { id: "hot-grill-chicken", name: "Курица гриль", price: 600 },
-      { id: "hot-shawarma-chicken", name: "Шаурма с курицей", price: 250 },
-      { id: "hot-cheese-lavash", name: "Сырный лаваш", price: 20 },
-      { id: "hot-extra-ingredients", name: "Доп. ингредиенты", price: 50 },
+      {
+        id: "hot-grill-chicken",
+        name: "Курица гриль",
+        price: 600,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Куриное филе", "Смесь специй", "Овощи гриль"],
+      },
+      {
+        id: "hot-shawarma-chicken",
+        name: "Шаурма с курицей",
+        price: 250,
+        badge: "Хит",
+        image:
+          "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Курица", "Лаваш", "Овощи", "Соус чесночный"],
+      },
+      {
+        id: "hot-cheese-lavash",
+        name: "Сырный лаваш",
+        price: 20,
+        badge: "Сырное",
+        image:
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Лаваш", "Сырный микс", "Сливочное масло"],
+      },
+      {
+        id: "hot-extra-ingredients",
+        name: "Доп. ингредиенты",
+        price: 50,
+        badge: "Добавка",
+        image:
+          "https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Сыр", "Соус", "Овощи"],
+      },
     ],
   },
   {
     title: "ДЕСЕРТЫ",
     description: "Сладкое завершение вашего заказа.",
     items: [
-      { id: "dessert-tiramisu", name: "Тирамису", price: 320 },
-      { id: "dessert-honey-cake", name: "Медовик", price: 320 },
+      {
+        id: "dessert-tiramisu",
+        name: "Тирамису",
+        price: 320,
+        badge: "Новинка",
+        image:
+          "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Сливочный крем", "Бисквит", "Какао"],
+      },
+      {
+        id: "dessert-honey-cake",
+        name: "Медовик",
+        price: 320,
+        badge: "Классика",
+        image:
+          "https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Медовые коржи", "Сметанный крем", "Орехи"],
+      },
     ],
   },
   {
     title: "ВЫПЕЧКА",
     description: "Классическая выпечка на любой вкус.",
     items: [
-      { id: "bakery-khachapuri-adjar", name: "Хачапури по-аджарски", price: 200 },
-      { id: "bakery-khachapuri-megre", name: "Хачапури по-мегрельски", price: 400 },
-      { id: "bakery-lamajo", name: "Ламаджо", price: 180 },
+      {
+        id: "bakery-khachapuri-adjar",
+        name: "Хачапури по-аджарски",
+        price: 200,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1514516870926-20565d6cbd6d?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Сыр сулугуни", "Яйцо", "Сливочное масло"],
+      },
+      {
+        id: "bakery-khachapuri-megre",
+        name: "Хачапури по-мегрельски",
+        price: 400,
+        badge: "Сытное",
+        image:
+          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Сыр сулугуни", "Тесто", "Сырная корочка"],
+      },
+      {
+        id: "bakery-lamajo",
+        name: "Ламаджо",
+        price: 180,
+        badge: "Пряное",
+        image:
+          "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Тонкое тесто", "Мясной фарш", "Томаты"],
+      },
     ],
   },
   {
     title: "ХОТ-ДОГИ",
     description: "Сытные хот-доги в удобном формате.",
     items: [
-      { id: "hotdog-danish-chicken", name: "Датский (курица)", price: 250 },
-      { id: "hotdog-danish-beef", name: "Датский (говядина)", price: 250 },
-      { id: "hotdog-french-chicken", name: "Французский (курица)", price: 250 },
-      { id: "hotdog-french-beef", name: "Французский (говядина)", price: 250 },
+      {
+        id: "hotdog-danish-chicken",
+        name: "Датский (курица)",
+        price: 250,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1478144592103-25e218a04891?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Куриная сосиска", "Булочка", "Соус"],
+      },
+      {
+        id: "hotdog-danish-beef",
+        name: "Датский (говядина)",
+        price: 250,
+        badge: "Классика",
+        image:
+          "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Говяжья сосиска", "Булочка", "Горчица"],
+      },
+      {
+        id: "hotdog-french-chicken",
+        name: "Французский (курица)",
+        price: 250,
+        badge: "Новинка",
+        image:
+          "https://images.unsplash.com/photo-1509358273862-bb82aef8d1c5?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Куриная сосиска", "Сырный соус", "Булочка с кунжутом"],
+      },
+      {
+        id: "hotdog-french-beef",
+        name: "Французский (говядина)",
+        price: 250,
+        badge: "Сытное",
+        image:
+          "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Говяжья сосиска", "Сырный соус", "Булочка с кунжутом"],
+      },
     ],
   },
   {
     title: "НАПИТКИ",
     description: "Освежающие напитки на каждый день.",
     items: [
-      { id: "drink-natakhtari", name: "Натакати в асс...", price: 120 },
-      { id: "drink-bon-aqua", name: "Бон Аква в асс...", price: 100 },
-      { id: "drink-dobry", name: "Добрый в асс...", price: 100 },
-      { id: "drink-tan", name: "Тан", price: 80 },
-      { id: "drink-rich-juice", name: "Сок Rich", price: 150 },
-      { id: "drink-rich-tea", name: "Чай Rich", price: 150 },
+      {
+        id: "drink-natakhtari",
+        name: "Натакати в асс...",
+        price: 120,
+        badge: "Освежающее",
+        image:
+          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Газированная вода", "Сироп", "Сахар"],
+      },
+      {
+        id: "drink-bon-aqua",
+        name: "Бон Аква в асс...",
+        price: 100,
+        badge: "Легкое",
+        image:
+          "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Минеральная вода", "Негазированная"],
+      },
+      {
+        id: "drink-dobry",
+        name: "Добрый в асс...",
+        price: 100,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Газированный напиток", "Сахар", "Аромат"],
+      },
+      {
+        id: "drink-tan",
+        name: "Тан",
+        price: 80,
+        badge: "Легкое",
+        image:
+          "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Кисломолочный напиток", "Вода", "Соль"],
+      },
+      {
+        id: "drink-rich-juice",
+        name: "Сок Rich",
+        price: 150,
+        badge: "Сок",
+        image:
+          "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Фруктовый сок", "Вода", "Витамины"],
+      },
+      {
+        id: "drink-rich-tea",
+        name: "Чай Rich",
+        price: 150,
+        badge: "Чай",
+        image:
+          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Чайный экстракт", "Лимон", "Сахар"],
+      },
     ],
   },
   {
     title: "ПИВО",
     description: "Популярные сорта из ассортимента.",
     items: [
-      { id: "beer-hoegaarden", name: "Хугарден", price: 160 },
-      { id: "beer-zhiguli", name: "Жигули", price: 110 },
-      { id: "beer-stella", name: "Стелла Артуа", price: 160 },
-      { id: "beer-hoegaarden-na", name: "Хугарден Б/А", price: 110 },
+      {
+        id: "beer-hoegaarden",
+        name: "Хугарден",
+        price: 160,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Солод", "Хмель", "Пшеница"],
+      },
+      {
+        id: "beer-zhiguli",
+        name: "Жигули",
+        price: 110,
+        badge: "Классика",
+        image:
+          "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Солод", "Хмель", "Вода"],
+      },
+      {
+        id: "beer-stella",
+        name: "Стелла Артуа",
+        price: 160,
+        badge: "Премиум",
+        image:
+          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Солод", "Хмель", "Вода"],
+      },
+      {
+        id: "beer-hoegaarden-na",
+        name: "Хугарден Б/А",
+        price: 110,
+        badge: "0%",
+        image:
+          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Безалкогольное", "Солод", "Хмель"],
+      },
     ],
   },
   {
     title: "КОФЕ И ЧАЙ",
     description: "Кофейная классика и горячий чай.",
     items: [
-      { id: "coffee-americano", name: "Американо", price: 120 },
-      { id: "coffee-cappuccino", name: "Капучино", price: 160 },
-      { id: "coffee-latte", name: "Латте", price: 160 },
-      { id: "coffee-espresso", name: "Эспрессо", price: 90 },
-      { id: "coffee-tea", name: "Чай", price: 50 },
+      {
+        id: "coffee-americano",
+        name: "Американо",
+        price: 120,
+        badge: "Классика",
+        image:
+          "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Арабика", "Вода"],
+      },
+      {
+        id: "coffee-cappuccino",
+        name: "Капучино",
+        price: 160,
+        badge: "Популярное",
+        image:
+          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Эспрессо", "Молоко", "Пена"],
+      },
+      {
+        id: "coffee-latte",
+        name: "Латте",
+        price: 160,
+        badge: "Нежное",
+        image:
+          "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Эспрессо", "Молоко", "Пена"],
+      },
+      {
+        id: "coffee-espresso",
+        name: "Эспрессо",
+        price: 90,
+        badge: "Бодрящий",
+        image:
+          "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Арабика", "Плотная крема"],
+      },
+      {
+        id: "coffee-tea",
+        name: "Чай",
+        price: 50,
+        badge: "Теплый",
+        image:
+          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
+        ingredients: ["Черный чай", "Лимон"],
+      },
     ],
   },
 ];
@@ -115,14 +339,31 @@ const renderMenu = () => {
     .map((category) => {
       const cards = category.items
         .map((item) => {
+          const ingredients = (item.ingredients ?? [])
+            .map((ingredient) => `<li>${ingredient}</li>`)
+            .join("");
           return `
             <article class="menu-card reveal">
+              <div class="menu-card-media">
+                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                ${item.badge ? `<span class="menu-badge">${item.badge}</span>` : ""}
+              </div>
               <div class="menu-card-top">
                 <span class="menu-chip">${category.title}</span>
                 <span class="menu-price">${formatPrice(item.price)}</span>
               </div>
               <h4>${item.name}</h4>
               <p class="menu-card-description">${category.description}</p>
+              ${
+                ingredients
+                  ? `
+                    <div class="menu-ingredients">
+                      <span class="menu-ingredients-title">Состав:</span>
+                      <ul>${ingredients}</ul>
+                    </div>
+                  `
+                  : ""
+              }
               <div class="menu-card-footer">
                 <button class="btn btn-ghost" type="button" data-add="${item.id}">
                   В корзину
@@ -159,7 +400,7 @@ const closeCart = () => {
   }
   cartModal.classList.remove("is-open");
   cartModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  document.body.style.overflow = lightbox?.classList.contains("is-open") ? "hidden" : "";
 };
 
 const showToast = (message, actionLabel = "Корзина", action = openCart) => {
@@ -318,6 +559,49 @@ const initReveal = () => {
   revealItems.forEach((item) => observer.observe(item));
 };
 
+const galleryFilters = Array.from(document.querySelectorAll("[data-gallery-filter]"));
+const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+const lightbox = document.getElementById("gallery-lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+const lightboxCaption = document.getElementById("lightbox-caption");
+const lightboxCloseButtons = Array.from(document.querySelectorAll("[data-lightbox-close]"));
+
+const openLightbox = (item) => {
+  if (!lightbox || !lightboxImage) {
+    return;
+  }
+  const image = item.querySelector("img");
+  const fullSrc = item.dataset.full || image?.src;
+  if (!fullSrc) {
+    return;
+  }
+  lightboxImage.src = fullSrc;
+  lightboxImage.alt = image?.alt ?? "Фото";
+  if (lightboxCaption) {
+    lightboxCaption.textContent = image?.alt ?? "";
+  }
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+};
+
+const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) {
+    return;
+  }
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightboxImage.src = "";
+  document.body.style.overflow = cartModal?.classList.contains("is-open") ? "hidden" : "";
+};
+
+const applyGalleryFilter = (filter) => {
+  galleryItems.forEach((item) => {
+    const matches = filter === "all" || item.dataset.category === filter;
+    item.classList.toggle("is-hidden", !matches);
+  });
+};
+
 document.addEventListener("click", (event) => {
   const addButton = event.target.closest("[data-add]");
   if (addButton) {
@@ -350,13 +634,40 @@ if (cartItemsContainer) {
 }
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && cartModal?.classList.contains("is-open")) {
+  if (event.key !== "Escape") {
+    return;
+  }
+  if (cartModal?.classList.contains("is-open")) {
     closeCart();
+  }
+  if (lightbox?.classList.contains("is-open")) {
+    closeLightbox();
   }
 });
 
 openCartButtons.forEach((button) => {
   button.addEventListener("click", openCart);
+});
+
+galleryFilters.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.galleryFilter ?? "all";
+    galleryFilters.forEach((item) => {
+      item.classList.remove("is-active");
+      item.setAttribute("aria-pressed", "false");
+    });
+    button.classList.add("is-active");
+    button.setAttribute("aria-pressed", "true");
+    applyGalleryFilter(filter);
+  });
+});
+
+galleryItems.forEach((item) => {
+  item.addEventListener("click", () => openLightbox(item));
+});
+
+lightboxCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeLightbox);
 });
 
 if (checkoutForm) {
