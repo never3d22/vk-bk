@@ -10,7 +10,7 @@ const menuCategories = [
         price: 600,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?grilled-chicken",
+          "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Куриное филе", "Смесь специй", "Овощи гриль"],
       },
       {
@@ -19,7 +19,7 @@ const menuCategories = [
         price: 250,
         badge: "Хит",
         image:
-          "https://source.unsplash.com/900x600/?shawarma",
+          "https://images.unsplash.com/photo-1604908554027-1c7e7f0f4cc5?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Курица", "Лаваш", "Овощи", "Соус чесночный"],
       },
       {
@@ -28,7 +28,7 @@ const menuCategories = [
         price: 20,
         badge: "Сырное",
         image:
-          "https://source.unsplash.com/900x600/?flatbread,cheese",
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Лаваш", "Сырный микс", "Сливочное масло"],
       },
       {
@@ -37,7 +37,7 @@ const menuCategories = [
         price: 50,
         badge: "Добавка",
         image:
-          "https://source.unsplash.com/900x600/?spices,vegetables",
+          "https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Сыр", "Соус", "Овощи"],
       },
     ],
@@ -53,7 +53,7 @@ const menuCategories = [
         price: 320,
         badge: "Новинка",
         image:
-          "https://source.unsplash.com/900x600/?tiramisu",
+          "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Сливочный крем", "Бисквит", "Какао"],
       },
       {
@@ -62,7 +62,7 @@ const menuCategories = [
         price: 320,
         badge: "Классика",
         image:
-          "https://source.unsplash.com/900x600/?honey-cake",
+          "https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Медовые коржи", "Сметанный крем", "Орехи"],
       },
     ],
@@ -78,7 +78,7 @@ const menuCategories = [
         price: 200,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?khachapuri",
+          "https://images.unsplash.com/photo-1514516870926-20565d6cbd6d?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Сыр сулугуни", "Яйцо", "Сливочное масло"],
       },
       {
@@ -87,7 +87,7 @@ const menuCategories = [
         price: 400,
         badge: "Сытное",
         image:
-          "https://source.unsplash.com/900x600/?cheese-bread",
+          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Сыр сулугуни", "Тесто", "Сырная корочка"],
       },
       {
@@ -96,7 +96,7 @@ const menuCategories = [
         price: 180,
         badge: "Пряное",
         image:
-          "https://source.unsplash.com/900x600/?lahmacun",
+          "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Тонкое тесто", "Мясной фарш", "Томаты"],
       },
     ],
@@ -112,7 +112,7 @@ const menuCategories = [
         price: 250,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?hot-dog",
+          "https://images.unsplash.com/photo-1478144592103-25e218a04891?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Куриная сосиска", "Булочка", "Соус"],
       },
       {
@@ -121,7 +121,7 @@ const menuCategories = [
         price: 250,
         badge: "Классика",
         image:
-          "https://source.unsplash.com/900x600/?hotdog",
+          "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Говяжья сосиска", "Булочка", "Горчица"],
       },
       {
@@ -130,7 +130,7 @@ const menuCategories = [
         price: 250,
         badge: "Новинка",
         image:
-          "https://source.unsplash.com/900x600/?frankfurter",
+          "https://images.unsplash.com/photo-1509358273862-bb82aef8d1c5?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Куриная сосиска", "Сырный соус", "Булочка с кунжутом"],
       },
       {
@@ -139,7 +139,7 @@ const menuCategories = [
         price: 250,
         badge: "Сытное",
         image:
-          "https://source.unsplash.com/900x600/?sausage-sandwich",
+          "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Говяжья сосиска", "Сырный соус", "Булочка с кунжутом"],
       },
     ],
@@ -155,7 +155,7 @@ const menuCategories = [
         price: 120,
         badge: "Освежающее",
         image:
-          "https://source.unsplash.com/900x600/?soda",
+          "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Газированная вода", "Сироп", "Сахар"],
       },
       {
@@ -164,7 +164,7 @@ const menuCategories = [
         price: 100,
         badge: "Легкое",
         image:
-          "https://source.unsplash.com/900x600/?water-bottle",
+          "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Минеральная вода", "Негазированная"],
       },
       {
@@ -173,7 +173,7 @@ const menuCategories = [
         price: 100,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?soft-drink",
+          "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Газированный напиток", "Сахар", "Аромат"],
       },
       {
@@ -182,7 +182,7 @@ const menuCategories = [
         price: 80,
         badge: "Легкое",
         image:
-          "https://source.unsplash.com/900x600/?yogurt-drink",
+          "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Кисломолочный напиток", "Вода", "Соль"],
       },
       {
@@ -191,7 +191,7 @@ const menuCategories = [
         price: 150,
         badge: "Сок",
         image:
-          "https://source.unsplash.com/900x600/?juice",
+          "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Фруктовый сок", "Вода", "Витамины"],
       },
       {
@@ -200,7 +200,7 @@ const menuCategories = [
         price: 150,
         badge: "Чай",
         image:
-          "https://source.unsplash.com/900x600/?iced-tea",
+          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Чайный экстракт", "Лимон", "Сахар"],
       },
     ],
@@ -216,7 +216,7 @@ const menuCategories = [
         price: 160,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?beer",
+          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Солод", "Хмель", "Пшеница"],
       },
       {
@@ -225,7 +225,7 @@ const menuCategories = [
         price: 110,
         badge: "Классика",
         image:
-          "https://source.unsplash.com/900x600/?lager",
+          "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Солод", "Хмель", "Вода"],
       },
       {
@@ -234,7 +234,7 @@ const menuCategories = [
         price: 160,
         badge: "Премиум",
         image:
-          "https://source.unsplash.com/900x600/?pilsner",
+          "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Солод", "Хмель", "Вода"],
       },
       {
@@ -243,7 +243,7 @@ const menuCategories = [
         price: 110,
         badge: "0%",
         image:
-          "https://source.unsplash.com/900x600/?beer,glass",
+          "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Безалкогольное", "Солод", "Хмель"],
       },
     ],
@@ -259,7 +259,7 @@ const menuCategories = [
         price: 120,
         badge: "Классика",
         image:
-          "https://source.unsplash.com/900x600/?americano",
+          "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Арабика", "Вода"],
       },
       {
@@ -268,7 +268,7 @@ const menuCategories = [
         price: 160,
         badge: "Популярное",
         image:
-          "https://source.unsplash.com/900x600/?cappuccino",
+          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Эспрессо", "Молоко", "Пена"],
       },
       {
@@ -277,7 +277,7 @@ const menuCategories = [
         price: 160,
         badge: "Нежное",
         image:
-          "https://source.unsplash.com/900x600/?latte",
+          "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Эспрессо", "Молоко", "Пена"],
       },
       {
@@ -286,7 +286,7 @@ const menuCategories = [
         price: 90,
         badge: "Бодрящий",
         image:
-          "https://source.unsplash.com/900x600/?espresso",
+          "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Арабика", "Плотная крема"],
       },
       {
@@ -295,7 +295,7 @@ const menuCategories = [
         price: 50,
         badge: "Теплый",
         image:
-          "https://source.unsplash.com/900x600/?tea",
+          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
         ingredients: ["Черный чай", "Лимон"],
       },
     ],
