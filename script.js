@@ -302,7 +302,7 @@ const menuCategories = [
   },
 ];
 
-const useGeneratedMenuImages = false;
+const useGeneratedMenuImages = true;
 
 const escapeXml = (value) =>
   String(value)
@@ -327,11 +327,64 @@ const palette = [
   { bg: "#0e0f13", accent: "#d0a04f", glow: "#f6dca2" },
 ];
 
-const createMenuImage = ({ name, category, badge }) => {
+const getCategoryIcon = (key, accent, glow) => {
+  switch (key) {
+    case "hot":
+      return `
+        <path d="M430 120 C390 170 405 230 430 260 C455 230 470 170 430 120 Z" fill="${accent}" />
+        <path d="M430 150 C410 185 415 215 430 235 C445 215 450 185 430 150 Z" fill="${glow}" />
+      `;
+    case "desserts":
+      return `
+        <rect x="360" y="210" width="180" height="60" rx="14" fill="${accent}" />
+        <rect x="375" y="160" width="150" height="55" rx="12" fill="${glow}" />
+        <circle cx="395" cy="150" r="12" fill="${accent}" />
+        <circle cx="430" cy="145" r="10" fill="${accent}" />
+        <circle cx="465" cy="150" r="12" fill="${accent}" />
+      `;
+    case "bakery":
+      return `
+        <rect x="350" y="170" width="200" height="90" rx="40" fill="${accent}" />
+        <path d="M380 185 L410 235 M420 180 L450 235 M460 185 L490 235" stroke="${glow}" stroke-width="6" stroke-linecap="round" />
+      `;
+    case "hotdogs":
+      return `
+        <rect x="345" y="185" width="210" height="70" rx="35" fill="${glow}" />
+        <rect x="355" y="200" width="190" height="40" rx="20" fill="${accent}" />
+        <rect x="355" y="214" width="190" height="12" rx="6" fill="#0b0b0d" opacity="0.35" />
+      `;
+    case "drinks":
+      return `
+        <rect x="395" y="120" width="70" height="150" rx="16" fill="${accent}" />
+        <rect x="405" y="135" width="50" height="20" rx="8" fill="${glow}" />
+        <rect x="385" y="260" width="90" height="25" rx="12" fill="${glow}" />
+      `;
+    case "beer":
+      return `
+        <rect x="370" y="140" width="120" height="140" rx="18" fill="${accent}" />
+        <rect x="485" y="170" width="40" height="70" rx="18" fill="${glow}" />
+        <circle cx="390" cy="140" r="20" fill="${glow}" />
+        <circle cx="430" cy="135" r="24" fill="${glow}" />
+        <circle cx="470" cy="140" r="20" fill="${glow}" />
+      `;
+    case "coffee":
+      return `
+        <rect x="360" y="190" width="170" height="80" rx="26" fill="${accent}" />
+        <rect x="510" y="205" width="40" height="50" rx="20" fill="${glow}" />
+        <rect x="350" y="270" width="190" height="18" rx="9" fill="${glow}" />
+        <path d="M390 180 C400 160 430 160 440 180" stroke="${glow}" stroke-width="6" stroke-linecap="round" />
+      `;
+    default:
+      return `<circle cx="440" cy="210" r="70" fill="${accent}" />`;
+  }
+};
+
+const createMenuImage = ({ name, category, badge, key }) => {
   const safeName = escapeXml(name);
   const safeCategory = escapeXml(category);
   const safeBadge = badge ? escapeXml(badge) : "";
   const colors = palette[hashString(name) % palette.length];
+  const icon = getCategoryIcon(key, colors.accent, colors.glow);
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
       <defs>
@@ -348,6 +401,7 @@ const createMenuImage = ({ name, category, badge }) => {
       <rect width="600" height="400" rx="32" fill="url(#glow)" />
       <circle cx="90" cy="80" r="46" fill="${colors.accent}" opacity="0.9" />
       <circle cx="520" cy="320" r="80" fill="${colors.accent}" opacity="0.2" />
+      <g>${icon}</g>
       <text x="40" y="230" fill="#f8f3e8" font-family="Inter, sans-serif" font-size="34" font-weight="700">
         ${safeName}
       </text>
@@ -372,6 +426,7 @@ const getMenuImage = (item, category) => {
     name: item.name,
     category: category.title,
     badge: item.badge,
+    key: category.key,
   });
 };
 
