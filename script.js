@@ -1,6 +1,7 @@
 const menuCategories = [
   {
     title: "ГОРЯЧЕЕ",
+    description: "Горячие позиции для сытного перекуса.",
     items: [
       { id: "hot-grill-chicken", name: "Курица гриль", price: 600 },
       { id: "hot-shawarma-chicken", name: "Шаурма с курицей", price: 250 },
@@ -10,6 +11,7 @@ const menuCategories = [
   },
   {
     title: "ДЕСЕРТЫ",
+    description: "Сладкое завершение вашего заказа.",
     items: [
       { id: "dessert-tiramisu", name: "Тирамису", price: 320 },
       { id: "dessert-honey-cake", name: "Медовик", price: 320 },
@@ -17,6 +19,7 @@ const menuCategories = [
   },
   {
     title: "ВЫПЕЧКА",
+    description: "Классическая выпечка на любой вкус.",
     items: [
       { id: "bakery-khachapuri-adjar", name: "Хачапури по-аджарски", price: 200 },
       { id: "bakery-khachapuri-megre", name: "Хачапури по-мегрельски", price: 400 },
@@ -25,6 +28,7 @@ const menuCategories = [
   },
   {
     title: "ХОТ-ДОГИ",
+    description: "Сытные хот-доги в удобном формате.",
     items: [
       { id: "hotdog-danish-chicken", name: "Датский (курица)", price: 250 },
       { id: "hotdog-danish-beef", name: "Датский (говядина)", price: 250 },
@@ -34,6 +38,7 @@ const menuCategories = [
   },
   {
     title: "НАПИТКИ",
+    description: "Освежающие напитки на каждый день.",
     items: [
       { id: "drink-natakhtari", name: "Натакати в асс...", price: 120 },
       { id: "drink-bon-aqua", name: "Бон Аква в асс...", price: 100 },
@@ -45,6 +50,7 @@ const menuCategories = [
   },
   {
     title: "ПИВО",
+    description: "Популярные сорта из ассортимента.",
     items: [
       { id: "beer-hoegaarden", name: "Хугарден", price: 160 },
       { id: "beer-zhiguli", name: "Жигули", price: 110 },
@@ -54,6 +60,7 @@ const menuCategories = [
   },
   {
     title: "КОФЕ И ЧАЙ",
+    description: "Кофейная классика и горячий чай.",
     items: [
       { id: "coffee-americano", name: "Американо", price: 120 },
       { id: "coffee-cappuccino", name: "Капучино", price: 160 },
@@ -110,10 +117,12 @@ const renderMenu = () => {
         .map((item) => {
           return `
             <article class="menu-card reveal">
-              <div class="menu-card-header">
-                <h4>${item.name}</h4>
+              <div class="menu-card-top">
+                <span class="menu-chip">${category.title}</span>
                 <span class="menu-price">${formatPrice(item.price)}</span>
               </div>
+              <h4>${item.name}</h4>
+              <p class="menu-card-description">${category.description}</p>
               <div class="menu-card-footer">
                 <button class="btn btn-ghost" type="button" data-add="${item.id}">
                   В корзину
