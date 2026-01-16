@@ -484,36 +484,23 @@ const renderMenu = () => {
     .map((category) => {
       const cards = category.items
         .map((item) => {
-          const ingredients = (item.ingredients ?? [])
-            .map((ingredient) => `<li>${ingredient}</li>`)
-            .join("");
+          const ingredientsInline = (item.ingredients ?? []).join(" · ");
           const imageSrc = getMenuImage(item, category);
           const extrasMarkup = (item.extrasOptions ?? [])
             .map(
               (extra) => `
-                <div class="menu-extra">
-                  <span class="menu-extra-label">${extra.label}</span>
-                  <div class="menu-extras-controls">
-                    <button
-                      type="button"
-                      data-menu-action="extra-decrease"
-                      data-id="${item.id}"
-                      data-extra="${extra.id}"
-                    >
-                      −
-                    </button>
-                    <span class="menu-extras-value" data-extra-value="${item.id}:${extra.id}">0</span>
-                    <button
-                      type="button"
-                      data-menu-action="extra-increase"
-                      data-id="${item.id}"
-                      data-extra="${extra.id}"
-                    >
-                      +
-                    </button>
-                  </div>
+                <button
+                  class="menu-extra-toggle"
+                  type="button"
+                  data-menu-action="extra-toggle"
+                  data-id="${item.id}"
+                  data-extra="${extra.id}"
+                  data-extra-toggle="${item.id}:${extra.id}"
+                  aria-pressed="false"
+                >
+                  ${extra.label}
                   <span class="menu-extras-price">+${formatPrice(extra.price)}</span>
-                </div>
+                </button>
               `
             )
             .join("");
@@ -525,18 +512,12 @@ const renderMenu = () => {
               </div>
               <div class="menu-card-top">
                 <span class="menu-chip">${category.title}</span>
-                <span class="menu-price">${formatPrice(item.price)}</span>
               </div>
               <h4>${item.name}</h4>
               <p class="menu-card-description">${category.description}</p>
               ${
-                ingredients
-                  ? `
-                    <div class="menu-ingredients">
-                      <span class="menu-ingredients-title">Состав:</span>
-                      <ul>${ingredients}</ul>
-                    </div>
-                  `
+                ingredientsInline
+                  ? `<p class="menu-ingredients-inline">Состав: ${ingredientsInline}</p>`
                   : ""
               }
               ${
@@ -552,6 +533,7 @@ const renderMenu = () => {
                   : ""
               }
               <div class="menu-card-footer">
+                <span class="menu-total" data-total="${item.id}">${formatPrice(item.price)}</span>
                 <div class="menu-qty">
                   <button type="button" data-menu-action="decrease" data-id="${item.id}">−</button>
                   <span class="menu-qty-value" data-qty="${item.id}">0</span>
@@ -630,6 +612,13 @@ const setupMenuFilters = () => {
   applyMenuFilter("all");
 };
 
+const getMenuDisplayTotal = (baseItem, cartItem) => {
+  const workingItem = cartItem ?? { ...baseItem, quantity: 0, extrasSelections: {} };
+  const extrasTotal = getExtrasTotalPerItem(workingItem);
+  const perItem = baseItem.price + extrasTotal;
+  return workingItem.quantity > 0 ? perItem * workingItem.quantity : perItem;
+};
+
 const updateMenuCardState = (id) => {
   const item = cart.get(id);
   const qtyEl = document.querySelector(`[data-qty="${id}"]`);
@@ -639,11 +628,19 @@ const updateMenuCardState = (id) => {
   const baseItem = findItemById(id);
   if (baseItem?.extrasOptions) {
     baseItem.extrasOptions.forEach((extra) => {
-      const extraEl = document.querySelector(`[data-extra-value="${id}:${extra.id}"]`);
-      if (extraEl) {
-        extraEl.textContent = item?.extrasSelections?.[extra.id] ?? 0;
+      const toggleEl = document.querySelector(`[data-extra-toggle="${id}:${extra.id}"]`);
+      const active = Boolean(item?.extrasSelections?.[extra.id]);
+      if (toggleEl) {
+        toggleEl.classList.toggle("is-active", active);
+        toggleEl.setAttribute("aria-pressed", active ? "true" : "false");
       }
     });
+  }
+  if (baseItem) {
+    const totalEl = document.querySelector(`[data-total="${id}"]`);
+    if (totalEl) {
+      totalEl.textContent = formatPrice(getMenuDisplayTotal(baseItem, item));
+    }
   }
 };
 
@@ -667,7 +664,7 @@ const changeQuantity = (id, delta) => {
   updateMenuCardState(id);
 };
 
-const changeExtra = (id, extraId, delta) => {
+const toggleExtra = (id, extraId) => {
   const baseItem = findItemById(id);
   if (!baseItem?.extrasOptions) {
     return;
@@ -677,13 +674,11 @@ const changeExtra = (id, extraId, delta) => {
     return;
   }
   const item = cart.get(id) ?? { ...baseItem, quantity: 1, extrasSelections: {} };
-  const current = item.extrasSelections?.[extraId] ?? 0;
-  const next = Math.max(0, current + delta);
   const selections = { ...(item.extrasSelections ?? {}) };
-  if (next === 0) {
+  if (selections[extraId]) {
     delete selections[extraId];
   } else {
-    selections[extraId] = next;
+    selections[extraId] = true;
   }
   item.extrasSelections = selections;
   if (item.quantity <= 0) {
@@ -699,7 +694,7 @@ const getExtrasTotalPerItem = (item) => {
     return 0;
   }
   return item.extrasOptions.reduce(
-    (sum, extra) => sum + (item.extrasSelections?.[extra.id] ?? 0) * extra.price,
+    (sum, extra) => sum + (item.extrasSelections?.[extra.id] ? extra.price : 0),
     0
   );
 };
@@ -786,28 +781,26 @@ const renderCart = () => {
         const itemTotal = getItemTotal(item);
         const extrasOptions = item.extrasOptions ?? [];
         const extrasSummary = extrasOptions
-          .filter((extra) => (item.extrasSelections?.[extra.id] ?? 0) > 0)
-          .map((extra) => `${extra.label}: ${item.extrasSelections?.[extra.id] ?? 0}`)
+          .filter((extra) => item.extrasSelections?.[extra.id])
+          .map((extra) => extra.label)
           .join(", ");
         const extrasSummaryMarkup = extrasSummary
           ? `<div class="cart-item-extras">Дополнительно: ${extrasSummary}</div>`
           : "";
         const extrasControls = extrasOptions
           .map((extra) => {
-            const count = item.extrasSelections?.[extra.id] ?? 0;
+            const active = Boolean(item.extrasSelections?.[extra.id]);
             return `
-              <div class="cart-extra-row">
-                <span class="cart-extra-label">${extra.label} +${formatPrice(extra.price)}</span>
-                <div class="qty-control">
-                  <button type="button" data-action="extra-decrease" data-id="${item.id}" data-extra="${extra.id}">
-                    −
-                  </button>
-                  <span>${count}</span>
-                  <button type="button" data-action="extra-increase" data-id="${item.id}" data-extra="${extra.id}">
-                    +
-                  </button>
-                </div>
-              </div>
+              <button
+                type="button"
+                class="cart-extra-toggle ${active ? "is-active" : ""}"
+                data-action="extra-toggle"
+                data-id="${item.id}"
+                data-extra="${extra.id}"
+                aria-pressed="${active ? "true" : "false"}"
+              >
+                ${extra.label} +${formatPrice(extra.price)}
+              </button>
             `;
           })
           .join("");
@@ -898,27 +891,21 @@ const initReveal = () => {
   if (revealItems.length === 0) {
     return;
   }
+  if (prefersReducedMotion.matches) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
   revealItems.forEach((item, index) => {
-    item.style.opacity = "0";
-    item.style.transform = "translateY(24px)";
-    item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    item.classList.remove("is-visible");
     item.style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
     item.style.willChange = "opacity, transform";
   });
-  if (prefersReducedMotion.matches) {
-    revealItems.forEach((item) => {
-      item.style.opacity = "1";
-      item.style.transform = "translateY(0)";
-    });
-    return;
-  }
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           requestAnimationFrame(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+            entry.target.classList.add("is-visible");
           });
           currentObserver.unobserve(entry.target);
         }
@@ -974,6 +961,7 @@ const applyGalleryFilter = (filter) => {
 
 const setupSmoothScroll = () => {
   const links = Array.from(document.querySelectorAll('a[href^="#"]'));
+  const header = document.querySelector(".site-header");
   links.forEach((link) => {
     const hash = link.getAttribute("href");
     if (!hash || hash === "#") {
@@ -986,7 +974,9 @@ const setupSmoothScroll = () => {
       }
       event.preventDefault();
       const behavior = prefersReducedMotion.matches ? "auto" : "smooth";
-      target.scrollIntoView({ behavior, block: "start" });
+      const headerOffset = header ? header.offsetHeight + 12 : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top, behavior });
     });
   });
 };
@@ -1000,10 +990,8 @@ document.addEventListener("click", (event) => {
       changeQuantity(id, 1);
     } else if (action === "decrease") {
       changeQuantity(id, -1);
-    } else if (action === "extra-increase") {
-      changeExtra(id, menuAction.dataset.extra, 1);
-    } else if (action === "extra-decrease") {
-      changeExtra(id, menuAction.dataset.extra, -1);
+    } else if (action === "extra-toggle") {
+      toggleExtra(id, menuAction.dataset.extra);
     }
     return;
   }
@@ -1032,10 +1020,8 @@ if (cartItemsContainer) {
       updateQuantity(id, 1);
     } else if (action === "decrease") {
       updateQuantity(id, -1);
-    } else if (action === "extra-increase") {
-      changeExtra(id, actionButton.dataset.extra, 1);
-    } else if (action === "extra-decrease") {
-      changeExtra(id, actionButton.dataset.extra, -1);
+    } else if (action === "extra-toggle") {
+      toggleExtra(id, actionButton.dataset.extra);
     } else if (action === "remove") {
       removeItem(id);
     }

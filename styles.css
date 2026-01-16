@@ -607,7 +607,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .menu-chip {
@@ -625,47 +625,22 @@ h2 {
   position: relative;
 }
 
-.menu-price {
-  font-weight: 700;
-  color: var(--gold-soft);
-  position: relative;
-}
-
 .menu-card-description {
   color: var(--muted);
   font-size: 0.85rem;
   position: relative;
 }
 
-.menu-ingredients {
-  display: grid;
-  gap: 8px;
+.menu-ingredients-inline {
   color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.menu-ingredients-title {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--gold);
-}
-
-.menu-ingredients ul {
-  list-style: none;
-  display: grid;
-  gap: 6px;
-}
-
-.menu-ingredients li::before {
-  content: "•";
-  color: var(--gold);
-  margin-right: 8px;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .menu-card-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   margin-top: auto;
 }
@@ -717,45 +692,34 @@ h2 {
   gap: 8px;
 }
 
-.menu-extra {
+.menu-extra-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-}
-
-.menu-extra-label {
-  color: var(--muted);
-}
-
-.menu-extras-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   border: 1px solid rgba(213, 163, 59, 0.25);
   border-radius: 999px;
-  padding: 4px 8px;
-}
-
-.menu-extras-controls button {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(213, 163, 59, 0.2);
-  color: var(--white);
-  cursor: pointer;
-}
-
-.menu-extras-value {
-  min-width: 16px;
-  text-align: center;
+  padding: 6px 12px;
+  background: transparent;
   color: var(--gold-soft);
+  cursor: pointer;
+  transition: border var(--transition), color var(--transition), background var(--transition);
+}
+
+.menu-extra-toggle.is-active {
+  background: rgba(213, 163, 59, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .menu-extras-price {
   color: var(--gold);
   font-weight: 600;
+}
+
+.menu-total {
+  color: var(--gold-soft);
+  font-weight: 700;
 }
 
 .products-grid {
@@ -1431,21 +1395,26 @@ h2 {
 }
 
 .cart-extras-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.cart-extra-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 0.85rem;
+.cart-extra-toggle {
+  border: 1px solid rgba(213, 163, 59, 0.25);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: transparent;
+  color: var(--gold-soft);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: border var(--transition), color var(--transition), background var(--transition);
 }
 
-.cart-extra-label {
-  color: var(--muted);
+.cart-extra-toggle.is-active {
+  background: rgba(213, 163, 59, 0.2);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .qty-control {
