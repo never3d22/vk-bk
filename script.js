@@ -1027,4 +1027,148 @@ function initEventListeners() {
             }
         });
     });
+    
+    // Init new features
+    initCountdown();
+    initReviewsSlider();
+    initParallax();
+}
+
+// === COUNTDOWN TIMER ===
+function initCountdown() {
+    // Set end time to today 23:59:59
+    const now = new Date();
+    const endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    
+    function updateCountdown() {
+        const now = new Date();
+        let diff = endTime - now;
+        
+        if (diff <= 0) {
+            // Reset to next day
+            diff = 24 * 60 * 60 * 1000;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const hoursEl = document.getElementById('countHours');
+        const minutesEl = document.getElementById('countMinutes');
+        const secondsEl = document.getElementById('countSeconds');
+        
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+// === REVIEWS SLIDER ===
+function initReviewsSlider() {
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.getElementById('reviewsPrev');
+    const nextBtn = document.getElementById('reviewsNext');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    const cards = track.querySelectorAll('.review-card');
+    const cardWidth = 404; // 380 + 24 gap
+    const visibleCards = Math.floor(track.parentElement.offsetWidth / cardWidth) || 1;
+    const maxIndex = Math.max(0, cards.length - visibleCards);
+    
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1);
+        updateSlider();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        currentIndex = Math.min(maxIndex, currentIndex + 1);
+        updateSlider();
+    });
+    
+    // Auto scroll
+    setInterval(() => {
+        currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+        updateSlider();
+    }, 5000);
+}
+
+// === GALLERY LIGHTBOX ===
+const galleryImages = [
+    'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200',
+    'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200',
+    'https://images.unsplash.com/photo-1574448857443-dc1d7e9c4dad?w=1200',
+    'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=1200',
+    'https://images.unsplash.com/photo-1612392062126-2f0e6715c628?w=1200',
+    'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=1200'
+];
+let currentLightboxIndex = 0;
+
+function openLightbox(index) {
+    currentLightboxIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    
+    img.src = galleryImages[index];
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+window.openLightbox = openLightbox;
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+window.closeLightbox = closeLightbox;
+
+function lightboxPrev() {
+    currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+    document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex];
+}
+window.lightboxPrev = lightboxPrev;
+
+function lightboxNext() {
+    currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+    document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex];
+}
+window.lightboxNext = lightboxNext;
+
+// Close lightbox on ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+    if (e.key === 'ArrowLeft') {
+        lightboxPrev();
+    }
+    if (e.key === 'ArrowRight') {
+        lightboxNext();
+    }
+});
+
+// Close lightbox on overlay click
+document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') {
+        closeLightbox();
+    }
+});
+
+// === PARALLAX EFFECT ===
+function initParallax() {
+    const heroImg = document.querySelector('.hero-bg-img');
+    if (!heroImg) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * 0.5;
+        heroImg.style.transform = `translateY(${rate}px)`;
+    });
 }

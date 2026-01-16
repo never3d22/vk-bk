@@ -117,6 +117,24 @@
     <!-- Promo Slider -->
     <section class="promo-slider-section" id="promo">
         <div class="container">
+            <!-- Promo Timer -->
+            <div class="promo-timer-banner" id="promoTimer">
+                <div class="promo-timer-content">
+                    <div class="promo-timer-text">
+                        <span class="promo-timer-badge"><i class="fas fa-fire"></i> Акция</span>
+                        <strong>Скидка 20% на всё меню</strong>
+                    </div>
+                    <div class="promo-timer-countdown" id="countdown">
+                        <div class="countdown-item"><span id="countHours">00</span><small>часов</small></div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item"><span id="countMinutes">00</span><small>минут</small></div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item"><span id="countSeconds">00</span><small>секунд</small></div>
+                    </div>
+                    <button class="btn btn-white btn-sm" onclick="copyPromo('ПЕРВЫЙ20')">ПЕРВЫЙ20</button>
+                </div>
+            </div>
+            
             <div class="promo-slider" id="promoSlider">
                 <div class="promo-slide active" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
                     <div class="promo-slide-content">
@@ -273,6 +291,158 @@
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-head-left">
+                    <span class="section-label">Отзывы</span>
+                    <h2 class="section-title">Что говорят <span class="gold">клиенты</span></h2>
+                </div>
+                <div class="reviews-rating">
+                    <div class="reviews-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="reviews-score">4.9</span>
+                    <span class="reviews-count">на основе 500+ отзывов</span>
+                </div>
+            </div>
+            <div class="reviews-slider" id="reviewsSlider">
+                <div class="reviews-track" id="reviewsTrack">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">А</div>
+                            <div class="review-author">
+                                <strong>Александр</strong>
+                                <span>2 дня назад</span>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">Лучшая шаурма в городе! Заказываю уже полгода, качество всегда на высоте. Доставка быстрая, всё горячее. Рекомендую!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">М</div>
+                            <div class="review-author">
+                                <strong>Мария</strong>
+                                <span>Неделю назад</span>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">Хачапури по-аджарски просто божественные! Тесто нежное, сыра много, яйцо как надо. Буду заказывать ещё!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">Д</div>
+                            <div class="review-author">
+                                <strong>Дмитрий</strong>
+                                <span>2 недели назад</span>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">Заказывал на день рождения — всё понравилось! Курица гриль сочная, хот-доги вкусные. Единственное — ждали 50 минут.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">Е</div>
+                            <div class="review-author">
+                                <strong>Елена</strong>
+                                <span>Месяц назад</span>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">Тирамису здесь — настоящий итальянский! Кофейная пропитка, нежный крем. Беру каждый раз вместе с капучино. Идеально!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">С</div>
+                            <div class="review-author">
+                                <strong>Сергей</strong>
+                                <span>Месяц назад</span>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">Работаю рядом, обедаю тут каждый день. Порции большие, цены адекватные, персонал приветливый. Моё любимое место!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-nav">
+                <button class="reviews-arrow" id="reviewsPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="reviews-arrow" id="reviewsNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-head-center">
+                <span class="section-label">Галерея</span>
+                <h2 class="section-title">Наши <span class="gold">блюда</span></h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600" alt="Шаурма">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600" alt="Гриль">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="https://images.unsplash.com/photo-1574448857443-dc1d7e9c4dad?w=600" alt="Хачапури">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600" alt="Тирамису">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="https://images.unsplash.com/photo-1612392062126-2f0e6715c628?w=600" alt="Хот-дог">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600" alt="Кофе">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
             </div>
         </div>
@@ -481,6 +651,16 @@
 
     <!-- Toast -->
     <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastText"></span></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <button class="lightbox-prev" onclick="lightboxPrev()"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" onclick="lightboxNext()"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+        </div>
+    </div>
 
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
