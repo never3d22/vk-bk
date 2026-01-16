@@ -688,6 +688,7 @@ h2 {
   padding-top: 8px;
   color: var(--muted);
   font-size: 0.85rem;
+  justify-items: start;
 }
 
 .menu-extras-title {
@@ -700,6 +701,7 @@ h2 {
 .menu-extras-list {
   display: grid;
   gap: 8px;
+  justify-items: start;
 }
 
 .menu-extra-toggle {
@@ -714,6 +716,9 @@ h2 {
   color: var(--gold-soft);
   cursor: pointer;
   transition: border var(--transition), color var(--transition), background var(--transition);
+  width: fit-content;
+  justify-self: start;
+  white-space: nowrap;
 }
 
 .menu-extra-toggle.is-active {
