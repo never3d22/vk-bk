@@ -892,6 +892,10 @@ const initReveal = () => {
     return;
   }
   const revealItem = (item) => {
+    if (item.dataset.revealed === "true") {
+      return;
+    }
+    item.dataset.revealed = "true";
     item.classList.add("is-visible");
   };
   if (prefersReducedMotion.matches) {
@@ -900,35 +904,35 @@ const initReveal = () => {
   }
   revealItems.forEach((item, index) => {
     item.classList.remove("is-visible");
+    item.dataset.revealed = "false";
     item.style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
     item.style.willChange = "opacity, transform";
   });
-  if (!("IntersectionObserver" in window)) {
-    const revealVisible = () => {
-      revealItems.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.9) {
-          revealItem(item);
-        }
-      });
-    };
-    revealVisible();
-    window.addEventListener("scroll", revealVisible, { passive: true });
-    window.addEventListener("resize", revealVisible);
-    return;
+  const revealVisible = () => {
+    revealItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        revealItem(item);
+      }
+    });
+  };
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            requestAnimationFrame(() => revealItem(entry.target));
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -15% 0px" }
+    );
+    revealItems.forEach((item) => observer.observe(item));
   }
-  const observer = new IntersectionObserver(
-    (entries, currentObserver) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => revealItem(entry.target));
-          currentObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-  );
-  revealItems.forEach((item) => observer.observe(item));
+  revealVisible();
+  window.addEventListener("scroll", revealVisible, { passive: true });
+  window.addEventListener("resize", revealVisible);
 };
 
 const galleryFilters = Array.from(document.querySelectorAll("[data-gallery-filter]"));
