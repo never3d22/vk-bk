@@ -629,6 +629,9 @@ h2 {
   color: var(--muted);
   font-size: 0.85rem;
   position: relative;
+  display: inline-block;
+  max-width: 80%;
+  justify-self: start;
 }
 
 .menu-ingredients-inline {
@@ -638,6 +641,7 @@ h2 {
   opacity: 0.85;
   display: inline-block;
   max-width: 70%;
+  justify-self: start;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
