@@ -246,7 +246,7 @@ function createProductCard(product) {
                          badge === 'new' ? 'Новинка' : 
                          badge === 'spicy' ? 'Острое' :
                          badge === '18' ? '18+' :
-                         badge === 'popular' ? '⭐' : badge;
+                         badge === 'popular' ? 'Топ' : badge;
         return `<span class="badge ${badgeClass}">${badgeText}</span>`;
     }).join('');
     
@@ -359,7 +359,7 @@ function openProductModal(id) {
                          badge === 'new' ? 'Новинка' : 
                          badge === 'spicy' ? 'Острое' :
                          badge === '18' ? '18+' :
-                         badge === 'popular' ? '⭐ Популярное' : badge;
+                         badge === 'popular' ? 'Топ' : badge;
         return `<span class="badge ${badgeClass}">${badgeText}</span>`;
     }).join('');
     document.getElementById('modalProductBadges').innerHTML = badgesHtml;

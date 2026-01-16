@@ -84,13 +84,13 @@ input, textarea { font-family: inherit; }
 .section-label {
     display: inline-block;
     padding: 6px 14px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius);
     margin-bottom: 16px;
 }
 .section-title {
@@ -118,46 +118,66 @@ input, textarea { font-family: inherit; }
     padding: 14px 28px;
     font-size: 14px;
     font-weight: 600;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius);
     transition: all var(--transition);
     white-space: nowrap;
+    border: none;
+    cursor: pointer;
 }
 .btn-primary {
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
-    box-shadow: var(--shadow-gold);
 }
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+    background: var(--gold-light);
 }
 .btn-secondary {
     background: var(--bg-tertiary);
     color: var(--text);
     border: 1px solid var(--border);
 }
-.btn-secondary:hover { background: var(--border); }
+.btn-secondary:hover { 
+    background: var(--border); 
+}
 .btn-outline {
     background: transparent;
     color: var(--gold);
-    border: 2px solid var(--gold);
+    border: 1px solid var(--gold);
 }
 .btn-outline:hover {
-    background: var(--gold);
-    color: var(--black);
+    background: rgba(212, 175, 55, 0.1);
 }
 .btn-white {
     background: white;
-    color: #333;
+    color: #1a1a1a;
+    font-weight: 600;
 }
-.btn-white:hover { background: #f0f0f0; }
-.btn-sm { padding: 10px 20px; font-size: 13px; }
-.btn-lg { padding: 16px 32px; font-size: 15px; }
+.btn-white:hover { 
+    background: #f0f0f0; 
+}
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+}
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+[data-theme="light"] .btn-glass {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text);
+}
+[data-theme="light"] .btn-glass:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+.btn-sm { padding: 10px 16px; font-size: 13px; }
+.btn-lg { padding: 16px 28px; font-size: 15px; }
 .btn-full { width: 100%; }
 .btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    transform: none !important;
 }
 
 /* === HEADER === */
@@ -188,7 +208,7 @@ input, textarea { font-family: inherit; }
 .logo-mark {
     width: 44px;
     height: 44px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     font-weight: 800;
     font-size: 16px;
@@ -285,7 +305,7 @@ input, textarea { font-family: inherit; }
 .phone-icon {
     width: 32px;
     height: 32px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius-sm);
     display: flex;
@@ -301,7 +321,7 @@ input, textarea { font-family: inherit; }
     position: relative;
     width: 48px;
     height: 48px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius);
     display: flex;
@@ -309,8 +329,12 @@ input, textarea { font-family: inherit; }
     justify-content: center;
     font-size: 18px;
     transition: all var(--transition);
+    border: none;
+    cursor: pointer;
 }
-.cart-trigger:hover { transform: scale(1.05); }
+.cart-trigger:hover { 
+    background: var(--gold-light); 
+}
 .cart-badge {
     position: absolute;
     top: -6px;
@@ -691,7 +715,7 @@ input, textarea { font-family: inherit; }
 .badge-new { background: var(--green); color: white; }
 .badge-spicy { background: var(--orange); color: white; }
 .badge-18 { background: var(--blue); color: white; }
-.badge-popular { background: var(--gold); color: var(--black); }
+.badge-popular { background: rgba(212, 175, 55, 0.15); color: var(--gold); border: 1px solid var(--gold); }
 
 .product-favorite {
     position: absolute;
@@ -762,18 +786,22 @@ input, textarea { font-family: inherit; }
     gap: 8px;
 }
 .add-btn {
-    width: 44px;
-    height: 44px;
-    background: var(--gold-gradient);
+    width: 42px;
+    height: 42px;
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 16px;
     transition: all var(--transition);
+    border: none;
+    cursor: pointer;
 }
-.add-btn:hover { transform: scale(1.1); }
+.add-btn:hover { 
+    background: var(--gold-light); 
+}
 
 .qty-control {
     display: flex;
@@ -845,12 +873,11 @@ input, textarea { font-family: inherit; }
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     padding: 20px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius);
     text-align: center;
-    box-shadow: var(--shadow-gold);
 }
 .about-badge-value {
     display: block;
@@ -926,7 +953,7 @@ input, textarea { font-family: inherit; }
 .about-feature-icon {
     width: 48px;
     height: 48px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius);
     display: flex;
@@ -997,7 +1024,7 @@ input, textarea { font-family: inherit; }
 .delivery-feature-icon {
     width: 48px;
     height: 48px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius);
     display: flex;
@@ -1090,7 +1117,7 @@ input, textarea { font-family: inherit; }
 .contact-item-icon {
     width: 48px;
     height: 48px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
     border-radius: var(--radius);
     display: flex;
@@ -1942,9 +1969,9 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     right: 24px;
     width: 48px;
     height: 48px;
-    background: var(--gold-gradient);
+    background: var(--gold);
     color: var(--black);
-    border-radius: 50%;
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1952,6 +1979,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     z-index: 100;
     opacity: 0;
     visibility: hidden;
+    border: none;
+    cursor: pointer;
     transform: translateY(20px);
     transition: all var(--transition);
     box-shadow: var(--shadow-gold);
@@ -1962,7 +1991,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     transform: translateY(0);
 }
 .scroll-top:hover {
-    transform: translateY(-4px);
+    background: var(--gold-light);
 }
 
 /* === RESPONSIVE === */
