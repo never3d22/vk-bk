@@ -636,6 +636,8 @@ h2 {
   font-size: 0.68rem;
   line-height: 1.1;
   opacity: 0.85;
+  display: inline-block;
+  max-width: 70%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
