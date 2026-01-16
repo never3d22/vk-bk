@@ -430,12 +430,18 @@ const getMenuImage = (item, category) => {
   });
 };
 
+const EXTRA_INGREDIENTS = {
+  label: "Доп. ингредиенты",
+  price: 50,
+};
+
 const menuItems = menuCategories.flatMap((category) =>
   category.items.map((item) => ({
     ...item,
     image: getMenuImage(item, category),
     category: category.title,
     type: "menu",
+    extras: 0,
   }))
 );
 
@@ -463,6 +469,8 @@ let toastTimer;
 
 const formatPrice = (value) => `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 const allItems = [...menuItems];
+
+const findItemById = (id) => allItems.find((entry) => entry.id === id);
 
 const getItemMeta = (item) => {
   return item.category ?? "";
@@ -502,10 +510,25 @@ const renderMenu = () => {
                   `
                   : ""
               }
+              <div class="menu-extras">
+                <span>${EXTRA_INGREDIENTS.label}</span>
+                <div class="menu-extras-controls">
+                  <button type="button" data-menu-action="extras-decrease" data-id="${item.id}">
+                    −
+                  </button>
+                  <span class="menu-extras-value" data-extras="${item.id}">0</span>
+                  <button type="button" data-menu-action="extras-increase" data-id="${item.id}">
+                    +
+                  </button>
+                </div>
+                <span class="menu-extras-price">+${formatPrice(EXTRA_INGREDIENTS.price)}</span>
+              </div>
               <div class="menu-card-footer">
-                <button class="btn btn-ghost" type="button" data-add="${item.id}">
-                  В корзину
-                </button>
+                <div class="menu-qty">
+                  <button type="button" data-menu-action="decrease" data-id="${item.id}">−</button>
+                  <span class="menu-qty-value" data-qty="${item.id}">0</span>
+                  <button type="button" data-menu-action="increase" data-id="${item.id}">+</button>
+                </div>
               </div>
             </article>
           `;
@@ -579,6 +602,62 @@ const setupMenuFilters = () => {
   applyMenuFilter("all");
 };
 
+const updateMenuCardState = (id) => {
+  const item = cart.get(id);
+  const qtyEl = document.querySelector(`[data-qty="${id}"]`);
+  const extrasEl = document.querySelector(`[data-extras="${id}"]`);
+  if (qtyEl) {
+    qtyEl.textContent = item?.quantity ?? 0;
+  }
+  if (extrasEl) {
+    extrasEl.textContent = item?.extras ?? 0;
+  }
+};
+
+const updateAllMenuCards = () => {
+  menuItems.forEach((item) => updateMenuCardState(item.id));
+};
+
+const changeQuantity = (id, delta) => {
+  const baseItem = findItemById(id);
+  if (!baseItem) {
+    return;
+  }
+  const item = cart.get(id) ?? { ...baseItem, quantity: 0, extras: 0 };
+  item.quantity += delta;
+  if (item.quantity <= 0) {
+    cart.delete(id);
+  } else {
+    cart.set(id, item);
+  }
+  renderCart();
+  updateMenuCardState(id);
+};
+
+const changeExtras = (id, delta) => {
+  const baseItem = findItemById(id);
+  if (!baseItem) {
+    return;
+  }
+  const item = cart.get(id) ?? { ...baseItem, quantity: 1, extras: 0 };
+  item.extras = Math.max(0, (item.extras ?? 0) + delta);
+  if (item.quantity <= 0) {
+    item.quantity = 1;
+  }
+  if (item.quantity <= 0 && item.extras === 0) {
+    cart.delete(id);
+  } else {
+    cart.set(id, item);
+  }
+  renderCart();
+  updateMenuCardState(id);
+};
+
+const getItemTotal = (item) => {
+  const extras = item.extras ?? 0;
+  return item.price * item.quantity + extras * EXTRA_INGREDIENTS.price * item.quantity;
+};
+
 const openCart = () => {
   if (!cartModal) {
     return;
@@ -615,7 +694,7 @@ const updateCartSummary = () => {
   const totals = Array.from(cart.values()).reduce(
     (acc, item) => {
       acc.count += item.quantity;
-      acc.total += item.price * item.quantity;
+      acc.total += getItemTotal(item);
       return acc;
     },
     { count: 0, total: 0 }
@@ -654,6 +733,7 @@ const renderCart = () => {
     .map(
       (item) => {
         const metaParts = [getItemMeta(item), item.typeLabel].filter(Boolean).join(" · ");
+        const itemTotal = getItemTotal(item);
         return `
         <div class="cart-item">
           <div class="cart-item-header">
@@ -666,9 +746,16 @@ const renderCart = () => {
               <div>
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-meta">${metaParts}</div>
+                ${
+                  item.extras
+                    ? `<div class="cart-item-extras">Доп. ингредиенты: ${item.extras} × ${formatPrice(
+                        EXTRA_INGREDIENTS.price
+                      )}</div>`
+                    : ""
+                }
               </div>
             </div>
-            <div class="price">${formatPrice(item.price * item.quantity)}</div>
+            <div class="price">${formatPrice(itemTotal)}</div>
           </div>
           <div class="cart-item-actions">
             <div class="qty-control">
@@ -679,6 +766,18 @@ const renderCart = () => {
               <button type="button" data-action="increase" data-id="${item.id}" aria-label="Увеличить">
                 +
               </button>
+            </div>
+            <div class="extras-control">
+              <span>${EXTRA_INGREDIENTS.label}</span>
+              <div class="qty-control">
+                <button type="button" data-action="extras-decrease" data-id="${item.id}" aria-label="Уменьшить">
+                  −
+                </button>
+                <span>${item.extras ?? 0}</span>
+                <button type="button" data-action="extras-increase" data-id="${item.id}" aria-label="Увеличить">
+                  +
+                </button>
+              </div>
             </div>
             <button class="remove-btn" type="button" data-action="remove" data-id="${item.id}">
               Удалить
@@ -695,17 +794,11 @@ const renderCart = () => {
 };
 
 const addToCart = (id) => {
-  const item = allItems.find((entry) => entry.id === id);
-  if (!item) {
-    return;
+  changeQuantity(id, 1);
+  const item = findItemById(id);
+  if (item) {
+    showToast(`Добавлено: ${item.name}`);
   }
-  if (cart.has(id)) {
-    cart.get(id).quantity += 1;
-  } else {
-    cart.set(id, { ...item, quantity: 1 });
-  }
-  renderCart();
-  showToast(`Добавлено: ${item.name}`);
 };
 
 const updateQuantity = (id, delta) => {
@@ -720,6 +813,7 @@ const updateQuantity = (id, delta) => {
     cart.set(id, item);
   }
   renderCart();
+  updateMenuCardState(id);
 };
 
 const removeItem = (id) => {
@@ -728,6 +822,7 @@ const removeItem = (id) => {
   }
   cart.delete(id);
   renderCart();
+  updateMenuCardState(id);
 };
 
 const initReveal = () => {
@@ -797,6 +892,22 @@ const applyGalleryFilter = (filter) => {
 };
 
 document.addEventListener("click", (event) => {
+  const menuAction = event.target.closest("[data-menu-action]");
+  if (menuAction) {
+    const id = menuAction.dataset.id;
+    const action = menuAction.dataset.menuAction;
+    if (action === "increase") {
+      changeQuantity(id, 1);
+    } else if (action === "decrease") {
+      changeQuantity(id, -1);
+    } else if (action === "extras-increase") {
+      changeExtras(id, 1);
+    } else if (action === "extras-decrease") {
+      changeExtras(id, -1);
+    }
+    return;
+  }
+
   const addButton = event.target.closest("[data-add]");
   if (addButton) {
     addToCart(addButton.dataset.add);
@@ -821,6 +932,10 @@ if (cartItemsContainer) {
       updateQuantity(id, 1);
     } else if (action === "decrease") {
       updateQuantity(id, -1);
+    } else if (action === "extras-increase") {
+      changeExtras(id, 1);
+    } else if (action === "extras-decrease") {
+      changeExtras(id, -1);
     } else if (action === "remove") {
       removeItem(id);
     }
@@ -950,6 +1065,7 @@ document.querySelector(".hero-slider")?.addEventListener("mouseleave", startSlid
 renderMenu();
 setupMenuFilters();
 renderCart();
+updateAllMenuCards();
 initReveal();
 setSlide(0);
 startSlider();
