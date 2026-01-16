@@ -682,13 +682,14 @@ h2 {
 }
 
 .menu-extras {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   border-top: 1px dashed rgba(213, 163, 59, 0.2);
   padding-top: 8px;
   color: var(--muted);
   font-size: 0.85rem;
-  justify-items: start;
 }
 
 .menu-extras-title {
@@ -699,9 +700,9 @@ h2 {
 }
 
 .menu-extras-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  justify-items: start;
 }
 
 .menu-extra-toggle {
