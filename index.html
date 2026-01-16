@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Shawarma | Премиум Шаурма</title>
+    <title>Shawarma House | Вкусная шаурма с доставкой</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    <span>Golden Shawarma</span>
+                    <div class="logo-icon">
+                        <i class="fas fa-fire-flame-curved"></i>
+                    </div>
+                    <span>Shawarma House</span>
                 </div>
                 <nav class="nav">
                     <a href="#menu">Меню</a>
@@ -61,16 +60,24 @@
             <div class="slide active">
                 <div class="slide-content">
                     <div class="slide-text">
-                        <span class="slide-subtitle">Премиум качество</span>
-                        <h1>Изысканная<br><span class="gold">Шаурма</span></h1>
-                        <p>Откройте для себя вкус настоящей восточной кухни. Отборные ингредиенты, авторские соусы и мастерство шеф-поваров с многолетним опытом.</p>
-                        <a href="#menu" class="btn btn-primary">Заказать сейчас</a>
+                        <div class="slide-badge">
+                            <i class="fas fa-bolt"></i>
+                            Доставка за 30 минут
+                        </div>
+                        <h1>Самая вкусная<br><span class="accent">шаурма</span> в городе</h1>
+                        <p>Готовим из свежих продуктов по авторским рецептам. Бесплатная доставка от 1000 ₽</p>
+                        <div class="slide-buttons">
+                            <a href="#menu" class="btn btn-primary">
+                                <i class="fas fa-utensils"></i>
+                                Смотреть меню
+                            </a>
+                            <a href="#delivery" class="btn btn-secondary">Условия доставки</a>
+                        </div>
                     </div>
                     <div class="slide-image">
-                        <div class="image-placeholder">
-                            <div class="rotating-border"></div>
-                            <i class="fas fa-utensils"></i>
-                            <span>Классическая Шаурма</span>
+                        <div class="hero-card">
+                            <i class="fas fa-burger"></i>
+                            <span>Классическая шаурма</span>
                         </div>
                     </div>
                 </div>
@@ -78,16 +85,23 @@
             <div class="slide">
                 <div class="slide-content">
                     <div class="slide-text">
-                        <span class="slide-subtitle">Эксклюзивное предложение</span>
-                        <h1>Роскошные<br><span class="gold">Комбо</span></h1>
-                        <p>Эксклюзивные комбо-предложения для ценителей. Сэкономьте до 30% при заказе премиум набора для компании.</p>
-                        <a href="#menu" class="btn btn-primary">Смотреть меню</a>
+                        <div class="slide-badge">
+                            <i class="fas fa-percent"></i>
+                            Скидка до 30%
+                        </div>
+                        <h1>Выгодные<br><span class="accent">комбо</span> наборы</h1>
+                        <p>Закажи комбо для компании и сэкономь. Идеально для офиса, вечеринки или семейного ужина</p>
+                        <div class="slide-buttons">
+                            <a href="#menu" class="btn btn-primary">
+                                <i class="fas fa-box"></i>
+                                Выбрать комбо
+                            </a>
+                        </div>
                     </div>
                     <div class="slide-image">
-                        <div class="image-placeholder">
-                            <div class="rotating-border"></div>
-                            <i class="fas fa-gem"></i>
-                            <span>Премиум Набор</span>
+                        <div class="hero-card">
+                            <i class="fas fa-box-open"></i>
+                            <span>Комбо наборы</span>
                         </div>
                     </div>
                 </div>
@@ -95,16 +109,23 @@
             <div class="slide">
                 <div class="slide-content">
                     <div class="slide-text">
-                        <span class="slide-subtitle">VIP Доставка</span>
-                        <h1>Элитная<br><span class="gold">Доставка</span></h1>
-                        <p>Доставим вашу шаурму в термоконтейнерах премиум-класса. Бесплатная доставка при заказе от 1000 ₽.</p>
-                        <a href="#delivery" class="btn btn-primary">Узнать больше</a>
+                        <div class="slide-badge">
+                            <i class="fas fa-star"></i>
+                            Рейтинг 4.9
+                        </div>
+                        <h1>Более <span class="accent">50 000</span><br>довольных клиентов</h1>
+                        <p>Нас рекомендуют друзьям. Присоединяйтесь к нашему сообществу любителей вкусной еды</p>
+                        <div class="slide-buttons">
+                            <a href="#about" class="btn btn-primary">
+                                <i class="fas fa-info-circle"></i>
+                                Узнать о нас
+                            </a>
+                        </div>
                     </div>
                     <div class="slide-image">
-                        <div class="image-placeholder">
-                            <div class="rotating-border"></div>
-                            <i class="fas fa-concierge-bell"></i>
-                            <span>VIP Сервис</span>
+                        <div class="hero-card">
+                            <i class="fas fa-heart"></i>
+                            <span>Любовь клиентов</span>
                         </div>
                     </div>
                 </div>
@@ -133,29 +154,29 @@
                     <div class="feature-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
-                    <h3>Органические продукты</h3>
-                    <p>Только экологически чистые овощи и мясо высшего качества от проверенных фермеров</p>
+                    <h3>Свежие продукты</h3>
+                    <p>Закупаем ингредиенты каждый день у проверенных поставщиков</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Авторские рецепты</h3>
-                    <p>Секретные рецепты соусов, передаваемые из поколения в поколение</p>
+                    <h3>Быстрая доставка</h3>
+                    <p>Привезём горячую шаурму за 30 минут или вернём деньги</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3>Премиум сервис</h3>
-                    <p>Индивидуальный подход к каждому клиенту и безупречное качество обслуживания</p>
+                    <h3>Гарантия качества</h3>
+                    <p>Если не понравится — вернём деньги без лишних вопросов</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Эксклюзивность</h3>
-                    <p>Уникальные позиции меню, которые вы не найдёте больше нигде</p>
+                    <h3>Удобный заказ</h3>
+                    <p>Заказывайте онлайн или по телефону в любое время</p>
                 </div>
             </div>
         </div>
@@ -165,9 +186,12 @@
     <section class="menu-section" id="menu">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Изысканное меню</span>
-                <h2>Коллекция <span class="gold">шедевров</span></h2>
-                <p>Каждое блюдо — произведение кулинарного искусства</p>
+                <div class="section-tag">
+                    <i class="fas fa-fire"></i>
+                    Популярное
+                </div>
+                <h2>Наше меню</h2>
+                <p>Выберите шаурму на свой вкус</p>
             </div>
 
             <!-- Category Filter -->
@@ -191,31 +215,32 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <span class="section-subtitle">Наша философия</span>
-                    <h2>Искусство <span class="gold">вкуса</span></h2>
-                    <p>Golden Shawarma — это не просто еда, это целая философия. Мы объединяем вековые традиции восточной кухни с современными стандартами качества, создавая уникальный гастрономический опыт.</p>
-                    <p>Наши шеф-повара — настоящие мастера своего дела, прошедшие обучение у лучших мастеров Ближнего Востока. Каждый ингредиент отбирается вручную, а рецепты соусов хранятся в строжайшем секрете.</p>
+                    <div class="section-tag">
+                        <i class="fas fa-heart"></i>
+                        О нас
+                    </div>
+                    <h2>Готовим с любовью <span class="accent">с 2015 года</span></h2>
+                    <p>Мы начинали как маленькая точка на рынке, а сегодня — одна из самых популярных шаурмичных города. Наш секрет прост: качественные продукты, честные порции и уважение к клиентам.</p>
+                    <p>Каждый день мы готовим более 500 порций шаурмы, и каждая из них сделана с такой же заботой, как первая. Приходите — убедитесь сами!</p>
                     <div class="about-stats">
                         <div class="stat">
                             <span class="stat-number">10+</span>
-                            <span class="stat-label">Лет мастерства</span>
+                            <span class="stat-label">лет опыта</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">50K+</span>
-                            <span class="stat-label">VIP клиентов</span>
+                            <span class="stat-label">клиентов</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">15</span>
-                            <span class="stat-label">Эксклюзивов</span>
+                            <span class="stat-number">4.9</span>
+                            <span class="stat-label">рейтинг</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <div class="image-frame">
-                        <div class="image-placeholder large">
-                            <i class="fas fa-store"></i>
-                            <span>Наш ресторан</span>
-                        </div>
+                    <div class="about-card">
+                        <i class="fas fa-store"></i>
+                        <span>Наше заведение</span>
                     </div>
                 </div>
             </div>
@@ -225,10 +250,13 @@
     <!-- Delivery Section -->
     <section class="delivery-section" id="delivery">
         <div class="container">
-            <div class="section-header light">
-                <span class="section-subtitle">VIP Доставка</span>
-                <h2>Сервис <span class="gold">высшего класса</span></h2>
-                <p>Премиальная доставка для взыскательных клиентов</p>
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-truck"></i>
+                    Доставка
+                </div>
+                <h2>Быстро и удобно</h2>
+                <p>Привезём горячую шаурму прямо к вашей двери</p>
             </div>
             <div class="delivery-grid">
                 <div class="delivery-card">
@@ -243,21 +271,21 @@
                         <i class="fas fa-stopwatch"></i>
                     </div>
                     <h3>30 минут</h3>
-                    <p>Гарантия времени</p>
+                    <p>Среднее время доставки</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-icon">
-                        <i class="fas fa-temperature-high"></i>
+                        <i class="fas fa-box"></i>
                     </div>
-                    <h3>Термоконтейнеры</h3>
-                    <p>Премиум упаковка</p>
+                    <h3>Термоупаковка</h3>
+                    <p>Сохраняем температуру</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-icon">
-                        <i class="fas fa-concierge-bell"></i>
+                        <i class="fas fa-credit-card"></i>
                     </div>
-                    <h3>VIP Сервис</h3>
-                    <p>Персональный курьер</p>
+                    <h3>Любая оплата</h3>
+                    <p>Картой или наличными</p>
                 </div>
             </div>
         </div>
@@ -268,35 +296,37 @@
         <div class="container">
             <div class="contacts-content">
                 <div class="contacts-info">
-                    <span class="section-subtitle">Связь с нами</span>
-                    <h2>Забронировать <span class="gold">столик</span></h2>
+                    <div class="section-tag">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Контакты
+                    </div>
+                    <h2>Свяжитесь с нами</h2>
                     <div class="contact-items">
                         <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div>
                                 <h4>Адрес</h4>
-                                <p>г. Москва, ул. Восточная, д. 15</p>
+                                <p>г. Москва, ул. Пушкина, д. 15</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
                             <div>
                                 <h4>Телефон</h4>
                                 <p>+7 (999) 123-45-67</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Часы работы</h4>
-                                <p>Ежедневно с 10:00 до 23:00</p>
+                            <div class="contact-item-icon">
+                                <i class="fas fa-clock"></i>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
                             <div>
-                                <h4>Email</h4>
-                                <p>vip@golden-shawarma.ru</p>
+                                <h4>Время работы</h4>
+                                <p>Ежедневно 10:00 — 23:00</p>
                             </div>
                         </div>
                     </div>
@@ -308,7 +338,7 @@
                     </div>
                 </div>
                 <div class="contacts-form">
-                    <h3>VIP Заявка</h3>
+                    <h3>Оставить заявку</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" placeholder="Ваше имя" required>
@@ -317,9 +347,12 @@
                             <input type="tel" placeholder="Телефон" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Особые пожелания" rows="4"></textarea>
+                            <textarea placeholder="Комментарий к заказу" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Отправить
+                        </button>
                     </form>
                 </div>
             </div>
@@ -331,33 +364,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <i class="fas fa-crown"></i>
-                    <span>Golden Shawarma</span>
-                    <p>Премиум шаурма для истинных ценителей восточной кухни. Традиции, качество, эксклюзивность.</p>
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-fire-flame-curved"></i>
+                        </div>
+                        <span>Shawarma House</span>
+                    </div>
+                    <p>Готовим вкусную шаурму с 2015 года. Свежие продукты, честные порции, быстрая доставка.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Меню</h4>
                     <a href="#menu">Классика</a>
                     <a href="#menu">Премиум</a>
                     <a href="#menu">Острые</a>
-                    <a href="#menu">Комбо наборы</a>
+                    <a href="#menu">Комбо</a>
                 </div>
                 <div class="footer-links">
                     <h4>Информация</h4>
                     <a href="#about">О нас</a>
-                    <a href="#delivery">VIP Доставка</a>
+                    <a href="#delivery">Доставка</a>
                     <a href="#contacts">Контакты</a>
-                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Вакансии</a>
                 </div>
                 <div class="footer-contact">
                     <h4>Контакты</h4>
                     <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
-                    <p><i class="fas fa-envelope"></i> vip@golden-shawarma.ru</p>
-                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Восточная, 15</p>
+                    <p><i class="fas fa-envelope"></i> hello@shawarma.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Пушкина, 15</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Golden Shawarma. Все права защищены.</p>
+                <p>© 2026 Shawarma House. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -366,7 +403,7 @@
     <div class="modal-overlay" id="cartModal">
         <div class="modal">
             <div class="modal-header">
-                <h3><i class="fas fa-shopping-bag"></i> Ваша корзина</h3>
+                <h3><i class="fas fa-shopping-bag"></i> Корзина</h3>
                 <button class="modal-close" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -380,6 +417,7 @@
                     <span class="total-price" id="totalPrice">0 ₽</span>
                 </div>
                 <button class="btn btn-primary btn-full" id="checkoutBtn">
+                    <i class="fas fa-check"></i>
                     Оформить заказ
                 </button>
             </div>
@@ -393,8 +431,11 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3>Заказ оформлен!</h3>
-            <p>Благодарим за ваш заказ! Наш менеджер свяжется с вами в ближайшее время для подтверждения.</p>
-            <button class="btn btn-primary" id="closeSuccess">Превосходно!</button>
+            <p>Спасибо за заказ! Мы позвоним вам в течение 5 минут для подтверждения.</p>
+            <button class="btn btn-primary" id="closeSuccess">
+                <i class="fas fa-thumbs-up"></i>
+                Отлично!
+            </button>
         </div>
     </div>
 
