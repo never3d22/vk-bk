@@ -24,9 +24,9 @@
                 </a>
                 
                 <nav class="nav" id="nav">
-                    <a href="#promo" class="nav-link">Акции</a>
                     <a href="#menu" class="nav-link">Меню</a>
                     <a href="#about" class="nav-link">О нас</a>
+                    <a href="#delivery" class="nav-link">Доставка</a>
                     <a href="#contacts" class="nav-link">Контакты</a>
                 </nav>
                 
@@ -64,8 +64,58 @@
         </div>
     </header>
 
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1920&q=80" alt="" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-fire"></i>
+                    <span>Доставка 30 минут</span>
+                </div>
+                <h1 class="hero-title">
+                    Вкусно
+                    <span class="hero-title-accent">&</span>
+                    Быстро
+                </h1>
+                <p class="hero-desc">Шаурма, хачапури, хот-доги и многое другое.<br>Готовим из свежих продуктов с любовью к каждому блюду.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-primary btn-lg">
+                        <span>Смотреть меню</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:+79991234567" class="btn btn-glass btn-lg">
+                        <i class="fas fa-phone"></i>
+                        <span>Позвонить</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">30</span>
+                        <span class="hero-stat-label">минут доставка</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">50+</span>
+                        <span class="hero-stat-label">позиций меню</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">4.9</span>
+                        <span class="hero-stat-label">рейтинг</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Листай вниз</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
     <!-- Promo Slider -->
-    <section class="promo-section" id="promo">
+    <section class="promo-slider-section" id="promo">
         <div class="container">
             <div class="promo-slider" id="promoSlider">
                 <div class="promo-slide active" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
@@ -137,32 +187,20 @@
         </div>
     </section>
 
-    <!-- Map & About -->
+    <!-- About -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-images">
-                    <div class="map-container" id="mapContainer">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.371!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIxLjAiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; border-radius: 16px;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                        <div class="map-overlay">
-                            <div class="map-info">
-                                <i class="fas fa-location-dot"></i>
-                                <div>
-                                    <strong>Москва, ул. Пушкина, 15</strong>
-                                    <span>Открыто до 23:00</span>
-                                </div>
-                            </div>
-                            <a href="https://yandex.ru/maps/-/ABC123" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fas fa-route"></i> Маршрут
-                            </a>
-                        </div>
+                    <div class="about-img about-img-1">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Блюдо">
+                    </div>
+                    <div class="about-img about-img-2">
+                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80" alt="Кухня">
+                    </div>
+                    <div class="about-badge">
+                        <span class="about-badge-value">5+</span>
+                        <span class="about-badge-label">лет опыта</span>
                     </div>
                 </div>
                 <div class="about-content">
@@ -184,10 +222,56 @@
                             <div class="about-feature-text"><strong>С любовью</strong><span>К каждому блюду</span></div>
                         </div>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat"><span class="stat-value">5+</span><span class="stat-label">лет работы</span></div>
-                        <div class="stat"><span class="stat-value">10K+</span><span class="stat-label">клиентов</span></div>
-                        <div class="stat"><span class="stat-value">4.9</span><span class="stat-label">рейтинг</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery -->
+    <section class="delivery" id="delivery">
+        <div class="container">
+            <div class="delivery-grid">
+                <div class="delivery-content">
+                    <span class="section-label">Доставка</span>
+                    <h2 class="section-title">Быстрая <span class="gold">доставка</span></h2>
+                    <p class="delivery-text">Доставляем по всему городу. Бесплатная доставка при заказе от 1000 ₽.</p>
+                    <div class="delivery-features">
+                        <div class="delivery-feature">
+                            <div class="delivery-feature-icon"><i class="fas fa-clock"></i></div>
+                            <div><strong>30-45 минут</strong><span>Среднее время доставки</span></div>
+                        </div>
+                        <div class="delivery-feature">
+                            <div class="delivery-feature-icon"><i class="fas fa-ruble-sign"></i></div>
+                            <div><strong>От 1000 ₽ бесплатно</strong><span>Доставка 150 ₽</span></div>
+                        </div>
+                        <div class="delivery-feature">
+                            <div class="delivery-feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><strong>Весь город</strong><span>Зона доставки</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-map">
+                    <div class="map-container" id="mapContainer">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.371!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIxLjAiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <div class="map-overlay">
+                            <div class="map-info">
+                                <i class="fas fa-location-dot"></i>
+                                <div>
+                                    <strong>Москва, ул. Пушкина, 15</strong>
+                                    <span>Открыто до 23:00</span>
+                                </div>
+                            </div>
+                            <a href="https://yandex.ru/maps/-/ABC123" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fas fa-route"></i> Маршрут
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,7 +327,7 @@
                     <p>Готовим вкусную еду с любовью и доставляем быстро.</p>
                 </div>
                 <div class="footer-nav"><h4>Меню</h4><a href="#menu">Горячее</a><a href="#menu">Хот-доги</a><a href="#menu">Выпечка</a><a href="#menu">Напитки</a></div>
-                <div class="footer-nav"><h4>Инфо</h4><a href="#about">О нас</a><a href="#promo">Акции</a><a href="#contacts">Контакты</a></div>
+                <div class="footer-nav"><h4>Инфо</h4><a href="#about">О нас</a><a href="#delivery">Доставка</a><a href="#contacts">Контакты</a></div>
                 <div class="footer-contact"><h4>Контакты</h4><p><i class="fas fa-phone"></i> +7 999 123-45-67</p><p><i class="fas fa-clock"></i> 10:00 — 23:00</p></div>
             </div>
             <div class="footer-bottom"><p>© 2024 Вкусно и Быстро</p></div>
@@ -260,7 +344,7 @@
             </div>
             <div class="cart-drawer-body" id="cartBody"></div>
             <div class="cart-drawer-footer">
-                <div class="promo-section" id="promoSection">
+                <div class="promo-section-cart" id="promoSectionCart">
                     <div class="promo-row" id="promoRow">
                         <input type="text" class="form-input" id="promoInput" placeholder="Промокод">
                         <button class="btn btn-outline btn-sm" id="promoApplyBtn">OK</button>
@@ -400,17 +484,6 @@
 
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- Telegram Config (for admin) -->
-    <script>
-        // НАСТРОЙКИ TELEGRAM БОТА
-        // Замените на свои данные после создания бота
-        window.TELEGRAM_CONFIG = {
-            botToken: 'YOUR_BOT_TOKEN', // Получить у @BotFather
-            chatId: 'YOUR_CHAT_ID',     // ID чата/группы для заказов
-            enabled: false              // Включить отправку в Telegram
-        };
-    </script>
 
     <script src="script.js"></script>
 </body>

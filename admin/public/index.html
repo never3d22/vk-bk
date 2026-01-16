@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | Вкусно и Быстро</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --primary-dark: #B8960C;
+            --bg: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --bg-hover: #252525;
+            --text: #ffffff;
+            --text-secondary: #888;
+            --border: #333;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        /* Login */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .login-logo .mark {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #D4AF37, #F4E4A6);
+            color: #000;
+            font-weight: 800;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+        .login-logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .login-logo p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        /* Form elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-input::placeholder {
+            color: #666;
+        }
+        select.form-input {
+            cursor: pointer;
+        }
+        textarea.form-input {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37, #F4E4A6);
+            color: #000;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+        }
+        .btn-secondary {
+            background: var(--bg-hover);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+        .btn-full {
+            width: 100%;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        /* Layout */
+        .app { display: none; }
+        .app.active { display: flex; }
+        
+        .sidebar {
+            width: 260px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-logo .mark {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #D4AF37, #F4E4A6);
+            color: #000;
+            font-weight: 800;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .sidebar-logo span {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav-item:hover {
+            background: var(--bg-hover);
+            color: var(--text);
+        }
+        .nav-item.active {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary);
+        }
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+        .nav-item .badge {
+            margin-left: auto;
+            background: var(--danger);
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        
+        .sidebar-footer {
+            padding: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-hover);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .user-role {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .main {
+            margin-left: 260px;
+            flex: 1;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .content {
+            padding: 24px;
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+        .stat-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .stat-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .stat-card-icon.green { background: rgba(34, 197, 94, 0.15); color: var(--success); }
+        .stat-card-icon.gold { background: rgba(212, 175, 55, 0.15); color: var(--primary); }
+        .stat-card-icon.blue { background: rgba(59, 130, 246, 0.15); color: var(--info); }
+        .stat-card-icon.red { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .stat-card-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .stat-card-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        
+        /* Table */
+        .table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .table-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 14px 20px;
+            text-align: left;
+        }
+        th {
+            background: var(--bg);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+        }
+        tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .status-new { background: rgba(59, 130, 246, 0.15); color: var(--info); }
+        .status-processing { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+        .status-completed { background: rgba(34, 197, 94, 0.15); color: var(--success); }
+        .status-cancelled { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        
+        .actions-cell {
+            display: flex;
+            gap: 8px;
+        }
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .action-btn:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+        .action-btn.danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.2s;
+        }
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .modal-close:hover {
+            color: var(--danger);
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        /* Checkbox & Toggle */
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .form-check input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+        }
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: var(--border);
+            border-radius: 26px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .toggle-slider:before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .toggle input:checked + .toggle-slider {
+            background: var(--primary);
+        }
+        .toggle input:checked + .toggle-slider:before {
+            transform: translateX(22px);
+        }
+        
+        /* Product Image */
+        .product-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: var(--bg);
+            overflow: hidden;
+        }
+        .product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-upload {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .image-upload:hover {
+            border-color: var(--primary);
+        }
+        .image-upload i {
+            font-size: 32px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .image-upload p {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .image-preview {
+            max-width: 200px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        
+        /* Tags */
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 46px;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        .tag button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 0;
+        }
+        .tag-input {
+            flex: 1;
+            min-width: 100px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+        }
+        
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        .empty-state h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+        }
+        .toast.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success { border-color: var(--success); }
+        .toast.success i { color: var(--success); }
+        .toast.error { border-color: var(--danger); }
+        .toast.error i { color: var(--danger); }
+        
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">
+                <div class="mark">ВБ</div>
+                <h1>Админ-панель</h1>
+                <p>Вкусно и Быстро</p>
+            </div>
+            <div class="error-msg" id="loginError" style="display: none;"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Логин</label>
+                    <input type="text" class="form-input" id="loginUsername" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <input type="password" class="form-input" id="loginPassword" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+                    <span>Войти</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Main App -->
+    <div class="app" id="app">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="mark">ВБ</div>
+                    <span>Админ-панель</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Дашборд</span>
+                </a>
+                <a class="nav-item" data-page="orders">
+                    <i class="fas fa-receipt"></i>
+                    <span>Заказы</span>
+                    <span class="badge" id="newOrdersBadge" style="display: none;">0</span>
+                </a>
+                <a class="nav-item" data-page="products">
+                    <i class="fas fa-utensils"></i>
+                    <span>Товары</span>
+                </a>
+                <a class="nav-item" data-page="promos">
+                    <i class="fas fa-tags"></i>
+                    <span>Промокоды</span>
+                </a>
+                <a class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Настройки</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="user-name" id="userName">Admin</div>
+                        <div class="user-role">Администратор</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-full" style="margin-top: 12px;" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main">
+            <!-- Dashboard -->
+            <div class="page" id="page-dashboard">
+                <div class="header">
+                    <h1>Дашборд</h1>
+                </div>
+                <div class="content">
+                    <div class="stats-grid" id="statsGrid"></div>
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3 class="table-title">Последние заказы</h3>
+                        </div>
+                        <div id="recentOrdersTable"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Orders -->
+            <div class="page" id="page-orders" style="display: none;">
+                <div class="header">
+                    <h1>Заказы</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="loadOrders()">
+                            <i class="fas fa-refresh"></i> Обновить
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="table-container">
+                        <div id="ordersTable"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products -->
+            <div class="page" id="page-products" style="display: none;">
+                <div class="header">
+                    <h1>Товары</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary btn-sm" onclick="openProductModal()">
+                            <i class="fas fa-plus"></i> Добавить
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="table-container">
+                        <div id="productsTable"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Promos -->
+            <div class="page" id="page-promos" style="display: none;">
+                <div class="header">
+                    <h1>Промокоды</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary btn-sm" onclick="openPromoModal()">
+                            <i class="fas fa-plus"></i> Добавить
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="table-container">
+                        <div id="promosTable"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings -->
+            <div class="page" id="page-settings" style="display: none;">
+                <div class="header">
+                    <h1>Настройки</h1>
+                </div>
+                <div class="content">
+                    <div class="table-container" style="padding: 24px;">
+                        <form id="settingsForm">
+                            <div class="form-group">
+                                <label class="form-label">Название сайта</label>
+                                <input type="text" class="form-input" id="setSiteName">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Телефон</label>
+                                <input type="text" class="form-input" id="setPhone">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Адрес</label>
+                                <input type="text" class="form-input" id="setAddress">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Время работы</label>
+                                <input type="text" class="form-input" id="setWorkHours">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Минимальный заказ (₽)</label>
+                                <input type="number" class="form-input" id="setMinOrder">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Стоимость доставки (₽)</label>
+                                <input type="number" class="form-input" id="setDeliveryPrice">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Бесплатная доставка от (₽)</label>
+                                <input type="number" class="form-input" id="setFreeDelivery">
+                            </div>
+                            
+                            <h3 style="margin: 32px 0 16px; padding-top: 24px; border-top: 1px solid var(--border);">
+                                <i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram
+                            </h3>
+                            <div class="form-group">
+                                <label class="form-check">
+                                    <input type="checkbox" id="setTelegramEnabled">
+                                    <span>Включить уведомления в Telegram</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Bot Token</label>
+                                <input type="text" class="form-input" id="setTelegramToken" placeholder="123456789:ABC...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Chat ID</label>
+                                <input type="text" class="form-input" id="setTelegramChatId" placeholder="-100123456789">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="testTelegram()">
+                                    <i class="fas fa-paper-plane"></i> Тест
+                                </button>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Сохранить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Добавить товар</h2>
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <label class="form-label">Название *</label>
+                        <input type="text" class="form-input" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Цена (₽) *</label>
+                        <input type="number" class="form-input" id="productPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Категория</label>
+                        <select class="form-input" id="productCategory">
+                            <option value="hot">Горячее</option>
+                            <option value="hotdog">Хот-доги</option>
+                            <option value="bakery">Выпечка</option>
+                            <option value="dessert">Десерты</option>
+                            <option value="drinks">Напитки</option>
+                            <option value="beer">Пиво</option>
+                            <option value="coffee">Кофе</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Вес / Объём</label>
+                        <input type="text" class="form-input" id="productWeight" placeholder="350г">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Описание</label>
+                        <textarea class="form-input" id="productDesc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ингредиенты (через запятую)</label>
+                        <input type="text" class="form-input" id="productIngredients" placeholder="Курица, Лаваш, Соус">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Бейджи</label>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <label class="form-check"><input type="checkbox" id="badgeHit"> Хит</label>
+                            <label class="form-check"><input type="checkbox" id="badgeNew"> Новинка</label>
+                            <label class="form-check"><input type="checkbox" id="badgePopular"> Популярное</label>
+                            <label class="form-check"><input type="checkbox" id="badgeSpicy"> Острое</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Изображение</label>
+                        <input type="file" class="form-input" id="productImage" accept="image/*">
+                        <img id="productImagePreview" class="image-preview" style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check">
+                            <input type="checkbox" id="productActive" checked>
+                            <span>Активен (показывать на сайте)</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="saveProduct()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="orderModalTitle">Заказ #12345</h2>
+                <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="orderModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeOrderModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Promo Modal -->
+    <div class="modal-overlay" id="promoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="promoModalTitle">Добавить промокод</h2>
+                <button class="modal-close" onclick="closePromoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="promoForm">
+                    <input type="hidden" id="promoId">
+                    <div class="form-group">
+                        <label class="form-label">Код *</label>
+                        <input type="text" class="form-input" id="promoCode" required style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Скидка *</label>
+                        <input type="number" class="form-input" id="promoDiscount" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Тип скидки</label>
+                        <select class="form-input" id="promoType">
+                            <option value="percent">Процент (%)</option>
+                            <option value="fixed">Фиксированная (₽)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check">
+                            <input type="checkbox" id="promoActive" checked>
+                            <span>Активен</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closePromoModal()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="savePromo()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
