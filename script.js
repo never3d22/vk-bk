@@ -1,590 +1,366 @@
 // ============================================
-// Вкусно и Быстро - JavaScript
+// Вкусно и Быстро — Premium JavaScript
 // ============================================
+
+// Product images from Unsplash
+const images = {
+    shawarma: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80',
+    chicken: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&q=80',
+    lavash: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80',
+    tiramisu: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80',
+    medovik: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80',
+    khachapuri: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&q=80',
+    lamadjo: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400&q=80',
+    hotdog: 'https://images.unsplash.com/photo-1612392062126-1b76d3c73f5c?w=400&q=80',
+    lemonade: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&q=80',
+    water: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80',
+    juice: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80',
+    tan: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80',
+    beer: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80',
+    americano: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80',
+    cappuccino: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80',
+    latte: 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&q=80',
+    espresso: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80',
+    tea: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80'
+};
 
 // Products Data
 const products = [
     // ГОРЯЧЕЕ
-    {
-        id: 1,
-        name: "Курица гриль",
-        category: "hot",
-        price: 600,
-        icon: "fas fa-drumstick-bite",
-        desc: "Сочная курица на гриле"
-    },
-    {
-        id: 2,
-        name: "Шаурма с курицей",
-        category: "hot",
-        price: 250,
-        icon: "fas fa-burger",
-        desc: "Классическая шаурма",
-        customizable: true
-    },
-    {
-        id: 3,
-        name: "Сырный лаваш",
-        category: "hot",
-        price: 200,
-        icon: "fas fa-cheese",
-        desc: "Лаваш с сыром"
-    },
+    { id: 1, name: 'Курица гриль', category: 'hot', price: 600, image: images.chicken, desc: 'Сочная курица на гриле со специями' },
+    { id: 2, name: 'Шаурма с курицей', category: 'hot', price: 250, image: images.shawarma, desc: 'Классическая шаурма с соусом', customizable: true },
+    { id: 3, name: 'Сырный лаваш', category: 'hot', price: 200, image: images.lavash, desc: 'Хрустящий лаваш с сыром' },
     
     // ДЕСЕРТЫ
-    {
-        id: 4,
-        name: "Тирамису",
-        category: "dessert",
-        price: 320,
-        icon: "fas fa-cake-candles",
-        desc: "Итальянский десерт"
-    },
-    {
-        id: 5,
-        name: "Медовик",
-        category: "dessert",
-        price: 320,
-        icon: "fas fa-layer-group",
-        desc: "Домашний торт"
-    },
+    { id: 4, name: 'Тирамису', category: 'dessert', price: 320, image: images.tiramisu, desc: 'Итальянский десерт с маскарпоне', tag: 'Хит' },
+    { id: 5, name: 'Медовик', category: 'dessert', price: 320, image: images.medovik, desc: 'Домашний торт с медовыми коржами' },
     
     // ВЫПЕЧКА
-    {
-        id: 6,
-        name: "Хачапури по-аджарски",
-        category: "bakery",
-        price: 200,
-        icon: "fas fa-bread-slice",
-        desc: "С яйцом и сыром"
-    },
-    {
-        id: 7,
-        name: "Хачапури по-мегрельски",
-        category: "bakery",
-        price: 400,
-        icon: "fas fa-bread-slice",
-        desc: "С двойным сыром"
-    },
-    {
-        id: 8,
-        name: "Ламаджо",
-        category: "bakery",
-        price: 180,
-        icon: "fas fa-pizza-slice",
-        desc: "Армянская пицца"
-    },
+    { id: 6, name: 'Хачапури по-аджарски', category: 'bakery', price: 200, image: images.khachapuri, desc: 'С яйцом и сулугуни', tag: 'Хит' },
+    { id: 7, name: 'Хачапури по-мегрельски', category: 'bakery', price: 400, image: images.khachapuri, desc: 'С двойным сыром сверху' },
+    { id: 8, name: 'Ламаджо', category: 'bakery', price: 180, image: images.lamadjo, desc: 'Армянская пицца с мясом' },
     
     // ХОТ-ДОГИ
-    {
-        id: 9,
-        name: "Датский (курица)",
-        category: "hotdog",
-        price: 250,
-        icon: "fas fa-hotdog",
-        desc: "С куриной сосиской"
-    },
-    {
-        id: 10,
-        name: "Датский (говядина)",
-        category: "hotdog",
-        price: 250,
-        icon: "fas fa-hotdog",
-        desc: "С говяжьей сосиской"
-    },
-    {
-        id: 11,
-        name: "Французский (курица)",
-        category: "hotdog",
-        price: 250,
-        icon: "fas fa-hotdog",
-        desc: "Французский стиль"
-    },
-    {
-        id: 12,
-        name: "Французский (говядина)",
-        category: "hotdog",
-        price: 250,
-        icon: "fas fa-hotdog",
-        desc: "Французский стиль"
-    },
+    { id: 9, name: 'Датский (курица)', category: 'hotdog', price: 250, image: images.hotdog, desc: 'С куриной сосиской и соусами' },
+    { id: 10, name: 'Датский (говядина)', category: 'hotdog', price: 250, image: images.hotdog, desc: 'С говяжьей сосиской и соусами' },
+    { id: 11, name: 'Французский (курица)', category: 'hotdog', price: 250, image: images.hotdog, desc: 'Французский стиль с курицей' },
+    { id: 12, name: 'Французский (говядина)', category: 'hotdog', price: 250, image: images.hotdog, desc: 'Французский стиль с говядиной' },
     
     // НАПИТКИ
-    {
-        id: 13,
-        name: "Натакхтари",
-        category: "drinks",
-        price: 120,
-        icon: "fas fa-bottle-water",
-        desc: "Лимонад в ассортименте"
-    },
-    {
-        id: 14,
-        name: "Бон Аква",
-        category: "drinks",
-        price: 100,
-        icon: "fas fa-bottle-water",
-        desc: "Вода в ассортименте"
-    },
-    {
-        id: 15,
-        name: "Добрый",
-        category: "drinks",
-        price: 100,
-        icon: "fas fa-glass-water",
-        desc: "Сок в ассортименте"
-    },
-    {
-        id: 16,
-        name: "Тан",
-        category: "drinks",
-        price: 80,
-        icon: "fas fa-glass-water",
-        desc: "Кисломолочный напиток"
-    },
-    {
-        id: 17,
-        name: "Сок Rich",
-        category: "drinks",
-        price: 150,
-        icon: "fas fa-glass-water",
-        desc: "Премиум сок"
-    },
-    {
-        id: 18,
-        name: "Чай Rich",
-        category: "drinks",
-        price: 150,
-        icon: "fas fa-mug-hot",
-        desc: "Холодный чай"
-    },
+    { id: 13, name: 'Натахтари', category: 'drinks', price: 120, image: images.lemonade, desc: 'Грузинский лимонад' },
+    { id: 14, name: 'Бон Аква', category: 'drinks', price: 100, image: images.water, desc: 'Вода газ/негаз' },
+    { id: 15, name: 'Добрый', category: 'drinks', price: 100, image: images.juice, desc: 'Сок в ассортименте' },
+    { id: 16, name: 'Тан', category: 'drinks', price: 80, image: images.tan, desc: 'Кисломолочный напиток' },
+    { id: 17, name: 'Сок Rich', category: 'drinks', price: 150, image: images.juice, desc: 'Премиум сок', tag: 'Premium' },
+    { id: 18, name: 'Чай Rich', category: 'drinks', price: 150, image: images.tea, desc: 'Холодный чай' },
     
     // ПИВО
-    {
-        id: 19,
-        name: "Хугарден",
-        category: "beer",
-        price: 160,
-        icon: "fas fa-beer-mug-empty",
-        desc: "Бельгийское пшеничное",
-        badge: "18+"
-    },
-    {
-        id: 20,
-        name: "Жигули",
-        category: "beer",
-        price: 110,
-        icon: "fas fa-beer-mug-empty",
-        desc: "Классическое",
-        badge: "18+"
-    },
-    {
-        id: 21,
-        name: "Стелла Артуа",
-        category: "beer",
-        price: 160,
-        icon: "fas fa-beer-mug-empty",
-        desc: "Бельгийский лагер",
-        badge: "18+"
-    },
-    {
-        id: 22,
-        name: "Хугарден Б/А",
-        category: "beer",
-        price: 110,
-        icon: "fas fa-beer-mug-empty",
-        desc: "Безалкогольное"
-    },
+    { id: 19, name: 'Хугарден', category: 'beer', price: 160, image: images.beer, desc: 'Бельгийское пшеничное', tag: '18+' },
+    { id: 20, name: 'Жигули', category: 'beer', price: 110, image: images.beer, desc: 'Классический лагер', tag: '18+' },
+    { id: 21, name: 'Стелла Артуа', category: 'beer', price: 160, image: images.beer, desc: 'Бельгийский пилснер', tag: '18+' },
+    { id: 22, name: 'Хугарден Б/А', category: 'beer', price: 110, image: images.beer, desc: 'Безалкогольное' },
     
-    // КОФЕ И ЧАЙ
-    {
-        id: 23,
-        name: "Американо",
-        category: "coffee",
-        price: 120,
-        icon: "fas fa-mug-hot",
-        desc: "Классический кофе"
-    },
-    {
-        id: 24,
-        name: "Капучино",
-        category: "coffee",
-        price: 160,
-        icon: "fas fa-mug-hot",
-        desc: "С молочной пенкой"
-    },
-    {
-        id: 25,
-        name: "Латте",
-        category: "coffee",
-        price: 160,
-        icon: "fas fa-mug-hot",
-        desc: "Нежный и мягкий"
-    },
-    {
-        id: 26,
-        name: "Эспрессо",
-        category: "coffee",
-        price: 90,
-        icon: "fas fa-mug-saucer",
-        desc: "Крепкий кофе"
-    },
-    {
-        id: 27,
-        name: "Чай",
-        category: "coffee",
-        price: 50,
-        icon: "fas fa-mug-hot",
-        desc: "Чёрный / зелёный"
-    }
+    // КОФЕ
+    { id: 23, name: 'Американо', category: 'coffee', price: 120, image: images.americano, desc: 'Классический чёрный кофе' },
+    { id: 24, name: 'Капучино', category: 'coffee', price: 160, image: images.cappuccino, desc: 'С нежной молочной пенкой', tag: 'Хит' },
+    { id: 25, name: 'Латте', category: 'coffee', price: 160, image: images.latte, desc: 'Мягкий кофе с молоком' },
+    { id: 26, name: 'Эспрессо', category: 'coffee', price: 90, image: images.espresso, desc: 'Крепкий и бодрящий' },
+    { id: 27, name: 'Чай', category: 'coffee', price: 50, image: images.tea, desc: 'Чёрный или зелёный' }
 ];
 
 // Shawarma extras
-const shawarmaExtras = [
-    { id: 'cheese', name: 'Сыр', price: 50 },
-    { id: 'jalapeno', name: 'Халапеньо', price: 50 },
-    { id: 'mushrooms', name: 'Грибы', price: 50 },
-    { id: 'bacon', name: 'Бекон', price: 50 },
-    { id: 'egg', name: 'Яйцо', price: 50 },
-    { id: 'sauce', name: 'Доп. соус', price: 50 },
-    { id: 'vegetables', name: 'Доп. овощи', price: 50 },
-    { id: 'meat', name: 'Доп. мясо', price: 50 }
+const extras = [
+    { id: 'cheese', name: 'Сыр' },
+    { id: 'jalapeno', name: 'Халапеньо' },
+    { id: 'mushrooms', name: 'Грибы' },
+    { id: 'bacon', name: 'Бекон' },
+    { id: 'egg', name: 'Яйцо' },
+    { id: 'sauce', name: 'Доп. соус' },
+    { id: 'vegetables', name: 'Доп. овощи' },
+    { id: 'meat', name: 'Доп. мясо' }
 ];
+
+const EXTRA_PRICE = 50;
 
 // State
 let cart = [];
-let productQuantities = {};
+let quantities = {};
 let selectedExtras = [];
-let customQuantity = 1;
+let customQty = 1;
 
-// DOM Elements
-const productsGrid = document.getElementById('productsGrid');
-const cartBtn = document.getElementById('cartBtn');
-const cartModal = document.getElementById('cartModal');
-const closeCart = document.getElementById('closeCart');
-const cartItems = document.getElementById('cartItems');
-const cartCount = document.getElementById('cartCount');
-const totalPrice = document.getElementById('totalPrice');
-const checkoutBtn = document.getElementById('checkoutBtn');
-const successModal = document.getElementById('successModal');
-const closeSuccess = document.getElementById('closeSuccess');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const burgerMenu = document.getElementById('burgerMenu');
-const mobileMenu = document.getElementById('mobileMenu');
-const header = document.getElementById('header');
-const themeToggle = document.getElementById('themeToggle');
-const customizeModal = document.getElementById('customizeModal');
-const closeCustomize = document.getElementById('closeCustomize');
-const extrasGrid = document.getElementById('extrasGrid');
-const customQtyMinus = document.getElementById('customQtyMinus');
-const customQtyPlus = document.getElementById('customQtyPlus');
-const customQtyValue = document.getElementById('customQtyValue');
-const customizeTotal = document.getElementById('customizeTotal');
-const addCustomShawarma = document.getElementById('addCustomShawarma');
+// DOM
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+const menuGrid = $('#menuGrid');
+const cartTrigger = $('#cartTrigger');
+const cartOverlay = $('#cartOverlay');
+const cartDrawer = $('#cartDrawer');
+const cartClose = $('#cartClose');
+const cartBody = $('#cartBody');
+const cartBadge = $('#cartBadge');
+const cartTotal = $('#cartTotal');
+const checkoutBtn = $('#checkoutBtn');
+const themeBtn = $('#themeBtn');
+const menuToggle = $('#menuToggle');
+const nav = $('#nav');
+const contactForm = $('#contactForm');
+const toast = $('#toast');
+const toastText = $('#toastText');
+
+const customizeOverlay = $('#customizeOverlay');
+const customizeModal = $('#customizeModal');
+const customizeClose = $('#customizeClose');
+const extrasList = $('#extrasList');
+const customMinus = $('#customMinus');
+const customPlus = $('#customPlus');
+const customQtyEl = $('#customQty');
+const customTotalEl = $('#customTotal');
+const addCustomBtn = $('#addCustomBtn');
+
+const successOverlay = $('#successOverlay');
+const successModal = $('#successModal');
+const successClose = $('#successClose');
 
 // ============================================
-// Theme Toggle
+// Theme
 // ============================================
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
 }
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
 });
 
 // ============================================
-// Product Functions
+// Products
 // ============================================
-function createProductCard(product) {
-    const qty = productQuantities[product.id] || 0;
+function renderProducts(category = 'all') {
+    const filtered = category === 'all' ? products : products.filter(p => p.category === category);
     
-    return `
-        <div class="product-card" data-category="${product.category}" data-id="${product.id}">
-            <div class="product-image">
-                <i class="${product.icon}"></i>
-                ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-            </div>
-            <div class="product-content">
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-desc">${product.desc}</p>
-                <div class="product-footer">
-                    <span class="product-price">${product.price} <span>₽</span></span>
-                    <div class="product-actions">
-                        ${product.customizable ? `
-                            <button class="customize-btn" onclick="openCustomize(${product.id})">
-                                <i class="fas fa-sliders"></i> Собрать
-                            </button>
-                        ` : `
-                            <div class="qty-controls">
-                                <button class="qty-btn" onclick="changeQty(${product.id}, -1)">
-                                    <i class="fas fa-minus"></i>
+    menuGrid.innerHTML = filtered.map((p, i) => {
+        const qty = quantities[p.id] || 0;
+        return `
+            <article class="product-card" style="animation-delay: ${i * 50}ms">
+                <div class="product-img">
+                    <img src="${p.image}" alt="${p.name}" loading="lazy">
+                    ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">${p.name}</h3>
+                    <p class="product-desc">${p.desc}</p>
+                    <div class="product-footer">
+                        <span class="product-price">${p.price} <span>₽</span></span>
+                        <div class="product-actions">
+                            ${p.customizable ? `
+                                <button class="customize-trigger" onclick="openCustomize(${p.id})">
+                                    <i class="fas fa-sliders"></i> Собрать
                                 </button>
-                                <span class="qty-value" id="qty-${product.id}">${qty}</span>
-                                <button class="qty-btn" onclick="changeQty(${product.id}, 1)">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <button class="add-btn" onclick="addToCart(${product.id})">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        `}
+                            ` : `
+                                <div class="qty-group">
+                                    <button class="qty-btn" onclick="changeQty(${p.id}, -1)"><i class="fas fa-minus"></i></button>
+                                    <span class="qty-num" id="qty-${p.id}">${qty}</span>
+                                    <button class="qty-btn" onclick="changeQty(${p.id}, 1)"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <button class="add-btn" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i></button>
+                            `}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    `;
+            </article>
+        `;
+    }).join('');
 }
 
-function renderProducts(category = 'all') {
-    const filtered = category === 'all' 
-        ? products 
-        : products.filter(p => p.category === category);
-    
-    productsGrid.innerHTML = '';
-    
-    filtered.forEach((product, index) => {
-        const div = document.createElement('div');
-        div.innerHTML = createProductCard(product);
-        const card = div.firstElementChild;
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        productsGrid.appendChild(card);
-        
-        setTimeout(() => {
-            card.style.transition = 'all 0.3s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 50);
-    });
+function changeQty(id, delta) {
+    const current = quantities[id] || 0;
+    quantities[id] = Math.max(0, current + delta);
+    const el = $(`#qty-${id}`);
+    if (el) el.textContent = quantities[id];
 }
 
-function changeQty(productId, delta) {
-    const current = productQuantities[productId] || 0;
-    const newQty = Math.max(0, current + delta);
-    productQuantities[productId] = newQty;
-    
-    const qtyEl = document.getElementById(`qty-${productId}`);
-    if (qtyEl) {
-        qtyEl.textContent = newQty;
-    }
-}
-
-// Category Filter
-filterBtns.forEach(btn => {
+// Category filter
+$$('.menu-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        $$('.menu-nav-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         renderProducts(btn.dataset.category);
     });
 });
 
 // ============================================
-// Shawarma Customization
+// Customize Shawarma
 // ============================================
-function openCustomize(productId) {
+function openCustomize(id) {
     selectedExtras = [];
-    customQuantity = 1;
+    customQty = 1;
+    customQtyEl.textContent = customQty;
     
-    // Render extras
-    extrasGrid.innerHTML = shawarmaExtras.map(extra => `
-        <div class="extra-item" data-id="${extra.id}" onclick="toggleExtra('${extra.id}')">
-            <div class="extra-checkbox">
-                <i class="fas fa-check" style="display: none;"></i>
-            </div>
-            <span class="extra-name">${extra.name}</span>
+    extrasList.innerHTML = extras.map(e => `
+        <div class="extra-item" data-id="${e.id}" onclick="toggleExtra('${e.id}')">
+            <div class="extra-check"><i class="fas fa-check"></i></div>
+            <span class="extra-name">${e.name}</span>
         </div>
     `).join('');
     
-    updateCustomizeTotal();
-    customQtyValue.textContent = customQuantity;
+    updateCustomTotal();
+    customizeOverlay.classList.add('active');
     customizeModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-function toggleExtra(extraId) {
-    const item = document.querySelector(`.extra-item[data-id="${extraId}"]`);
-    const checkIcon = item.querySelector('.fa-check');
-    
-    if (selectedExtras.includes(extraId)) {
-        selectedExtras = selectedExtras.filter(id => id !== extraId);
-        item.classList.remove('selected');
-        checkIcon.style.display = 'none';
-    } else {
-        selectedExtras.push(extraId);
-        item.classList.add('selected');
-        checkIcon.style.display = 'block';
-    }
-    
-    updateCustomizeTotal();
-}
-
-function updateCustomizeTotal() {
-    const basePrice = 250;
-    const extrasPrice = selectedExtras.length * 50;
-    const total = (basePrice + extrasPrice) * customQuantity;
-    customizeTotal.textContent = `${total} ₽`;
-}
-
-customQtyMinus.addEventListener('click', () => {
-    if (customQuantity > 1) {
-        customQuantity--;
-        customQtyValue.textContent = customQuantity;
-        updateCustomizeTotal();
-    }
-});
-
-customQtyPlus.addEventListener('click', () => {
-    customQuantity++;
-    customQtyValue.textContent = customQuantity;
-    updateCustomizeTotal();
-});
-
-addCustomShawarma.addEventListener('click', () => {
-    const basePrice = 250;
-    const extrasPrice = selectedExtras.length * 50;
-    const unitPrice = basePrice + extrasPrice;
-    
-    const extrasNames = selectedExtras.map(id => {
-        const extra = shawarmaExtras.find(e => e.id === id);
-        return extra ? extra.name : '';
-    }).filter(n => n);
-    
-    const cartItem = {
-        id: `shawarma-${Date.now()}`,
-        name: 'Шаурма с курицей',
-        price: unitPrice,
-        quantity: customQuantity,
-        icon: 'fas fa-burger',
-        extras: extrasNames,
-        isCustom: true
-    };
-    
-    cart.push(cartItem);
-    updateCart();
-    closeCustomizeModal();
-    showToast('Шаурма добавлена в корзину');
-});
-
-function closeCustomizeModal() {
+function closeCustomize() {
+    customizeOverlay.classList.remove('active');
     customizeModal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-closeCustomize.addEventListener('click', closeCustomizeModal);
-customizeModal.addEventListener('click', (e) => {
-    if (e.target === customizeModal) closeCustomizeModal();
+function toggleExtra(id) {
+    const item = $(`.extra-item[data-id="${id}"]`);
+    if (selectedExtras.includes(id)) {
+        selectedExtras = selectedExtras.filter(e => e !== id);
+        item.classList.remove('selected');
+    } else {
+        selectedExtras.push(id);
+        item.classList.add('selected');
+    }
+    updateCustomTotal();
+}
+
+function updateCustomTotal() {
+    const base = 250;
+    const extrasTotal = selectedExtras.length * EXTRA_PRICE;
+    const total = (base + extrasTotal) * customQty;
+    customTotalEl.textContent = `${total} ₽`;
+}
+
+customMinus.addEventListener('click', () => {
+    if (customQty > 1) {
+        customQty--;
+        customQtyEl.textContent = customQty;
+        updateCustomTotal();
+    }
 });
 
+customPlus.addEventListener('click', () => {
+    customQty++;
+    customQtyEl.textContent = customQty;
+    updateCustomTotal();
+});
+
+addCustomBtn.addEventListener('click', () => {
+    const base = 250;
+    const extrasTotal = selectedExtras.length * EXTRA_PRICE;
+    const unitPrice = base + extrasTotal;
+    
+    const extrasNames = selectedExtras.map(id => extras.find(e => e.id === id)?.name).filter(Boolean);
+    
+    cart.push({
+        id: `custom-${Date.now()}`,
+        name: 'Шаурма с курицей',
+        price: unitPrice,
+        quantity: customQty,
+        image: images.shawarma,
+        extras: extrasNames,
+        isCustom: true
+    });
+    
+    updateCart();
+    closeCustomize();
+    showToast('Шаурма добавлена в корзину');
+});
+
+customizeClose.addEventListener('click', closeCustomize);
+customizeOverlay.addEventListener('click', closeCustomize);
+
 // ============================================
-// Cart Functions
+// Cart
 // ============================================
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
+function addToCart(id) {
+    const product = products.find(p => p.id === id);
     if (!product) return;
     
-    const qty = productQuantities[productId] || 1;
-    if (qty === 0) {
-        productQuantities[productId] = 1;
-    }
+    const qty = quantities[id] || 1;
+    const existing = cart.find(item => item.id === id && !item.isCustom);
     
-    const existingItem = cart.find(item => item.id === productId && !item.isCustom);
-    
-    if (existingItem) {
-        existingItem.quantity += (productQuantities[productId] || 1);
+    if (existing) {
+        existing.quantity += qty;
     } else {
         cart.push({
             id: product.id,
             name: product.name,
             price: product.price,
-            icon: product.icon,
-            quantity: productQuantities[productId] || 1
+            image: product.image,
+            quantity: qty
         });
     }
     
-    productQuantities[productId] = 0;
-    const qtyEl = document.getElementById(`qty-${productId}`);
-    if (qtyEl) qtyEl.textContent = '0';
+    quantities[id] = 0;
+    const el = $(`#qty-${id}`);
+    if (el) el.textContent = '0';
     
     updateCart();
-    showToast(`${product.name} добавлен в корзину`);
+    showToast(`${product.name} — добавлено`);
 }
 
-function removeFromCart(cartItemId) {
-    cart = cart.filter(item => {
-        if (item.isCustom) {
-            return item.id !== cartItemId;
-        }
-        return item.id !== cartItemId;
-    });
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
     updateCart();
 }
 
-function updateCartItemQty(cartItemId, delta, isCustom = false) {
-    const item = cart.find(i => {
-        if (isCustom) return i.id === cartItemId;
-        return i.id === cartItemId && !i.isCustom;
-    });
-    
+function updateCartQty(id, delta) {
+    const item = cart.find(i => i.id === id);
     if (!item) return;
     
     item.quantity += delta;
-    
     if (item.quantity <= 0) {
-        removeFromCart(cartItemId);
+        removeFromCart(id);
     } else {
         updateCart();
     }
 }
 
 function updateCart() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+    const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartBadge.textContent = totalQty;
     
     if (cart.length === 0) {
-        cartItems.innerHTML = `
-            <div class="empty-cart">
+        cartBody.innerHTML = `
+            <div class="cart-empty">
                 <i class="fas fa-shopping-bag"></i>
                 <p>Корзина пуста</p>
             </div>
         `;
     } else {
-        cartItems.innerHTML = cart.map(item => `
+        cartBody.innerHTML = cart.map(item => `
             <div class="cart-item">
-                <div class="cart-item-image">
-                    <i class="${item.icon}"></i>
+                <div class="cart-item-img">
+                    <img src="${item.image}" alt="${item.name}">
                 </div>
                 <div class="cart-item-info">
-                    <h4 class="cart-item-title">${item.name}</h4>
-                    ${item.extras && item.extras.length > 0 ? `
-                        <p class="cart-item-extras">+ ${item.extras.join(', ')}</p>
-                    ` : ''}
+                    <h4 class="cart-item-name">${item.name}</h4>
+                    ${item.extras?.length ? `<p class="cart-item-extras">+ ${item.extras.join(', ')}</p>` : ''}
                     <span class="cart-item-price">${item.price * item.quantity} ₽</span>
                 </div>
-                <div class="cart-item-controls">
-                    <button class="remove-btn" onclick="removeFromCart('${item.id}')">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                <div class="cart-item-actions">
+                    <button class="cart-remove" onclick="removeFromCart('${item.id}')"><i class="fas fa-trash"></i></button>
                     <div class="cart-qty">
-                        <button onclick="updateCartItemQty('${item.id}', -1, ${item.isCustom || false})">
-                            <i class="fas fa-minus"></i>
-                        </button>
+                        <button onclick="updateCartQty('${item.id}', -1)"><i class="fas fa-minus"></i></button>
                         <span>${item.quantity}</span>
-                        <button onclick="updateCartItemQty('${item.id}', 1, ${item.isCustom || false})">
-                            <i class="fas fa-plus"></i>
-                        </button>
+                        <button onclick="updateCartQty('${item.id}', 1)"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </div>
         `).join('');
     }
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    totalPrice.textContent = `${total.toLocaleString('ru-RU')} ₽`;
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    cartTotal.textContent = `${total.toLocaleString('ru-RU')} ₽`;
     
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -592,108 +368,85 @@ function updateCart() {
 function loadCart() {
     const saved = localStorage.getItem('cart');
     if (saved) {
-        cart = JSON.parse(saved);
-        updateCart();
+        try {
+            cart = JSON.parse(saved);
+            updateCart();
+        } catch (e) {
+            cart = [];
+        }
     }
 }
 
-// ============================================
-// Modal Functions
-// ============================================
-function openCartModal() {
-    cartModal.classList.add('active');
+// Cart drawer
+function openCart() {
+    cartOverlay.classList.add('active');
+    cartDrawer.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-function closeCartModal() {
-    cartModal.classList.remove('active');
+function closeCart() {
+    cartOverlay.classList.remove('active');
+    cartDrawer.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-cartBtn.addEventListener('click', openCartModal);
-closeCart.addEventListener('click', closeCartModal);
-cartModal.addEventListener('click', (e) => {
-    if (e.target === cartModal) closeCartModal();
-});
+cartTrigger.addEventListener('click', openCart);
+cartClose.addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
 
-closeSuccess.addEventListener('click', () => {
-    successModal.classList.remove('active');
-    document.body.style.overflow = '';
-});
-
-successModal.addEventListener('click', (e) => {
-    if (e.target === successModal) {
-        successModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
+// Checkout
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         showToast('Корзина пуста');
         return;
     }
-    
-    closeCartModal();
+    closeCart();
     setTimeout(() => {
+        successOverlay.classList.add('active');
         successModal.classList.add('active');
         cart = [];
         updateCart();
     }, 300);
 });
 
-// ============================================
-// Mobile Menu
-// ============================================
-burgerMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-});
+function closeSuccess() {
+    successOverlay.classList.remove('active');
+    successModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-    });
-});
+successClose.addEventListener('click', closeSuccess);
+successOverlay.addEventListener('click', closeSuccess);
 
 // ============================================
 // Toast
 // ============================================
 function showToast(message) {
-    const existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-    
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `<i class="fas fa-check"></i> ${message}`;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => toast.classList.add('show'), 10);
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 2500);
+    toastText.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
 // ============================================
 // Contact Form
 // ============================================
-document.getElementById('contactForm').addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     showToast('Сообщение отправлено!');
-    e.target.reset();
+    contactForm.reset();
 });
 
 // ============================================
 // Smooth Scroll
 // ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+$$('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = $(this.getAttribute('href'));
         if (target) {
-            const headerHeight = header.offsetHeight;
+            const offset = $('#header').offsetHeight;
             window.scrollTo({
-                top: target.offsetTop - headerHeight,
+                top: target.offsetTop - offset,
                 behavior: 'smooth'
             });
         }
@@ -701,15 +454,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================
+// Mobile Menu
+// ============================================
+menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+
+// ============================================
 // Keyboard
 // ============================================
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        closeCartModal();
-        closeCustomizeModal();
-        successModal.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        closeCart();
+        closeCustomize();
+        closeSuccess();
     }
 });
 
@@ -721,3 +479,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     loadCart();
 });
+
+// Make functions global
+window.changeQty = changeQty;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateCartQty = updateCartQty;
+window.openCustomize = openCustomize;
+window.toggleExtra = toggleExtra;

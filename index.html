@@ -3,282 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вкусно и Быстро | Шаурма, хот-доги, кофе</title>
+    <title>Вкусно и Быстро | Доставка еды</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-fire-flame-curved"></i>
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-mark">ВБ</div>
+                    <div class="logo-text">
+                        <span class="logo-name">Вкусно и Быстро</span>
+                        <span class="logo-tagline">Доставка еды</span>
                     </div>
-                    <span>Вкусно и Быстро</span>
-                </div>
-                <nav class="nav">
-                    <a href="#menu">Меню</a>
-                    <a href="#about">О нас</a>
-                    <a href="#delivery">Доставка</a>
-                    <a href="#contacts">Контакты</a>
+                </a>
+                
+                <nav class="nav" id="nav">
+                    <a href="#menu" class="nav-link">Меню</a>
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#delivery" class="nav-link">Доставка</a>
+                    <a href="#contacts" class="nav-link">Контакты</a>
                 </nav>
+                
                 <div class="header-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <button class="theme-btn" id="themeBtn" aria-label="Сменить тему">
                         <i class="fas fa-sun"></i>
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="tel:+79991234567" class="phone">
-                        <i class="fas fa-phone"></i>
-                        <span>+7 (999) 123-45-67</span>
+                    
+                    <a href="tel:+79991234567" class="header-phone">
+                        <div class="phone-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="phone-info">
+                            <span class="phone-label">Заказать</span>
+                            <span class="phone-number">+7 999 123-45-67</span>
+                        </div>
                     </a>
-                    <button class="cart-btn" id="cartBtn">
+                    
+                    <button class="cart-trigger" id="cartTrigger">
                         <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count" id="cartCount">0</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
                     </button>
                 </div>
-                <button class="burger-menu" id="burgerMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <nav class="mobile-nav">
-            <a href="#menu">Меню</a>
-            <a href="#about">О нас</a>
-            <a href="#delivery">Доставка</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
-    </div>
-
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1920&q=80" alt="" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt"></i>
-                        Доставка за 30 минут
-                    </div>
-                    <h1>Вкусно и <span class="gold">Быстро</span></h1>
-                    <p>Шаурма, хот-доги, хачапури и многое другое. Готовим из свежих продуктов с любовью.</p>
-                    <div class="hero-buttons">
-                        <a href="#menu" class="btn btn-primary">
-                            <i class="fas fa-utensils"></i>
-                            Смотреть меню
-                        </a>
-                        <a href="tel:+79991234567" class="btn btn-secondary">
-                            <i class="fas fa-phone"></i>
-                            Позвонить
-                        </a>
-                    </div>
+                <div class="hero-badge">
+                    <i class="fas fa-fire"></i>
+                    <span>Доставка 30 минут</span>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-card">
-                        <i class="fas fa-burger"></i>
-                    </div>
+                <h1 class="hero-title">
+                    Вкусно
+                    <span class="hero-title-accent">&</span>
+                    Быстро
+                </h1>
+                <p class="hero-desc">Шаурма, хачапури, хот-доги и многое другое.<br>Готовим из свежих продуктов с любовью к каждому блюду.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-primary btn-lg">
+                        <span>Смотреть меню</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:+79991234567" class="btn btn-glass btn-lg">
+                        <i class="fas fa-phone"></i>
+                        <span>Позвонить</span>
+                    </a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">30</span>
+                        <span class="hero-stat-label">минут доставка</span>
                     </div>
-                    <h3>Свежие продукты</h3>
-                    <p>Закупаем каждый день</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">50+</span>
+                        <span class="hero-stat-label">позиций меню</span>
                     </div>
-                    <h3>Быстро</h3>
-                    <p>Доставка 30 минут</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">4.9</span>
+                        <span class="hero-stat-label">рейтинг</span>
                     </div>
-                    <h3>Качество</h3>
-                    <p>Гарантируем вкус</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>С любовью</h3>
-                    <p>Готовим для вас</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section class="menu-section" id="menu">
-        <div class="container">
-            <div class="section-header">
-                <h2>Наше <span class="gold">меню</span></h2>
-                <p>Выберите блюдо на свой вкус</p>
-            </div>
-
-            <!-- Category Filter -->
-            <div class="category-filter">
-                <button class="filter-btn active" data-category="all">Всё</button>
-                <button class="filter-btn" data-category="hot">Горячее</button>
-                <button class="filter-btn" data-category="hotdog">Хот-доги</button>
-                <button class="filter-btn" data-category="bakery">Выпечка</button>
-                <button class="filter-btn" data-category="dessert">Десерты</button>
-                <button class="filter-btn" data-category="drinks">Напитки</button>
-                <button class="filter-btn" data-category="beer">Пиво</button>
-                <button class="filter-btn" data-category="coffee">Кофе и чай</button>
-            </div>
-
-            <!-- Products Grid -->
-            <div class="products-grid" id="productsGrid">
-                <!-- Product cards will be inserted by JavaScript -->
-            </div>
+        <div class="hero-scroll">
+            <span>Листай вниз</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
+    <!-- Menu -->
+    <section class="menu" id="menu">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>О нас</h2>
-                    <p>«Вкусно и Быстро» — это место, где традиционные рецепты встречаются с современным качеством. Мы используем только свежие ингредиенты и готовим каждое блюдо с душой.</p>
-                    <p>Наша команда работает для вас каждый день, чтобы вы могли насладиться вкусной едой в любое время.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">лет работы</span>
+            <div class="section-head">
+                <div class="section-head-left">
+                    <span class="section-label">Меню</span>
+                    <h2 class="section-title">Выбери своё <span class="gold">блюдо</span></h2>
+                </div>
+                <div class="section-head-right">
+                    <p class="section-desc">Всё готовится из свежих продуктов при заказе</p>
+                </div>
+            </div>
+            
+            <div class="menu-nav">
+                <button class="menu-nav-btn active" data-category="all">Всё меню</button>
+                <button class="menu-nav-btn" data-category="hot">Горячее</button>
+                <button class="menu-nav-btn" data-category="hotdog">Хот-доги</button>
+                <button class="menu-nav-btn" data-category="bakery">Выпечка</button>
+                <button class="menu-nav-btn" data-category="dessert">Десерты</button>
+                <button class="menu-nav-btn" data-category="drinks">Напитки</button>
+                <button class="menu-nav-btn" data-category="coffee">Кофе</button>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <div class="about-img about-img-1">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Блюдо">
+                    </div>
+                    <div class="about-img about-img-2">
+                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80" alt="Кухня">
+                    </div>
+                    <div class="about-badge">
+                        <span class="about-badge-value">5+</span>
+                        <span class="about-badge-label">лет работы</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label">О нас</span>
+                    <h2 class="section-title">Готовим с <span class="gold">душой</span></h2>
+                    <p class="about-text">«Вкусно и Быстро» — это команда профессионалов, которые любят своё дело. Мы не просто готовим еду — мы создаём гастрономические впечатления.</p>
+                    <p class="about-text">Каждый день мы тщательно отбираем свежие продукты, следим за качеством и готовим каждое блюдо так, словно это для наших близких.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <strong>Свежие продукты</strong>
+                                <span>Закупаем каждое утро</span>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">10K+</span>
-                            <span class="stat-label">клиентов</span>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <strong>Готовим при вас</strong>
+                                <span>Никаких заготовок</span>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">4.9</span>
-                            <span class="stat-label">рейтинг</span>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <strong>С любовью</strong>
+                                <span>К каждому блюду</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="about-card">
-                        <i class="fas fa-store"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Delivery Section -->
-    <section class="delivery-section" id="delivery">
+    <!-- Delivery -->
+    <section class="delivery" id="delivery">
         <div class="container">
-            <div class="section-header">
-                <h2>Доставка</h2>
-                <p>Привезём горячим</p>
+            <div class="section-head section-head-center">
+                <span class="section-label">Доставка</span>
+                <h2 class="section-title">Привезём <span class="gold">горячим</span></h2>
+                <p class="section-desc">Быстрая доставка по всему городу в термоупаковке</p>
             </div>
             <div class="delivery-grid">
                 <div class="delivery-card">
-                    <div class="delivery-icon">
+                    <div class="delivery-card-icon">
                         <i class="fas fa-truck-fast"></i>
                     </div>
-                    <h3>Бесплатно</h3>
-                    <p>От 1000 ₽</p>
+                    <h3 class="delivery-card-title">Бесплатно от 1000 ₽</h3>
+                    <p class="delivery-card-desc">Бесплатная доставка при заказе от 1000 рублей</p>
                 </div>
                 <div class="delivery-card">
-                    <div class="delivery-icon">
-                        <i class="fas fa-stopwatch"></i>
+                    <div class="delivery-card-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3>30 минут</h3>
-                    <p>Среднее время</p>
+                    <h3 class="delivery-card-title">30 минут</h3>
+                    <p class="delivery-card-desc">Среднее время доставки по городу</p>
                 </div>
                 <div class="delivery-card">
-                    <div class="delivery-icon">
+                    <div class="delivery-card-icon">
                         <i class="fas fa-box"></i>
                     </div>
-                    <h3>Термоупаковка</h3>
-                    <p>Сохраняем тепло</p>
+                    <h3 class="delivery-card-title">Термоупаковка</h3>
+                    <p class="delivery-card-desc">Сохраняем температуру и свежесть</p>
                 </div>
                 <div class="delivery-card">
-                    <div class="delivery-icon">
-                        <i class="fas fa-credit-card"></i>
+                    <div class="delivery-card-icon">
+                        <i class="fas fa-wallet"></i>
                     </div>
-                    <h3>Любая оплата</h3>
-                    <p>Карта / наличные</p>
+                    <h3 class="delivery-card-title">Любая оплата</h3>
+                    <p class="delivery-card-desc">Наличные, карта, онлайн перевод</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacts Section -->
-    <section class="contacts-section" id="contacts">
+    <!-- Contacts -->
+    <section class="contacts" id="contacts">
         <div class="container">
-            <div class="contacts-content">
+            <div class="contacts-grid">
                 <div class="contacts-info">
-                    <h2>Контакты</h2>
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Адрес</h4>
-                                <p>г. Москва, ул. Пушкина, д. 15</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                    <span class="section-label">Контакты</span>
+                    <h2 class="section-title">Свяжитесь <span class="gold">с нами</span></h2>
+                    <div class="contacts-list">
+                        <a href="tel:+79991234567" class="contact-item">
+                            <div class="contact-item-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div>
-                                <h4>Телефон</h4>
-                                <p>+7 (999) 123-45-67</p>
+                            <div class="contact-item-text">
+                                <span class="contact-item-label">Телефон</span>
+                                <strong>+7 999 123-45-67</strong>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div class="contact-item-text">
+                                <span class="contact-item-label">Адрес</span>
+                                <strong>г. Москва, ул. Пушкина, 15</strong>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">
+                            <div class="contact-item-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <div>
-                                <h4>Время работы</h4>
-                                <p>10:00 — 23:00</p>
+                            <div class="contact-item-text">
+                                <span class="contact-item-label">Время работы</span>
+                                <strong>Ежедневно 10:00 — 23:00</strong>
                             </div>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <div class="contacts-social">
+                        <a href="#" class="social-btn"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-vk"></i></a>
                     </div>
                 </div>
-                <div class="contacts-form">
-                    <h3>Обратная связь</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Ваше имя" required>
+                <div class="contacts-form-wrap">
+                    <form class="contacts-form" id="contactForm">
+                        <h3 class="contacts-form-title">Обратная связь</h3>
+                        <div class="form-row">
+                            <input type="text" class="form-input" placeholder="Ваше имя" required>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Телефон" required>
+                        <div class="form-row">
+                            <input type="tel" class="form-input" placeholder="Телефон" required>
                         </div>
-                        <div class="form-group">
-                            <textarea placeholder="Сообщение" rows="3"></textarea>
+                        <div class="form-row">
+                            <textarea class="form-input form-textarea" placeholder="Сообщение" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Отправить</button>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Отправить</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -288,116 +300,117 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-fire-flame-curved"></i>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-mark">ВБ</div>
+                        <div class="logo-text">
+                            <span class="logo-name">Вкусно и Быстро</span>
                         </div>
-                        <span>Вкусно и Быстро</span>
-                    </div>
-                    <p>Готовим с любовью каждый день</p>
+                    </a>
+                    <p class="footer-brand-desc">Готовим вкусную еду с любовью и доставляем быстро.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Меню</h4>
+                <div class="footer-nav">
+                    <h4 class="footer-nav-title">Меню</h4>
                     <a href="#menu">Горячее</a>
                     <a href="#menu">Хот-доги</a>
                     <a href="#menu">Выпечка</a>
                     <a href="#menu">Напитки</a>
                 </div>
-                <div class="footer-links">
-                    <h4>Инфо</h4>
+                <div class="footer-nav">
+                    <h4 class="footer-nav-title">Информация</h4>
                     <a href="#about">О нас</a>
                     <a href="#delivery">Доставка</a>
                     <a href="#contacts">Контакты</a>
                 </div>
                 <div class="footer-contact">
-                    <h4>Контакты</h4>
-                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <h4 class="footer-nav-title">Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 999 123-45-67</p>
                     <p><i class="fas fa-clock"></i> 10:00 — 23:00</p>
+                    <p><i class="fas fa-location-dot"></i> Москва, ул. Пушкина, 15</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Вкусно и Быстро</p>
+                <p>© 2024 Вкусно и Быстро. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Cart Modal -->
-    <div class="modal-overlay" id="cartModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3><i class="fas fa-shopping-bag"></i> Корзина</h3>
-                <button class="modal-close" id="closeCart">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fas fa-shopping-bag"></i> Корзина</h3>
+            <button class="cart-drawer-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-drawer-body" id="cartBody"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total">
+                <span>Итого</span>
+                <strong id="cartTotal">0 ₽</strong>
             </div>
-            <div class="modal-body" id="cartItems"></div>
-            <div class="modal-footer">
-                <div class="cart-total">
-                    <span>Итого:</span>
-                    <span class="total-price" id="totalPrice">0 ₽</span>
-                </div>
-                <button class="btn btn-primary btn-full" id="checkoutBtn">
-                    Оформить заказ
-                </button>
-            </div>
+            <button class="btn btn-primary btn-full" id="checkoutBtn">
+                <span>Оформить заказ</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Shawarma Customization Modal -->
-    <div class="modal-overlay" id="customizeModal">
-        <div class="modal modal-large">
-            <div class="modal-header">
-                <h3><i class="fas fa-sliders"></i> Собери свою шаурму</h3>
-                <button class="modal-close" id="closeCustomize">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="customize-content">
-                    <div class="customize-base">
-                        <h4>Шаурма с курицей</h4>
-                        <p class="base-price">Базовая цена: <span>250 ₽</span></p>
-                    </div>
-                    <div class="customize-extras">
-                        <h4>Дополнительные ингредиенты <span class="extra-price-tag">+50 ₽ каждый</span></h4>
-                        <div class="extras-grid" id="extrasGrid">
-                            <!-- Extras will be inserted by JS -->
-                        </div>
-                    </div>
-                    <div class="customize-quantity">
-                        <h4>Количество</h4>
-                        <div class="quantity-selector">
-                            <button class="qty-btn" id="customQtyMinus"><i class="fas fa-minus"></i></button>
-                            <span class="qty-value" id="customQtyValue">1</span>
-                            <button class="qty-btn" id="customQtyPlus"><i class="fas fa-plus"></i></button>
-                        </div>
-                    </div>
+    <!-- Customize Modal -->
+    <div class="modal-overlay" id="customizeOverlay"></div>
+    <div class="modal" id="customizeModal">
+        <div class="modal-header">
+            <h3>Собери шаурму</h3>
+            <button class="modal-close" id="customizeClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="customize-hero">
+                <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80" alt="Шаурма">
+                <div class="customize-hero-info">
+                    <h4>Шаурма с курицей</h4>
+                    <p>Базовая цена: <span class="gold">250 ₽</span></p>
                 </div>
             </div>
-            <div class="modal-footer">
-                <div class="customize-total">
-                    <span>Итого:</span>
-                    <span class="total-price" id="customizeTotal">250 ₽</span>
-                </div>
-                <button class="btn btn-primary btn-full" id="addCustomShawarma">
-                    Добавить в корзину
-                </button>
+            <div class="customize-section">
+                <h4>Добавки <span class="gold">+50 ₽</span></h4>
+                <div class="extras-list" id="extrasList"></div>
             </div>
+            <div class="customize-section">
+                <h4>Количество</h4>
+                <div class="qty-selector">
+                    <button class="qty-btn" id="customMinus"><i class="fas fa-minus"></i></button>
+                    <span class="qty-num" id="customQty">1</span>
+                    <button class="qty-btn" id="customPlus"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-total">
+                <span>Итого:</span>
+                <strong id="customTotal">250 ₽</strong>
+            </div>
+            <button class="btn btn-primary btn-full" id="addCustomBtn">
+                <span>Добавить в корзину</span>
+                <i class="fas fa-plus"></i>
+            </button>
         </div>
     </div>
 
     <!-- Success Modal -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal success-modal">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>Заказ оформлен!</h3>
-            <p>Мы позвоним вам для подтверждения</p>
-            <button class="btn btn-primary" id="closeSuccess">Отлично!</button>
-        </div>
+    <div class="modal-overlay" id="successOverlay"></div>
+    <div class="modal modal-success" id="successModal">
+        <div class="success-icon"><i class="fas fa-check"></i></div>
+        <h3>Заказ оформлен!</h3>
+        <p>Мы позвоним вам в течение 5 минут для подтверждения</p>
+        <button class="btn btn-primary" id="successClose">Отлично</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">Добавлено в корзину</span>
     </div>
 
     <script src="script.js"></script>
