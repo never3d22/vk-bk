@@ -20,6 +20,11 @@ const menuCategories = [
         badge: "Хит",
         image:
           "https://images.unsplash.com/photo-1604908554027-1c7e7f0f4cc5?auto=format&fit=crop&w=900&q=80",
+        extrasOptions: [
+          { id: "cheese", label: "Доп сыр", price: 40 },
+          { id: "jalapeno", label: "Халапеньо", price: 30 },
+          { id: "sauce", label: "Соус", price: 20 },
+        ],
         ingredients: ["Курица", "Лаваш", "Овощи", "Соус чесночный"],
       },
       {
@@ -430,18 +435,13 @@ const getMenuImage = (item, category) => {
   });
 };
 
-const EXTRA_INGREDIENTS = {
-  label: "Доп. ингредиенты",
-  price: 50,
-};
-
 const menuItems = menuCategories.flatMap((category) =>
   category.items.map((item) => ({
     ...item,
     image: getMenuImage(item, category),
     category: category.title,
     type: "menu",
-    extras: 0,
+    extrasSelections: {},
   }))
 );
 
@@ -488,6 +488,35 @@ const renderMenu = () => {
             .map((ingredient) => `<li>${ingredient}</li>`)
             .join("");
           const imageSrc = getMenuImage(item, category);
+          const extrasMarkup = (item.extrasOptions ?? [])
+            .map(
+              (extra) => `
+                <div class="menu-extra">
+                  <span class="menu-extra-label">${extra.label}</span>
+                  <div class="menu-extras-controls">
+                    <button
+                      type="button"
+                      data-menu-action="extra-decrease"
+                      data-id="${item.id}"
+                      data-extra="${extra.id}"
+                    >
+                      −
+                    </button>
+                    <span class="menu-extras-value" data-extra-value="${item.id}:${extra.id}">0</span>
+                    <button
+                      type="button"
+                      data-menu-action="extra-increase"
+                      data-id="${item.id}"
+                      data-extra="${extra.id}"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <span class="menu-extras-price">+${formatPrice(extra.price)}</span>
+                </div>
+              `
+            )
+            .join("");
           return `
             <article class="menu-card reveal">
               <div class="menu-card-media">
@@ -510,19 +539,18 @@ const renderMenu = () => {
                   `
                   : ""
               }
-              <div class="menu-extras">
-                <span>${EXTRA_INGREDIENTS.label}</span>
-                <div class="menu-extras-controls">
-                  <button type="button" data-menu-action="extras-decrease" data-id="${item.id}">
-                    −
-                  </button>
-                  <span class="menu-extras-value" data-extras="${item.id}">0</span>
-                  <button type="button" data-menu-action="extras-increase" data-id="${item.id}">
-                    +
-                  </button>
-                </div>
-                <span class="menu-extras-price">+${formatPrice(EXTRA_INGREDIENTS.price)}</span>
-              </div>
+              ${
+                extrasMarkup
+                  ? `
+                    <div class="menu-extras">
+                      <span class="menu-extras-title">Дополнительно</span>
+                      <div class="menu-extras-list">
+                        ${extrasMarkup}
+                      </div>
+                    </div>
+                  `
+                  : ""
+              }
               <div class="menu-card-footer">
                 <div class="menu-qty">
                   <button type="button" data-menu-action="decrease" data-id="${item.id}">−</button>
@@ -605,12 +633,17 @@ const setupMenuFilters = () => {
 const updateMenuCardState = (id) => {
   const item = cart.get(id);
   const qtyEl = document.querySelector(`[data-qty="${id}"]`);
-  const extrasEl = document.querySelector(`[data-extras="${id}"]`);
   if (qtyEl) {
     qtyEl.textContent = item?.quantity ?? 0;
   }
-  if (extrasEl) {
-    extrasEl.textContent = item?.extras ?? 0;
+  const baseItem = findItemById(id);
+  if (baseItem?.extrasOptions) {
+    baseItem.extrasOptions.forEach((extra) => {
+      const extraEl = document.querySelector(`[data-extra-value="${id}:${extra.id}"]`);
+      if (extraEl) {
+        extraEl.textContent = item?.extrasSelections?.[extra.id] ?? 0;
+      }
+    });
   }
 };
 
@@ -623,7 +656,7 @@ const changeQuantity = (id, delta) => {
   if (!baseItem) {
     return;
   }
-  const item = cart.get(id) ?? { ...baseItem, quantity: 0, extras: 0 };
+  const item = cart.get(id) ?? { ...baseItem, quantity: 0, extrasSelections: {} };
   item.quantity += delta;
   if (item.quantity <= 0) {
     cart.delete(id);
@@ -634,28 +667,45 @@ const changeQuantity = (id, delta) => {
   updateMenuCardState(id);
 };
 
-const changeExtras = (id, delta) => {
+const changeExtra = (id, extraId, delta) => {
   const baseItem = findItemById(id);
-  if (!baseItem) {
+  if (!baseItem?.extrasOptions) {
     return;
   }
-  const item = cart.get(id) ?? { ...baseItem, quantity: 1, extras: 0 };
-  item.extras = Math.max(0, (item.extras ?? 0) + delta);
+  const extra = baseItem.extrasOptions.find((option) => option.id === extraId);
+  if (!extra) {
+    return;
+  }
+  const item = cart.get(id) ?? { ...baseItem, quantity: 1, extrasSelections: {} };
+  const current = item.extrasSelections?.[extraId] ?? 0;
+  const next = Math.max(0, current + delta);
+  const selections = { ...(item.extrasSelections ?? {}) };
+  if (next === 0) {
+    delete selections[extraId];
+  } else {
+    selections[extraId] = next;
+  }
+  item.extrasSelections = selections;
   if (item.quantity <= 0) {
     item.quantity = 1;
   }
-  if (item.quantity <= 0 && item.extras === 0) {
-    cart.delete(id);
-  } else {
-    cart.set(id, item);
-  }
+  cart.set(id, item);
   renderCart();
   updateMenuCardState(id);
 };
 
+const getExtrasTotalPerItem = (item) => {
+  if (!item.extrasOptions) {
+    return 0;
+  }
+  return item.extrasOptions.reduce(
+    (sum, extra) => sum + (item.extrasSelections?.[extra.id] ?? 0) * extra.price,
+    0
+  );
+};
+
 const getItemTotal = (item) => {
-  const extras = item.extras ?? 0;
-  return item.price * item.quantity + extras * EXTRA_INGREDIENTS.price * item.quantity;
+  return (item.price + getExtrasTotalPerItem(item)) * item.quantity;
 };
 
 const openCart = () => {
@@ -734,6 +784,33 @@ const renderCart = () => {
       (item) => {
         const metaParts = [getItemMeta(item), item.typeLabel].filter(Boolean).join(" · ");
         const itemTotal = getItemTotal(item);
+        const extrasOptions = item.extrasOptions ?? [];
+        const extrasSummary = extrasOptions
+          .filter((extra) => (item.extrasSelections?.[extra.id] ?? 0) > 0)
+          .map((extra) => `${extra.label}: ${item.extrasSelections?.[extra.id] ?? 0}`)
+          .join(", ");
+        const extrasSummaryMarkup = extrasSummary
+          ? `<div class="cart-item-extras">Дополнительно: ${extrasSummary}</div>`
+          : "";
+        const extrasControls = extrasOptions
+          .map((extra) => {
+            const count = item.extrasSelections?.[extra.id] ?? 0;
+            return `
+              <div class="cart-extra-row">
+                <span class="cart-extra-label">${extra.label} +${formatPrice(extra.price)}</span>
+                <div class="qty-control">
+                  <button type="button" data-action="extra-decrease" data-id="${item.id}" data-extra="${extra.id}">
+                    −
+                  </button>
+                  <span>${count}</span>
+                  <button type="button" data-action="extra-increase" data-id="${item.id}" data-extra="${extra.id}">
+                    +
+                  </button>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
         return `
         <div class="cart-item">
           <div class="cart-item-header">
@@ -746,13 +823,7 @@ const renderCart = () => {
               <div>
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-meta">${metaParts}</div>
-                ${
-                  item.extras
-                    ? `<div class="cart-item-extras">Доп. ингредиенты: ${item.extras} × ${formatPrice(
-                        EXTRA_INGREDIENTS.price
-                      )}</div>`
-                    : ""
-                }
+                ${extrasSummaryMarkup}
               </div>
             </div>
             <div class="price">${formatPrice(itemTotal)}</div>
@@ -767,18 +838,15 @@ const renderCart = () => {
                 +
               </button>
             </div>
-            <div class="extras-control">
-              <span>${EXTRA_INGREDIENTS.label}</span>
-              <div class="qty-control">
-                <button type="button" data-action="extras-decrease" data-id="${item.id}" aria-label="Уменьшить">
-                  −
-                </button>
-                <span>${item.extras ?? 0}</span>
-                <button type="button" data-action="extras-increase" data-id="${item.id}" aria-label="Увеличить">
-                  +
-                </button>
-              </div>
-            </div>
+            ${
+              extrasControls
+                ? `
+                  <div class="cart-extras-list">
+                    ${extrasControls}
+                  </div>
+                `
+                : ""
+            }
             <button class="remove-btn" type="button" data-action="remove" data-id="${item.id}">
               Удалить
             </button>
@@ -830,20 +898,33 @@ const initReveal = () => {
   if (revealItems.length === 0) {
     return;
   }
+  revealItems.forEach((item, index) => {
+    item.style.opacity = "0";
+    item.style.transform = "translateY(24px)";
+    item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    item.style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
+    item.style.willChange = "opacity, transform";
+  });
   if (prefersReducedMotion.matches) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+    revealItems.forEach((item) => {
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    });
     return;
   }
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          requestAnimationFrame(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          });
           currentObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.15 }
   );
   revealItems.forEach((item) => observer.observe(item));
 };
@@ -891,6 +972,25 @@ const applyGalleryFilter = (filter) => {
   });
 };
 
+const setupSmoothScroll = () => {
+  const links = Array.from(document.querySelectorAll('a[href^="#"]'));
+  links.forEach((link) => {
+    const hash = link.getAttribute("href");
+    if (!hash || hash === "#") {
+      return;
+    }
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(hash);
+      if (!target) {
+        return;
+      }
+      event.preventDefault();
+      const behavior = prefersReducedMotion.matches ? "auto" : "smooth";
+      target.scrollIntoView({ behavior, block: "start" });
+    });
+  });
+};
+
 document.addEventListener("click", (event) => {
   const menuAction = event.target.closest("[data-menu-action]");
   if (menuAction) {
@@ -900,10 +1000,10 @@ document.addEventListener("click", (event) => {
       changeQuantity(id, 1);
     } else if (action === "decrease") {
       changeQuantity(id, -1);
-    } else if (action === "extras-increase") {
-      changeExtras(id, 1);
-    } else if (action === "extras-decrease") {
-      changeExtras(id, -1);
+    } else if (action === "extra-increase") {
+      changeExtra(id, menuAction.dataset.extra, 1);
+    } else if (action === "extra-decrease") {
+      changeExtra(id, menuAction.dataset.extra, -1);
     }
     return;
   }
@@ -932,10 +1032,10 @@ if (cartItemsContainer) {
       updateQuantity(id, 1);
     } else if (action === "decrease") {
       updateQuantity(id, -1);
-    } else if (action === "extras-increase") {
-      changeExtras(id, 1);
-    } else if (action === "extras-decrease") {
-      changeExtras(id, -1);
+    } else if (action === "extra-increase") {
+      changeExtra(id, actionButton.dataset.extra, 1);
+    } else if (action === "extra-decrease") {
+      changeExtra(id, actionButton.dataset.extra, -1);
     } else if (action === "remove") {
       removeItem(id);
     }
@@ -1067,5 +1167,6 @@ setupMenuFilters();
 renderCart();
 updateAllMenuCards();
 initReveal();
+setupSmoothScroll();
 setSlide(0);
 startSlider();
