@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawarma House | Вкусная шаурма с доставкой</title>
+    <title>Вкусно и Быстро | Шаурма, хот-доги, кофе</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,7 +17,7 @@
                     <div class="logo-icon">
                         <i class="fas fa-fire-flame-curved"></i>
                     </div>
-                    <span>Shawarma House</span>
+                    <span>Вкусно и Быстро</span>
                 </div>
                 <nav class="nav">
                     <a href="#menu">Меню</a>
@@ -26,9 +26,13 @@
                     <a href="#contacts">Контакты</a>
                 </nav>
                 <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
                     <a href="tel:+79991234567" class="phone">
                         <i class="fas fa-phone"></i>
-                        +7 (999) 123-45-67
+                        <span>+7 (999) 123-45-67</span>
                     </a>
                     <button class="cart-btn" id="cartBtn">
                         <i class="fas fa-shopping-bag"></i>
@@ -54,95 +58,35 @@
         </nav>
     </div>
 
-    <!-- Hero Slider -->
-    <section class="hero-slider">
-        <div class="slider-container" id="slider">
-            <div class="slide active">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <div class="slide-badge">
-                            <i class="fas fa-bolt"></i>
-                            Доставка за 30 минут
-                        </div>
-                        <h1>Самая вкусная<br><span class="accent">шаурма</span> в городе</h1>
-                        <p>Готовим из свежих продуктов по авторским рецептам. Бесплатная доставка от 1000 ₽</p>
-                        <div class="slide-buttons">
-                            <a href="#menu" class="btn btn-primary">
-                                <i class="fas fa-utensils"></i>
-                                Смотреть меню
-                            </a>
-                            <a href="#delivery" class="btn btn-secondary">Условия доставки</a>
-                        </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-bolt"></i>
+                        Доставка за 30 минут
                     </div>
-                    <div class="slide-image">
-                        <div class="hero-card">
-                            <i class="fas fa-burger"></i>
-                            <span>Классическая шаурма</span>
-                        </div>
+                    <h1>Вкусно и <span class="gold">Быстро</span></h1>
+                    <p>Шаурма, хот-доги, хачапури и многое другое. Готовим из свежих продуктов с любовью.</p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">
+                            <i class="fas fa-utensils"></i>
+                            Смотреть меню
+                        </a>
+                        <a href="tel:+79991234567" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Позвонить
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <i class="fas fa-burger"></i>
                     </div>
                 </div>
             </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <div class="slide-badge">
-                            <i class="fas fa-percent"></i>
-                            Скидка до 30%
-                        </div>
-                        <h1>Выгодные<br><span class="accent">комбо</span> наборы</h1>
-                        <p>Закажи комбо для компании и сэкономь. Идеально для офиса, вечеринки или семейного ужина</p>
-                        <div class="slide-buttons">
-                            <a href="#menu" class="btn btn-primary">
-                                <i class="fas fa-box"></i>
-                                Выбрать комбо
-                            </a>
-                        </div>
-                    </div>
-                    <div class="slide-image">
-                        <div class="hero-card">
-                            <i class="fas fa-box-open"></i>
-                            <span>Комбо наборы</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <div class="slide-badge">
-                            <i class="fas fa-star"></i>
-                            Рейтинг 4.9
-                        </div>
-                        <h1>Более <span class="accent">50 000</span><br>довольных клиентов</h1>
-                        <p>Нас рекомендуют друзьям. Присоединяйтесь к нашему сообществу любителей вкусной еды</p>
-                        <div class="slide-buttons">
-                            <a href="#about" class="btn btn-primary">
-                                <i class="fas fa-info-circle"></i>
-                                Узнать о нас
-                            </a>
-                        </div>
-                    </div>
-                    <div class="slide-image">
-                        <div class="hero-card">
-                            <i class="fas fa-heart"></i>
-                            <span>Любовь клиентов</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slider-controls">
-            <button class="slider-btn prev" id="prevSlide">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="slider-dots" id="sliderDots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <button class="slider-btn next" id="nextSlide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
         </div>
     </section>
 
@@ -155,28 +99,28 @@
                         <i class="fas fa-leaf"></i>
                     </div>
                     <h3>Свежие продукты</h3>
-                    <p>Закупаем ингредиенты каждый день у проверенных поставщиков</p>
+                    <p>Закупаем каждый день</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Быстрая доставка</h3>
-                    <p>Привезём горячую шаурму за 30 минут или вернём деньги</p>
+                    <h3>Быстро</h3>
+                    <p>Доставка 30 минут</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3>Гарантия качества</h3>
-                    <p>Если не понравится — вернём деньги без лишних вопросов</p>
+                    <h3>Качество</h3>
+                    <p>Гарантируем вкус</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Удобный заказ</h3>
-                    <p>Заказывайте онлайн или по телефону в любое время</p>
+                    <h3>С любовью</h3>
+                    <p>Готовим для вас</p>
                 </div>
             </div>
         </div>
@@ -186,21 +130,20 @@
     <section class="menu-section" id="menu">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">
-                    <i class="fas fa-fire"></i>
-                    Популярное
-                </div>
-                <h2>Наше меню</h2>
-                <p>Выберите шаурму на свой вкус</p>
+                <h2>Наше <span class="gold">меню</span></h2>
+                <p>Выберите блюдо на свой вкус</p>
             </div>
 
             <!-- Category Filter -->
             <div class="category-filter">
-                <button class="filter-btn active" data-category="all">Все</button>
-                <button class="filter-btn" data-category="classic">Классика</button>
-                <button class="filter-btn" data-category="premium">Премиум</button>
-                <button class="filter-btn" data-category="spicy">Острые</button>
-                <button class="filter-btn" data-category="combo">Комбо</button>
+                <button class="filter-btn active" data-category="all">Всё</button>
+                <button class="filter-btn" data-category="hot">Горячее</button>
+                <button class="filter-btn" data-category="hotdog">Хот-доги</button>
+                <button class="filter-btn" data-category="bakery">Выпечка</button>
+                <button class="filter-btn" data-category="dessert">Десерты</button>
+                <button class="filter-btn" data-category="drinks">Напитки</button>
+                <button class="filter-btn" data-category="beer">Пиво</button>
+                <button class="filter-btn" data-category="coffee">Кофе и чай</button>
             </div>
 
             <!-- Products Grid -->
@@ -215,20 +158,16 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <div class="section-tag">
-                        <i class="fas fa-heart"></i>
-                        О нас
-                    </div>
-                    <h2>Готовим с любовью <span class="accent">с 2015 года</span></h2>
-                    <p>Мы начинали как маленькая точка на рынке, а сегодня — одна из самых популярных шаурмичных города. Наш секрет прост: качественные продукты, честные порции и уважение к клиентам.</p>
-                    <p>Каждый день мы готовим более 500 порций шаурмы, и каждая из них сделана с такой же заботой, как первая. Приходите — убедитесь сами!</p>
+                    <h2>О нас</h2>
+                    <p>«Вкусно и Быстро» — это место, где традиционные рецепты встречаются с современным качеством. Мы используем только свежие ингредиенты и готовим каждое блюдо с душой.</p>
+                    <p>Наша команда работает для вас каждый день, чтобы вы могли насладиться вкусной едой в любое время.</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">лет опыта</span>
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">лет работы</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">50K+</span>
+                            <span class="stat-number">10K+</span>
                             <span class="stat-label">клиентов</span>
                         </div>
                         <div class="stat">
@@ -240,7 +179,6 @@
                 <div class="about-image">
                     <div class="about-card">
                         <i class="fas fa-store"></i>
-                        <span>Наше заведение</span>
                     </div>
                 </div>
             </div>
@@ -251,41 +189,37 @@
     <section class="delivery-section" id="delivery">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">
-                    <i class="fas fa-truck"></i>
-                    Доставка
-                </div>
-                <h2>Быстро и удобно</h2>
-                <p>Привезём горячую шаурму прямо к вашей двери</p>
+                <h2>Доставка</h2>
+                <p>Привезём горячим</p>
             </div>
             <div class="delivery-grid">
                 <div class="delivery-card">
                     <div class="delivery-icon">
                         <i class="fas fa-truck-fast"></i>
                     </div>
-                    <h3>Бесплатная доставка</h3>
-                    <p>При заказе от 1000 ₽</p>
+                    <h3>Бесплатно</h3>
+                    <p>От 1000 ₽</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-icon">
                         <i class="fas fa-stopwatch"></i>
                     </div>
                     <h3>30 минут</h3>
-                    <p>Среднее время доставки</p>
+                    <p>Среднее время</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-icon">
                         <i class="fas fa-box"></i>
                     </div>
                     <h3>Термоупаковка</h3>
-                    <p>Сохраняем температуру</p>
+                    <p>Сохраняем тепло</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-icon">
                         <i class="fas fa-credit-card"></i>
                     </div>
                     <h3>Любая оплата</h3>
-                    <p>Картой или наличными</p>
+                    <p>Карта / наличные</p>
                 </div>
             </div>
         </div>
@@ -296,14 +230,10 @@
         <div class="container">
             <div class="contacts-content">
                 <div class="contacts-info">
-                    <div class="section-tag">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Контакты
-                    </div>
-                    <h2>Свяжитесь с нами</h2>
+                    <h2>Контакты</h2>
                     <div class="contact-items">
                         <div class="contact-item">
-                            <div class="contact-item-icon">
+                            <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
@@ -312,7 +242,7 @@
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-item-icon">
+                            <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
@@ -321,12 +251,12 @@
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-item-icon">
+                            <div class="contact-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
                                 <h4>Время работы</h4>
-                                <p>Ежедневно 10:00 — 23:00</p>
+                                <p>10:00 — 23:00</p>
                             </div>
                         </div>
                     </div>
@@ -334,11 +264,10 @@
                         <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
                     </div>
                 </div>
                 <div class="contacts-form">
-                    <h3>Оставить заявку</h3>
+                    <h3>Обратная связь</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" placeholder="Ваше имя" required>
@@ -347,12 +276,9 @@
                             <input type="tel" placeholder="Телефон" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Комментарий к заказу" rows="4"></textarea>
+                            <textarea placeholder="Сообщение" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fas fa-paper-plane"></i>
-                            Отправить
-                        </button>
+                        <button type="submit" class="btn btn-primary btn-full">Отправить</button>
                     </form>
                 </div>
             </div>
@@ -368,33 +294,31 @@
                         <div class="logo-icon">
                             <i class="fas fa-fire-flame-curved"></i>
                         </div>
-                        <span>Shawarma House</span>
+                        <span>Вкусно и Быстро</span>
                     </div>
-                    <p>Готовим вкусную шаурму с 2015 года. Свежие продукты, честные порции, быстрая доставка.</p>
+                    <p>Готовим с любовью каждый день</p>
                 </div>
                 <div class="footer-links">
                     <h4>Меню</h4>
-                    <a href="#menu">Классика</a>
-                    <a href="#menu">Премиум</a>
-                    <a href="#menu">Острые</a>
-                    <a href="#menu">Комбо</a>
+                    <a href="#menu">Горячее</a>
+                    <a href="#menu">Хот-доги</a>
+                    <a href="#menu">Выпечка</a>
+                    <a href="#menu">Напитки</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Информация</h4>
+                    <h4>Инфо</h4>
                     <a href="#about">О нас</a>
                     <a href="#delivery">Доставка</a>
                     <a href="#contacts">Контакты</a>
-                    <a href="#">Вакансии</a>
                 </div>
                 <div class="footer-contact">
                     <h4>Контакты</h4>
                     <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
-                    <p><i class="fas fa-envelope"></i> hello@shawarma.ru</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Пушкина, 15</p>
+                    <p><i class="fas fa-clock"></i> 10:00 — 23:00</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Shawarma House. Все права защищены.</p>
+                <p>© 2026 Вкусно и Быстро</p>
             </div>
         </div>
     </footer>
@@ -408,34 +332,71 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="modal-body" id="cartItems">
-                <!-- Cart items will be inserted here -->
-            </div>
+            <div class="modal-body" id="cartItems"></div>
             <div class="modal-footer">
                 <div class="cart-total">
                     <span>Итого:</span>
                     <span class="total-price" id="totalPrice">0 ₽</span>
                 </div>
                 <button class="btn btn-primary btn-full" id="checkoutBtn">
-                    <i class="fas fa-check"></i>
                     Оформить заказ
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Order Success Modal -->
+    <!-- Shawarma Customization Modal -->
+    <div class="modal-overlay" id="customizeModal">
+        <div class="modal modal-large">
+            <div class="modal-header">
+                <h3><i class="fas fa-sliders"></i> Собери свою шаурму</h3>
+                <button class="modal-close" id="closeCustomize">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="customize-content">
+                    <div class="customize-base">
+                        <h4>Шаурма с курицей</h4>
+                        <p class="base-price">Базовая цена: <span>250 ₽</span></p>
+                    </div>
+                    <div class="customize-extras">
+                        <h4>Дополнительные ингредиенты <span class="extra-price-tag">+50 ₽ каждый</span></h4>
+                        <div class="extras-grid" id="extrasGrid">
+                            <!-- Extras will be inserted by JS -->
+                        </div>
+                    </div>
+                    <div class="customize-quantity">
+                        <h4>Количество</h4>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="customQtyMinus"><i class="fas fa-minus"></i></button>
+                            <span class="qty-value" id="customQtyValue">1</span>
+                            <button class="qty-btn" id="customQtyPlus"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="customize-total">
+                    <span>Итого:</span>
+                    <span class="total-price" id="customizeTotal">250 ₽</span>
+                </div>
+                <button class="btn btn-primary btn-full" id="addCustomShawarma">
+                    Добавить в корзину
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
     <div class="modal-overlay" id="successModal">
         <div class="modal success-modal">
             <div class="success-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3>Заказ оформлен!</h3>
-            <p>Спасибо за заказ! Мы позвоним вам в течение 5 минут для подтверждения.</p>
-            <button class="btn btn-primary" id="closeSuccess">
-                <i class="fas fa-thumbs-up"></i>
-                Отлично!
-            </button>
+            <p>Мы позвоним вам для подтверждения</p>
+            <button class="btn btn-primary" id="closeSuccess">Отлично!</button>
         </div>
     </div>
 
