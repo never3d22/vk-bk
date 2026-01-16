@@ -1,8 +1,8 @@
 // ============================================
-// Golden Shawarma - JavaScript
+// Golden Shawarma - Premium JavaScript
 // ============================================
 
-// Products Data
+// Products Data - Premium Collection
 const products = [
     {
         id: 1,
@@ -10,7 +10,7 @@ const products = [
         category: "classic",
         price: 299,
         weight: "350 г",
-        badge: "Хит продаж",
+        badge: "Бестселлер",
         badgeType: "hit",
         icon: "fas fa-utensils",
         ingredients: [
@@ -19,147 +19,147 @@ const products = [
             { name: "Томаты", icon: "fas fa-apple-alt" },
             { name: "Огурцы", icon: "fas fa-seedling" },
             { name: "Капуста", icon: "fas fa-leaf" },
-            { name: "Соус чесночный", icon: "fas fa-droplet" }
+            { name: "Фирменный соус", icon: "fas fa-droplet" }
         ]
     },
     {
         id: 2,
-        name: "Шаурма Премиум",
+        name: "Шаурма Империал",
         category: "premium",
-        price: 449,
-        weight: "450 г",
+        price: 549,
+        weight: "480 г",
         badge: "Premium",
         badgeType: "premium",
         icon: "fas fa-crown",
         ingredients: [
-            { name: "Телятина", icon: "fas fa-drumstick-bite" },
+            { name: "Мраморная говядина", icon: "fas fa-drumstick-bite" },
             { name: "Сыр Фета", icon: "fas fa-cheese" },
             { name: "Руккола", icon: "fas fa-leaf" },
             { name: "Вяленые томаты", icon: "fas fa-apple-alt" },
-            { name: "Авокадо", icon: "fas fa-seedling" },
-            { name: "Соус Цезарь", icon: "fas fa-droplet" }
+            { name: "Трюфельный соус", icon: "fas fa-droplet" },
+            { name: "Авокадо", icon: "fas fa-seedling" }
         ]
     },
     {
         id: 3,
-        name: "Острая Шаурма",
+        name: "Адская Жара",
         category: "spicy",
-        price: 329,
-        weight: "380 г",
-        badge: "Острая",
+        price: 349,
+        weight: "400 г",
+        badge: "Экстра острая",
         badgeType: "spicy",
         icon: "fas fa-pepper-hot",
         ingredients: [
             { name: "Куриное филе", icon: "fas fa-drumstick-bite" },
-            { name: "Халапеньо", icon: "fas fa-pepper-hot" },
-            { name: "Томаты", icon: "fas fa-apple-alt" },
-            { name: "Лук красный", icon: "fas fa-circle" },
-            { name: "Капуста", icon: "fas fa-leaf" },
-            { name: "Острый соус", icon: "fas fa-fire" }
+            { name: "Перец Хабанеро", icon: "fas fa-pepper-hot" },
+            { name: "Халапеньо", icon: "fas fa-fire" },
+            { name: "Красный лук", icon: "fas fa-circle" },
+            { name: "Чили соус", icon: "fas fa-droplet" },
+            { name: "Кинза", icon: "fas fa-leaf" }
         ]
     },
     {
         id: 4,
-        name: "Шаурма с Бараниной",
+        name: "Шаурма Султан",
         category: "premium",
-        price: 489,
-        weight: "420 г",
-        badge: "Premium",
+        price: 599,
+        weight: "450 г",
+        badge: "Exclusive",
         badgeType: "premium",
-        icon: "fas fa-drumstick-bite",
+        icon: "fas fa-gem",
         ingredients: [
-            { name: "Баранина", icon: "fas fa-drumstick-bite" },
-            { name: "Мята", icon: "fas fa-leaf" },
-            { name: "Красный лук", icon: "fas fa-circle" },
-            { name: "Томаты черри", icon: "fas fa-apple-alt" },
-            { name: "Сумах", icon: "fas fa-mortar-pestle" },
-            { name: "Соус тахини", icon: "fas fa-droplet" }
+            { name: "Ягнёнок", icon: "fas fa-drumstick-bite" },
+            { name: "Гранат", icon: "fas fa-apple-alt" },
+            { name: "Свежая мята", icon: "fas fa-leaf" },
+            { name: "Хумус", icon: "fas fa-mortar-pestle" },
+            { name: "Соус тахини", icon: "fas fa-droplet" },
+            { name: "Сумах", icon: "fas fa-seedling" }
         ]
     },
     {
         id: 5,
-        name: "Вегетарианская",
+        name: "Веган Делюкс",
         category: "classic",
-        price: 249,
-        weight: "320 г",
+        price: 299,
+        weight: "380 г",
         badge: "Vegan",
         badgeType: "new",
         icon: "fas fa-carrot",
         ingredients: [
             { name: "Фалафель", icon: "fas fa-circle" },
             { name: "Хумус", icon: "fas fa-mortar-pestle" },
-            { name: "Томаты", icon: "fas fa-apple-alt" },
-            { name: "Огурцы", icon: "fas fa-seedling" },
-            { name: "Капуста", icon: "fas fa-leaf" },
-            { name: "Соус тахини", icon: "fas fa-droplet" }
+            { name: "Баклажан гриль", icon: "fas fa-seedling" },
+            { name: "Томаты черри", icon: "fas fa-apple-alt" },
+            { name: "Микс салатов", icon: "fas fa-leaf" },
+            { name: "Тахини", icon: "fas fa-droplet" }
         ]
     },
     {
         id: 6,
         name: "Огненный Дракон",
         category: "spicy",
-        price: 379,
-        weight: "400 г",
+        price: 399,
+        weight: "420 г",
         badge: "Очень острая",
         badgeType: "spicy",
         icon: "fas fa-fire-flame-curved",
         ingredients: [
-            { name: "Говядина", icon: "fas fa-drumstick-bite" },
+            { name: "Говядина Блэк Ангус", icon: "fas fa-drumstick-bite" },
             { name: "Перец чили", icon: "fas fa-pepper-hot" },
-            { name: "Шрирача", icon: "fas fa-fire" },
+            { name: "Соус Шрирача", icon: "fas fa-fire" },
             { name: "Кимчи", icon: "fas fa-leaf" },
             { name: "Зелёный лук", icon: "fas fa-seedling" },
-            { name: "Острый майонез", icon: "fas fa-droplet" }
+            { name: "Васаби майонез", icon: "fas fa-droplet" }
         ]
     },
     {
         id: 7,
-        name: "Комбо Набор №1",
+        name: "Комбо Дуэт",
         category: "combo",
-        price: 699,
-        weight: "800 г",
-        badge: "-20%",
+        price: 799,
+        weight: "900 г",
+        badge: "Выгода -25%",
         badgeType: "hit",
         icon: "fas fa-box-open",
         ingredients: [
-            { name: "2 Классические", icon: "fas fa-utensils" },
-            { name: "Картофель фри", icon: "fas fa-french-fries" },
-            { name: "Coca-Cola 0.5л", icon: "fas fa-glass-water" },
-            { name: "Соусы 3 вида", icon: "fas fa-droplet" }
+            { name: "2 Шаурмы на выбор", icon: "fas fa-utensils" },
+            { name: "Картофель Премиум", icon: "fas fa-fire" },
+            { name: "2 Напитка", icon: "fas fa-glass-water" },
+            { name: "Соусы 4 вида", icon: "fas fa-droplet" }
         ]
     },
     {
         id: 8,
-        name: "Комбо для Компании",
+        name: "Комбо Империя",
         category: "combo",
-        price: 1499,
-        weight: "2 кг",
-        badge: "-30%",
+        price: 1799,
+        weight: "2.5 кг",
+        badge: "VIP -35%",
         badgeType: "hit",
         icon: "fas fa-users",
         ingredients: [
-            { name: "4 Шаурмы на выбор", icon: "fas fa-utensils" },
-            { name: "Большая картошка", icon: "fas fa-french-fries" },
-            { name: "4 напитка", icon: "fas fa-glass-water" },
-            { name: "Соусы все виды", icon: "fas fa-droplet" }
+            { name: "5 Шаурм Премиум", icon: "fas fa-crown" },
+            { name: "XXL Картофель", icon: "fas fa-fire" },
+            { name: "5 Напитков", icon: "fas fa-glass-water" },
+            { name: "Все соусы", icon: "fas fa-droplet" }
         ]
     },
     {
         id: 9,
-        name: "Цыплёнок BBQ",
+        name: "BBQ Люкс",
         category: "classic",
-        price: 339,
-        weight: "370 г",
+        price: 379,
+        weight: "400 г",
         badge: "Новинка",
         badgeType: "new",
         icon: "fas fa-fire",
         ingredients: [
             { name: "Цыплёнок гриль", icon: "fas fa-drumstick-bite" },
-            { name: "Соус BBQ", icon: "fas fa-droplet" },
-            { name: "Кукуруза", icon: "fas fa-seedling" },
-            { name: "Красный лук", icon: "fas fa-circle" },
-            { name: "Салат Айсберг", icon: "fas fa-leaf" },
-            { name: "Халапеньо", icon: "fas fa-pepper-hot" }
+            { name: "Соус BBQ Gold", icon: "fas fa-droplet" },
+            { name: "Карамелизированный лук", icon: "fas fa-circle" },
+            { name: "Кукуруза гриль", icon: "fas fa-seedling" },
+            { name: "Бекон", icon: "fas fa-bacon" },
+            { name: "Айсберг", icon: "fas fa-leaf" }
         ]
     }
 ];
@@ -191,16 +191,76 @@ let currentSlide = 0;
 let slideInterval;
 
 // ============================================
+// Floating Particles Effect
+// ============================================
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: fixed;
+            width: ${Math.random() * 4 + 1}px;
+            height: ${Math.random() * 4 + 1}px;
+            background: rgba(212, 175, 55, ${Math.random() * 0.3 + 0.1});
+            border-radius: 50%;
+            left: ${Math.random() * 100}vw;
+            top: ${Math.random() * 100}vh;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticle ${Math.random() * 20 + 15}s linear infinite;
+            animation-delay: ${Math.random() * 10}s;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Add particle animation styles
+const particleStyles = document.createElement('style');
+particleStyles.textContent = `
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+    
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(particleStyles);
+
+// ============================================
 // Slider Functions
 // ============================================
 function showSlide(index) {
-    // Handle index bounds
     if (index >= slides.length) index = 0;
     if (index < 0) index = slides.length - 1;
     
     currentSlide = index;
     
-    // Update slides
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
         if (i === currentSlide) {
@@ -208,7 +268,6 @@ function showSlide(index) {
         }
     });
     
-    // Update dots
     sliderDots.forEach((dot, i) => {
         dot.classList.remove('active');
         if (i === currentSlide) {
@@ -226,7 +285,7 @@ function prevSlide() {
 }
 
 function startSlideShow() {
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 6000);
 }
 
 function stopSlideShow() {
@@ -254,7 +313,6 @@ sliderDots.forEach((dot, index) => {
     });
 });
 
-// Start automatic slideshow
 startSlideShow();
 
 // ============================================
@@ -278,7 +336,7 @@ function createProductCard(product) {
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-weight">${product.weight}</p>
                 <div class="product-ingredients">
-                    <h4>Состав:</h4>
+                    <h4>Состав</h4>
                     <div class="ingredients-list">
                         ${ingredientsList}
                     </div>
@@ -299,15 +357,40 @@ function renderProducts(category = 'all') {
         ? products 
         : products.filter(p => p.category === category);
     
-    productsGrid.innerHTML = filteredProducts.map(createProductCard).join('');
+    productsGrid.innerHTML = '';
+    
+    filteredProducts.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.innerHTML = createProductCard(product);
+        const productCard = card.firstElementChild;
+        productCard.style.opacity = '0';
+        productCard.style.transform = 'translateY(30px)';
+        productsGrid.appendChild(productCard);
+        
+        setTimeout(() => {
+            productCard.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            productCard.style.opacity = '1';
+            productCard.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
 }
 
-// Category Filter
+// Category Filter with animation
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        renderProducts(btn.dataset.category);
+        
+        // Fade out current products
+        const currentCards = productsGrid.querySelectorAll('.product-card');
+        currentCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+        });
+        
+        setTimeout(() => {
+            renderProducts(btn.dataset.category);
+        }, 300);
     });
 });
 
@@ -334,6 +417,7 @@ function addToCart(productId) {
     
     updateCart();
     showAddedAnimation();
+    showNotification(`${product.name} добавлена в корзину`);
 }
 
 function removeFromCart(productId) {
@@ -355,11 +439,9 @@ function updateQuantity(productId, change) {
 }
 
 function updateCart() {
-    // Update cart count
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
     
-    // Update cart items display
     if (cart.length === 0) {
         cartItems.innerHTML = `
             <div class="empty-cart">
@@ -395,20 +477,76 @@ function updateCart() {
         `).join('');
     }
     
-    // Update total price
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    totalPrice.textContent = `${total} ₽`;
+    totalPrice.textContent = `${total.toLocaleString('ru-RU')} ₽`;
     
-    // Save to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function showAddedAnimation() {
     cartBtn.classList.add('pulse');
-    setTimeout(() => cartBtn.classList.remove('pulse'), 300);
+    setTimeout(() => cartBtn.classList.remove('pulse'), 400);
 }
 
-// Load cart from localStorage
+// Notification Toast
+function showNotification(message) {
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>${message}</span>
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// Add toast styles
+const toastStyles = document.createElement('style');
+toastStyles.textContent = `
+    .toast-notification {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: 18px 35px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 3000;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .toast-notification.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    
+    .toast-notification i {
+        color: #D4AF37;
+        font-size: 20px;
+    }
+    
+    .toast-notification span {
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+`;
+document.head.appendChild(toastStyles);
+
 function loadCart() {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -439,7 +577,6 @@ function closeSuccessModal() {
     document.body.style.overflow = '';
 }
 
-// Cart Modal Events
 cartBtn.addEventListener('click', openCartModal);
 closeCart.addEventListener('click', closeCartModal);
 cartModal.addEventListener('click', (e) => {
@@ -448,7 +585,6 @@ cartModal.addEventListener('click', (e) => {
     }
 });
 
-// Success Modal Events
 closeSuccess.addEventListener('click', closeSuccessModal);
 successModal.addEventListener('click', (e) => {
     if (e.target === successModal) {
@@ -456,7 +592,6 @@ successModal.addEventListener('click', (e) => {
     }
 });
 
-// Checkout
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
     
@@ -465,7 +600,7 @@ checkoutBtn.addEventListener('click', () => {
         openSuccessModal();
         cart = [];
         updateCart();
-    }, 300);
+    }, 400);
 });
 
 // ============================================
@@ -476,7 +611,6 @@ burgerMenu.addEventListener('click', () => {
     burgerMenu.classList.toggle('active');
 });
 
-// Close mobile menu on link click
 document.querySelectorAll('.mobile-nav a').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
@@ -495,7 +629,7 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 // ============================================
-// Smooth Scroll for Navigation
+// Smooth Scroll
 // ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -513,6 +647,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================
+// Scroll Animations
+// ============================================
+function revealOnScroll() {
+    const elements = document.querySelectorAll('.feature-card, .delivery-card, .about-content, .contacts-content');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+// Set initial state for scroll animations
+document.querySelectorAll('.feature-card, .delivery-card').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(40px)';
+    element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+});
+
+window.addEventListener('scroll', revealOnScroll);
+
+// ============================================
 // Header Scroll Effect
 // ============================================
 let lastScroll = 0;
@@ -521,13 +681,58 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
-        header.style.background = 'rgba(10, 10, 10, 0.98)';
+        header.style.background = 'rgba(5, 5, 5, 0.98)';
+        header.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.5)';
     } else {
-        header.style.background = 'rgba(10, 10, 10, 0.95)';
+        header.style.background = 'rgba(5, 5, 5, 0.85)';
+        header.style.boxShadow = 'none';
     }
     
     lastScroll = currentScroll;
 });
+
+// ============================================
+// Cursor Glow Effect (Desktop only)
+// ============================================
+function initCursorGlow() {
+    if (window.innerWidth < 768) return;
+    
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    
+    document.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+    });
+}
+
+// Add cursor glow styles
+const cursorStyles = document.createElement('style');
+cursorStyles.textContent = `
+    .cursor-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s;
+    }
+    
+    .cart-btn.pulse {
+        animation: pulse 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(cursorStyles);
 
 // ============================================
 // Initialize
@@ -535,19 +740,7 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     loadCart();
+    createParticles();
+    initCursorGlow();
+    revealOnScroll();
 });
-
-// Add CSS for pulse animation
-const style = document.createElement('style');
-style.textContent = `
-    .cart-btn.pulse {
-        animation: pulse 0.3s ease;
-    }
-    
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-`;
-document.head.appendChild(style);
