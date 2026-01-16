@@ -1,64 +1,54 @@
-# CLAUDE.md
+# CLOUD.md
 
-## Цель
-Ты — помощник по разработке в этом репозитории. Делай изменения минимально необходимыми, поддерживай стиль проекта и не ломай совместимость.
+## Testing / QA steps (manual)
 
-## Главное правило
-Если не уверен — НЕ придумывай. Предложи 2–3 варианта и выбери самый безопасный.
+> This repository currently has no automated tests.
+> When making changes, follow the relevant checklist below and report what was verified.
 
-## Как работать
-1. Сначала кратко объясни, что собираешься сделать.
-2. Делай изменения небольшими и логичными.
-3. После правок — проверь сборку/линтер/тесты (если доступны).
-4. В конце дай список изменённых файлов и что именно поменял.
+---
 
-## Команды проекта
-> Обнови под свой стек.
+## 1) Quick smoke test (always)
+1. Install deps (if applicable): `npm ci` / `pnpm i` / `composer install`
+2. Start the project:
+   - Frontend: `npm run dev` / `pnpm dev`
+   - Backend: `php -S localhost:8000 -t public` (or project-specific)
+3. Open the app in a browser and verify:
+   - No runtime errors in console
+   - Main page loads without layout breaks
+   - Key navigation links work
 
-### Установка
-- `npm ci` / `pnpm i` / `yarn`
+---
 
-### Запуск
-- `npm run dev`
+## 2) UI regression checklist (when UI/markup/styles changed)
+- [ ] Desktop: header/footer look correct
+- [ ] Mobile (<= 390px): no text cut off, no overflow, buttons tappable
+- [ ] Forms: required fields, validation messages, submit works
+- [ ] Modals/popups open/close correctly
+- [ ] Images/icons load (no broken assets)
 
-### Линтер/форматирование
-- `npm run lint`
-- `npm run format`
+---
 
-### Тесты
-- `npm test`
+## 3) Functional checklist (when business logic changed)
+- [ ] Primary flow works end-to-end (core user action for this app)
+- [ ] Edge cases: empty states, invalid input, slow network (if relevant)
+- [ ] No new warnings/errors in server logs (if backend)
 
-## Стиль кода
-- Следуй существующим паттернам в проекте (именования, структура, архитектура).
-- Не меняй форматирование массово без причины.
-- Не добавляй новые зависимости без явной необходимости.
-- Пиши понятные имена функций/переменных, избегай “магии”.
+---
 
-## Требования к изменениям
-- Не ломай публичные API/контракты.
-- Не меняй интерфейсы/верстку без просьбы.
-- Не удаляй функциональность “просто так”.
-- Для багфикса: добавь/обнови тест или хотя бы воспроизводимый сценарий.
+## 4) SEO checklist (when meta/content/URLs changed)
+- [ ] Title/Description present and correct
+- [ ] H1 exists and matches page intent
+- [ ] Canonical (if used) points to the correct URL
+- [ ] No accidental indexation changes (robots, noindex)
+- [ ] No duplicate GET-parameter pages introduced
 
-## Безопасность
-- Никогда не логируй секреты (ключи, токены, пароли).
-- Не коммить `.env`, приватные ключи, дампы.
-- Любая работа с платежами/авторизацией — максимально осторожно.
+---
 
-## Коммиты / PR (если актуально)
-Формат:
-- `feat: ...`
-- `fix: ...`
-- `refactor: ...`
-- `chore: ...`
+## 5) What to write in PR “Testing” section
+Use one of these formats:
 
-В PR:
-- Что изменено
-- Почему
-- Как проверить
+### If you ran manual checks
+- Manual: Smoke test + relevant checklist items above
 
-## Что мне нужно от тебя (когда не хватает данных)
-Если отсутствуют команды/версии/окружение — попроси:
-- Node/Python версии
-- Менеджер пакетов
-- Где лежит конфиг (.env.example / config)
+### If you couldn’t run anything
+- Not run (no automated tests). Please run the steps in CLOUD.md.
