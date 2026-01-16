@@ -891,8 +891,11 @@ const initReveal = () => {
   if (revealItems.length === 0) {
     return;
   }
+  const revealItem = (item) => {
+    item.classList.add("is-visible");
+  };
   if (prefersReducedMotion.matches) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+    revealItems.forEach(revealItem);
     return;
   }
   revealItems.forEach((item, index) => {
@@ -900,18 +903,30 @@ const initReveal = () => {
     item.style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
     item.style.willChange = "opacity, transform";
   });
+  if (!("IntersectionObserver" in window)) {
+    const revealVisible = () => {
+      revealItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          revealItem(item);
+        }
+      });
+    };
+    revealVisible();
+    window.addEventListener("scroll", revealVisible, { passive: true });
+    window.addEventListener("resize", revealVisible);
+    return;
+  }
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          requestAnimationFrame(() => {
-            entry.target.classList.add("is-visible");
-          });
+          requestAnimationFrame(() => revealItem(entry.target));
           currentObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
   );
   revealItems.forEach((item) => observer.observe(item));
 };
