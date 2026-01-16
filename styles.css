@@ -715,7 +715,7 @@ input, textarea { font-family: inherit; }
 .badge-new { background: var(--green); color: white; }
 .badge-spicy { background: var(--orange); color: white; }
 .badge-18 { background: var(--blue); color: white; }
-.badge-popular { background: rgba(212, 175, 55, 0.15); color: var(--gold); border: 1px solid var(--gold); }
+.badge-popular { background: var(--gold); color: var(--black); }
 
 .product-favorite {
     position: absolute;
@@ -723,24 +723,26 @@ input, textarea { font-family: inherit; }
     right: 12px;
     width: 36px;
     height: 36px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
+    color: #999;
     font-size: 14px;
     z-index: 2;
     transition: all var(--transition);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.product-favorite:hover,
+.product-favorite:hover {
+    color: var(--red);
+    transform: scale(1.1);
+}
 .product-favorite.active {
     color: var(--red);
-    border-color: var(--red);
-}
-.product-favorite.active {
-    background: rgba(255, 71, 87, 0.1);
+    background: #fff;
 }
 
 .product-info {
@@ -1194,9 +1196,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 /* === FOOTER === */
 .footer {
-    background: var(--black-light);
+    background: var(--bg-secondary);
     padding: 60px 0 24px;
     border-top: 1px solid var(--border);
+}
+[data-theme="dark"] .footer {
+    background: #111;
 }
 .footer-grid {
     display: grid;
@@ -1242,6 +1247,22 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .footer-bottom p {
     font-size: 13px;
     color: var(--text-muted);
+}
+
+/* Footer light theme adjustments */
+[data-theme="light"] .footer {
+    background: #f5f5f5;
+}
+[data-theme="light"] .footer-brand p,
+[data-theme="light"] .footer-nav a,
+[data-theme="light"] .footer-contact p {
+    color: #666;
+}
+[data-theme="light"] .footer-bottom {
+    border-color: #ddd;
+}
+[data-theme="light"] .footer-bottom p {
+    color: #888;
 }
 
 /* === CART DRAWER === */
