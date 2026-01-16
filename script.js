@@ -484,7 +484,10 @@ const renderMenu = () => {
     .map((category) => {
       const cards = category.items
         .map((item) => {
-          const ingredientsInline = (item.ingredients ?? []).join(" · ");
+          const ingredientsList = item.ingredients ?? [];
+          const ingredientsInline = ingredientsList.length > 2
+            ? `${ingredientsList.slice(0, 2).join(" · ")} · …`
+            : ingredientsList.join(" · ");
           const imageSrc = getMenuImage(item, category);
           const extrasMarkup = (item.extrasOptions ?? [])
             .map(
