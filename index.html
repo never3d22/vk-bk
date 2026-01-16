@@ -24,9 +24,9 @@
                 </a>
                 
                 <nav class="nav" id="nav">
+                    <a href="#promo" class="nav-link">Акции</a>
                     <a href="#menu" class="nav-link">Меню</a>
                     <a href="#about" class="nav-link">О нас</a>
-                    <a href="#delivery" class="nav-link">Доставка</a>
                     <a href="#contacts" class="nav-link">Контакты</a>
                 </nav>
                 
@@ -34,6 +34,15 @@
                     <button class="theme-btn" id="themeBtn" aria-label="Сменить тему">
                         <i class="fas fa-sun"></i>
                         <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button class="icon-btn" id="favoritesBtn" aria-label="Избранное">
+                        <i class="fas fa-heart"></i>
+                        <span class="icon-badge" id="favoritesBadge">0</span>
+                    </button>
+                    
+                    <button class="icon-btn" id="historyBtn" aria-label="История заказов">
+                        <i class="fas fa-clock-rotate-left"></i>
                     </button>
                     
                     <a href="tel:+79991234567" class="header-phone">
@@ -55,29 +64,46 @@
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1920&q=80" alt="">
-            <div class="hero-overlay"></div>
-        </div>
+    <!-- Promo Slider -->
+    <section class="promo-section" id="promo">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-fire"></i><span>Доставка 30 минут</span></div>
-                <h1 class="hero-title">Вкусно <span class="hero-title-accent">&</span> Быстро</h1>
-                <p class="hero-desc">Шаурма, хачапури, хот-доги и многое другое. Готовим из свежих продуктов с любовью.</p>
-                <div class="hero-actions">
-                    <a href="#menu" class="btn btn-primary btn-lg"><span>Смотреть меню</span><i class="fas fa-arrow-right"></i></a>
-                    <a href="tel:+79991234567" class="btn btn-glass btn-lg"><i class="fas fa-phone"></i><span>Позвонить</span></a>
+            <div class="promo-slider" id="promoSlider">
+                <div class="promo-slide active" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                    <div class="promo-slide-content">
+                        <span class="promo-tag">Акция</span>
+                        <h3>Скидка 20% на первый заказ</h3>
+                        <p>Используй промокод ПЕРВЫЙ20</p>
+                        <button class="btn btn-white btn-sm" onclick="copyPromo('ПЕРВЫЙ20')">Скопировать код</button>
+                    </div>
+                    <div class="promo-slide-img">🎉</div>
                 </div>
-                <div class="hero-stats">
-                    <div class="hero-stat"><span class="hero-stat-value">30</span><span class="hero-stat-label">минут доставка</span></div>
-                    <div class="hero-stat"><span class="hero-stat-value">50+</span><span class="hero-stat-label">позиций меню</span></div>
-                    <div class="hero-stat"><span class="hero-stat-value">4.9</span><span class="hero-stat-label">рейтинг</span></div>
+                <div class="promo-slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="promo-slide-content">
+                        <span class="promo-tag">Комбо</span>
+                        <h3>2 шаурмы по цене 1.5</h3>
+                        <p>Каждую пятницу с 18:00</p>
+                        <a href="#menu" class="btn btn-white btn-sm">Заказать</a>
+                    </div>
+                    <div class="promo-slide-img">🌯</div>
+                </div>
+                <div class="promo-slide" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                    <div class="promo-slide-content">
+                        <span class="promo-tag">Бесплатно</span>
+                        <h3>Бесплатная доставка</h3>
+                        <p>При заказе от 1000 ₽</p>
+                        <a href="#menu" class="btn btn-white btn-sm">К меню</a>
+                    </div>
+                    <div class="promo-slide-img">🚀</div>
                 </div>
             </div>
+            <div class="promo-dots" id="promoDots">
+                <button class="promo-dot active" data-index="0"></button>
+                <button class="promo-dot" data-index="1"></button>
+                <button class="promo-dot" data-index="2"></button>
+            </div>
+            <button class="promo-arrow promo-prev" id="promoPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="promo-arrow promo-next" id="promoNext"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <div class="hero-scroll"><span>Листай вниз</span><i class="fas fa-chevron-down"></i></div>
     </section>
 
     <!-- Menu -->
@@ -89,12 +115,16 @@
                     <h2 class="section-title">Выбери своё <span class="gold">блюдо</span></h2>
                 </div>
                 <div class="section-head-right">
-                    <p class="section-desc">Всё готовится из свежих продуктов при заказе</p>
+                    <div class="menu-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="menuSearch" placeholder="Поиск блюд...">
+                    </div>
                 </div>
             </div>
             
             <div class="menu-nav">
                 <button class="menu-nav-btn active" data-category="all">Всё меню</button>
+                <button class="menu-nav-btn" data-category="favorites"><i class="fas fa-heart"></i> Избранное</button>
                 <button class="menu-nav-btn" data-category="hot">🔥 Горячее</button>
                 <button class="menu-nav-btn" data-category="hotdog">🌭 Хот-доги</button>
                 <button class="menu-nav-btn" data-category="bakery">🥐 Выпечка</button>
@@ -107,18 +137,33 @@
         </div>
     </section>
 
-    <!-- About -->
+    <!-- Map & About -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-images">
-                    <div class="about-img about-img-1">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Блюдо">
+                    <div class="map-container" id="mapContainer">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.371!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIxLjAiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <div class="map-overlay">
+                            <div class="map-info">
+                                <i class="fas fa-location-dot"></i>
+                                <div>
+                                    <strong>Москва, ул. Пушкина, 15</strong>
+                                    <span>Открыто до 23:00</span>
+                                </div>
+                            </div>
+                            <a href="https://yandex.ru/maps/-/ABC123" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fas fa-route"></i> Маршрут
+                            </a>
+                        </div>
                     </div>
-                    <div class="about-img about-img-2">
-                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80" alt="Кухня">
-                    </div>
-                    <div class="about-badge"><span class="about-badge-value">5+</span><span class="about-badge-label">лет работы</span></div>
                 </div>
                 <div class="about-content">
                     <span class="section-label">О нас</span>
@@ -139,23 +184,12 @@
                             <div class="about-feature-text"><strong>С любовью</strong><span>К каждому блюду</span></div>
                         </div>
                     </div>
+                    <div class="about-stats">
+                        <div class="stat"><span class="stat-value">5+</span><span class="stat-label">лет работы</span></div>
+                        <div class="stat"><span class="stat-value">10K+</span><span class="stat-label">клиентов</span></div>
+                        <div class="stat"><span class="stat-value">4.9</span><span class="stat-label">рейтинг</span></div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Delivery -->
-    <section class="delivery" id="delivery">
-        <div class="container">
-            <div class="section-head section-head-center">
-                <span class="section-label">Доставка</span>
-                <h2 class="section-title">Привезём <span class="gold">горячим</span></h2>
-            </div>
-            <div class="delivery-grid">
-                <div class="delivery-card"><div class="delivery-card-icon"><i class="fas fa-truck-fast"></i></div><h3>Бесплатно от 1000 ₽</h3><p>При заказе от 1000 рублей</p></div>
-                <div class="delivery-card"><div class="delivery-card-icon"><i class="fas fa-clock"></i></div><h3>30 минут</h3><p>Среднее время доставки</p></div>
-                <div class="delivery-card"><div class="delivery-card-icon"><i class="fas fa-box"></i></div><h3>Термоупаковка</h3><p>Сохраняем температуру</p></div>
-                <div class="delivery-card"><div class="delivery-card-icon"><i class="fas fa-wallet"></i></div><h3>Любая оплата</h3><p>Карта, наличные, перевод</p></div>
             </div>
         </div>
     </section>
@@ -209,7 +243,7 @@
                     <p>Готовим вкусную еду с любовью и доставляем быстро.</p>
                 </div>
                 <div class="footer-nav"><h4>Меню</h4><a href="#menu">Горячее</a><a href="#menu">Хот-доги</a><a href="#menu">Выпечка</a><a href="#menu">Напитки</a></div>
-                <div class="footer-nav"><h4>Инфо</h4><a href="#about">О нас</a><a href="#delivery">Доставка</a><a href="#contacts">Контакты</a></div>
+                <div class="footer-nav"><h4>Инфо</h4><a href="#about">О нас</a><a href="#promo">Акции</a><a href="#contacts">Контакты</a></div>
                 <div class="footer-contact"><h4>Контакты</h4><p><i class="fas fa-phone"></i> +7 999 123-45-67</p><p><i class="fas fa-clock"></i> 10:00 — 23:00</p></div>
             </div>
             <div class="footer-bottom"><p>© 2024 Вкусно и Быстро</p></div>
@@ -219,7 +253,6 @@
     <!-- Cart Drawer -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
-        <!-- Step 1: Cart -->
         <div class="cart-step" id="cartStep1">
             <div class="cart-drawer-header">
                 <h3><i class="fas fa-shopping-bag"></i> Корзина</h3>
@@ -230,10 +263,10 @@
                 <div class="promo-section" id="promoSection">
                     <div class="promo-row" id="promoRow">
                         <input type="text" class="form-input" id="promoInput" placeholder="Промокод">
-                        <button class="btn btn-outline btn-sm" id="promoApplyBtn">Применить</button>
+                        <button class="btn btn-outline btn-sm" id="promoApplyBtn">OK</button>
                     </div>
                     <div class="promo-applied" id="promoApplied" style="display: none;">
-                        <span><i class="fas fa-check-circle"></i> Скидка 10% применена</span>
+                        <span><i class="fas fa-check-circle"></i> <span id="promoAppliedText">Скидка применена</span></span>
                         <button id="promoRemoveBtn"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
@@ -243,7 +276,7 @@
                 </div>
                 <div class="cart-summary">
                     <div class="cart-summary-row"><span>Товары</span><span id="cartSubtotal">0 ₽</span></div>
-                    <div class="cart-summary-row discount" id="discountRow" style="display: none;"><span>Скидка 10%</span><span id="cartDiscount">0 ₽</span></div>
+                    <div class="cart-summary-row discount" id="discountRow" style="display: none;"><span id="discountLabel">Скидка</span><span id="cartDiscount">0 ₽</span></div>
                     <div class="cart-summary-row"><span>Доставка</span><span id="cartDeliveryPrice">Бесплатно</span></div>
                     <div class="cart-summary-row cart-summary-total"><span>Итого</span><strong id="cartTotal">0 ₽</strong></div>
                 </div>
@@ -253,91 +286,50 @@
             </div>
         </div>
         
-        <!-- Step 2: Delivery -->
         <div class="cart-step" id="cartStep2" style="display: none;">
             <div class="cart-drawer-header">
                 <button class="back-btn" id="backToStep1"><i class="fas fa-arrow-left"></i></button>
-                <h3>Оформление заказа</h3>
+                <h3>Оформление</h3>
                 <button class="cart-drawer-close" id="cartClose2"><i class="fas fa-times"></i></button>
             </div>
             <div class="cart-drawer-body">
                 <form id="checkoutForm">
                     <div class="checkout-section">
-                        <h4><i class="fas fa-user"></i> Контактные данные</h4>
+                        <h4><i class="fas fa-user"></i> Контакты</h4>
                         <div class="form-row"><input type="text" class="form-input" id="customerName" placeholder="Ваше имя *" required></div>
                         <div class="form-row"><input type="tel" class="form-input" id="customerPhone" placeholder="Телефон *" required></div>
                     </div>
-                    
                     <div class="checkout-section">
-                        <h4><i class="fas fa-truck"></i> Способ получения</h4>
+                        <h4><i class="fas fa-truck"></i> Получение</h4>
                         <div class="delivery-options">
-                            <label class="delivery-option active">
-                                <input type="radio" name="deliveryType" value="delivery" checked>
-                                <div class="delivery-option-content">
-                                    <i class="fas fa-truck"></i>
-                                    <div><strong>Доставка</strong><span>30-45 мин</span></div>
-                                </div>
-                            </label>
-                            <label class="delivery-option">
-                                <input type="radio" name="deliveryType" value="pickup">
-                                <div class="delivery-option-content">
-                                    <i class="fas fa-store"></i>
-                                    <div><strong>Самовывоз</strong><span>15-20 мин</span></div>
-                                </div>
-                            </label>
+                            <label class="delivery-option"><input type="radio" name="deliveryType" value="delivery" checked><div class="delivery-option-content"><i class="fas fa-truck"></i><div><strong>Доставка</strong><span>30-45 мин</span></div></div></label>
+                            <label class="delivery-option"><input type="radio" name="deliveryType" value="pickup"><div class="delivery-option-content"><i class="fas fa-store"></i><div><strong>Самовывоз</strong><span>15-20 мин</span></div></div></label>
                         </div>
                     </div>
-                    
                     <div class="checkout-section" id="addressSection">
-                        <h4><i class="fas fa-location-dot"></i> Адрес доставки</h4>
+                        <h4><i class="fas fa-location-dot"></i> Адрес</h4>
                         <div class="form-row"><input type="text" class="form-input" id="customerAddress" placeholder="Улица, дом *"></div>
                         <div class="form-row form-row-half">
-                            <input type="text" class="form-input" id="customerFlat" placeholder="Кв./офис">
+                            <input type="text" class="form-input" id="customerFlat" placeholder="Кв/офис">
                             <input type="text" class="form-input" id="customerEntrance" placeholder="Подъезд">
                         </div>
-                        <div class="form-row form-row-half">
-                            <input type="text" class="form-input" id="customerFloor" placeholder="Этаж">
-                            <input type="text" class="form-input" id="customerIntercom" placeholder="Домофон">
-                        </div>
                     </div>
-                    
                     <div class="checkout-section">
                         <h4><i class="fas fa-wallet"></i> Оплата</h4>
                         <div class="payment-options">
-                            <label class="payment-option">
-                                <input type="radio" name="paymentType" value="card" checked>
-                                <div class="payment-option-content">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>Картой</span>
-                                </div>
-                            </label>
-                            <label class="payment-option">
-                                <input type="radio" name="paymentType" value="cash">
-                                <div class="payment-option-content">
-                                    <i class="fas fa-money-bill"></i>
-                                    <span>Наличными</span>
-                                </div>
-                            </label>
-                            <label class="payment-option">
-                                <input type="radio" name="paymentType" value="online">
-                                <div class="payment-option-content">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <span>Онлайн</span>
-                                </div>
-                            </label>
+                            <label class="payment-option"><input type="radio" name="paymentType" value="card" checked><div class="payment-option-content"><i class="fas fa-credit-card"></i><span>Картой</span></div></label>
+                            <label class="payment-option"><input type="radio" name="paymentType" value="cash"><div class="payment-option-content"><i class="fas fa-money-bill"></i><span>Наличными</span></div></label>
+                            <label class="payment-option"><input type="radio" name="paymentType" value="online"><div class="payment-option-content"><i class="fas fa-mobile-alt"></i><span>Онлайн</span></div></label>
                         </div>
                     </div>
-                    
                     <div class="checkout-section">
                         <h4><i class="fas fa-comment"></i> Комментарий</h4>
-                        <div class="form-row"><textarea class="form-input" id="customerComment" placeholder="Пожелания к заказу" rows="2"></textarea></div>
+                        <div class="form-row"><textarea class="form-input" id="customerComment" placeholder="Пожелания" rows="2"></textarea></div>
                     </div>
                 </form>
             </div>
             <div class="cart-drawer-footer">
                 <div class="cart-summary">
-                    <div class="cart-summary-row"><span>Товары</span><span id="cartSubtotal2">0 ₽</span></div>
-                    <div class="cart-summary-row"><span>Доставка</span><span id="cartDeliveryPrice2">Бесплатно</span></div>
                     <div class="cart-summary-row cart-summary-total"><span>Итого</span><strong id="cartTotal2">0 ₽</strong></div>
                 </div>
                 <button class="btn btn-primary btn-full btn-lg" id="submitOrderBtn">
@@ -346,6 +338,26 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <!-- History Drawer -->
+    <div class="cart-overlay" id="historyOverlay"></div>
+    <div class="cart-drawer" id="historyDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fas fa-clock-rotate-left"></i> История заказов</h3>
+            <button class="cart-drawer-close" id="historyClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="historyBody"></div>
+    </div>
+
+    <!-- Favorites Drawer -->
+    <div class="cart-overlay" id="favoritesOverlay"></div>
+    <div class="cart-drawer" id="favoritesDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fas fa-heart"></i> Избранное</h3>
+            <button class="cart-drawer-close" id="favoritesClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="favoritesBody"></div>
     </div>
 
     <!-- Product Modal -->
@@ -378,7 +390,7 @@
     <div class="modal modal-success" id="successModal">
         <div class="success-icon"><i class="fas fa-check"></i></div>
         <h3>Заказ оформлен!</h3>
-        <p>Мы позвоним вам в течение 5 минут для подтверждения</p>
+        <p>Мы позвоним вам в течение 5 минут</p>
         <div class="success-order-info" id="successOrderInfo"></div>
         <button class="btn btn-primary" id="successClose">Отлично</button>
     </div>
@@ -388,6 +400,17 @@
 
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Telegram Config (for admin) -->
+    <script>
+        // НАСТРОЙКИ TELEGRAM БОТА
+        // Замените на свои данные после создания бота
+        window.TELEGRAM_CONFIG = {
+            botToken: 'YOUR_BOT_TOKEN', // Получить у @BotFather
+            chatId: 'YOUR_CHAT_ID',     // ID чата/группы для заказов
+            enabled: false              // Включить отправку в Telegram
+        };
+    </script>
 
     <script src="script.js"></script>
 </body>
